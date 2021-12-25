@@ -35,15 +35,25 @@
 
  1. BERT 모델의 장점은 포지션 임베딩을 이용하여 문장에서 한 쌍의 단어 관계를 정의하여 진행 한다는 점인데,  Scaled dot-product attention 방법을 사용하여 한 쌍의 단어 관계를 나타낸다.
  - 아래 식의 나오는 것처럼, Query(Q)와 Key(K)의 벡터 간 유사도를 행렬곱 연산을 통해 구한 후에,  $\sqrt{d_k}$ 를 scaling factor로 사용하여 나눈 뒤 softmax를 적용하고 거기에 Value(V)와 다시 행렬곱 연산을 한다. 
+
+
 ![enter image description here](https://user-images.githubusercontent.com/79245484/147388184-ec512ff5-8d48-4f79-be8c-90698c367fe0.PNG)
 
    이를 통해 만들어지는 예시는 아래와 같다. 
+   
 ![enter image description here](https://user-images.githubusercontent.com/79245484/147388577-776709dc-6f5d-49fd-83a7-9bc4e2bd5f0e.PNG)
+
+
  3. 다음은 Bi-LSTM과 Attention layer를 진행한다. 
  - Gradient vanishing problem을 해결하고 문맥 정보를 활용하기 위해 LSTM을 사용하였고, 감성분석의 입력 데이터에 대해 LSTM을 훈련시키기 위해 양방향으로 LSTM을 적용할 수 있는 Bi-LSTM을 사용한다. 또한, Bi-LSTM을 사용하면 트랜스포머 계층에서 숨겨진 token을 연결하여 전체 모델을 다시 미세 조정할 수 있다. 
+
+
 	![enter image description here](https://user-images.githubusercontent.com/79245484/147388578-30d9c740-a893-4bae-8057-56a0cb1088ca.PNG)
 
+
 - 하나의 문장 정보를 문장 끝까지 입출력 할 수 있도록 하여 첫 단어가 멀리 있는 단어와도 상관관계를 가질 수 있도록 Attention layer를 사용한다. 
+
+
  6. 다음은, Attention layer 값을 하나로 줄이기 위해 Max Pooling을 사용하며,  Max Pooling은 계산량을 줄임으로써 과적합을 방지할 수 있다. 
  
  8. 마지막으로, Output layer에서 softmax 활성화 함수를 사용하여 분류된 문장 쌍을 이용하고, 각 평점 레이블의 확률 값에 따라 출력 값을 산출한다. 
