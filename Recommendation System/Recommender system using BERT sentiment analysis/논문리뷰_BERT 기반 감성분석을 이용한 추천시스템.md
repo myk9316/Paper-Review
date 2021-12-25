@@ -26,9 +26,9 @@
 
  1.  3가지의 입력 임베딩(Token, Segment, Position)을 취합하여 하나의 임베딩 값으로 만들고, 이를 input으로 사용한다. 
  
- 3. Encoder에 input을 넣을 때 해당 문장의 30%의 token을 임의로 Mask 처리하고, 해당 token을 예측하여 학습을 진행한다. 
+ 2. Encoder에 input을 넣을 때 해당 문장의 30%의 token을 임의로 Mask 처리하고, 해당 token을 예측하여 학습을 진행한다. 
  
- 5.  사전 학습 모델은 BERT multilingual base model을 활용하여 사용자 리뷰와 평점을 벡터로 입력 받아 BERT 감성 분석을 할 수 있도록 구현한다. 
+ 3.  사전 학습 모델은 BERT multilingual base model을 활용하여 사용자 리뷰와 평점을 벡터로 입력 받아 BERT 감성 분석을 할 수 있도록 구현한다. 
 
 
 ### BERT를 활용한 추천 시스템
@@ -44,7 +44,7 @@
 ![enter image description here](https://user-images.githubusercontent.com/79245484/147388577-776709dc-6f5d-49fd-83a7-9bc4e2bd5f0e.PNG)
 
 
- 3. 다음은 Bi-LSTM과 Attention layer를 진행한다. 
+ 2. 다음은 Bi-LSTM과 Attention layer를 진행한다. 
  - Gradient vanishing problem을 해결하고 문맥 정보를 활용하기 위해 LSTM을 사용하였고, 감성분석의 입력 데이터에 대해 LSTM을 훈련시키기 위해 양방향으로 LSTM을 적용할 수 있는 Bi-LSTM을 사용한다. 또한, Bi-LSTM을 사용하면 트랜스포머 계층에서 숨겨진 token을 연결하여 전체 모델을 다시 미세 조정할 수 있다. 
 
 
@@ -54,9 +54,10 @@
 - 하나의 문장 정보를 문장 끝까지 입출력 할 수 있도록 하여 첫 단어가 멀리 있는 단어와도 상관관계를 가질 수 있도록 Attention layer를 사용한다. 
 
 
- 6. 다음은, Attention layer 값을 하나로 줄이기 위해 Max Pooling을 사용하며,  Max Pooling은 계산량을 줄임으로써 과적합을 방지할 수 있다. 
+
+ 3. 다음은, Attention layer 값을 하나로 줄이기 위해 Max Pooling을 사용하며,  Max Pooling은 계산량을 줄임으로써 과적합을 방지할 수 있다. 
  
- 8. 마지막으로, Output layer에서 softmax 활성화 함수를 사용하여 분류된 문장 쌍을 이용하고, 각 평점 레이블의 확률 값에 따라 출력 값을 산출한다. 
+ 4. 마지막으로, Output layer에서 softmax 활성화 함수를 사용하여 분류된 문장 쌍을 이용하고, 각 평점 레이블의 확률 값에 따라 출력 값을 산출한다. 
 
 
 ## Experiments
@@ -66,6 +67,7 @@
 - 그 중 helpfulness가 5개 이하의 데이터는 제거하고, 평점과 부합하지 않는 리뷰들이 다수 존재하여 평점과 리뷰를 매칭했다.
 
 -  매칭 된 리뷰는 총 42,283개이며, 최종 데이터 셋을 Training Set 80%(33,286개), Test Set 20%(8,457개)로 구성하였으며 데이터 셋에 대한 상세정보는 다음과 같다. ![enter image description here](https://user-images.githubusercontent.com/79245484/147388935-56c0748a-ad58-4d87-9f2f-47a099d1ad70.PNG)
+
 
 ### 감성분석 결과
 - BERT를 통해 분석된 감성분석의 결과를 비교하기 위해 Accuracy, Precision, Recall, F1-score를 사용하였다. 
@@ -77,6 +79,7 @@
 - 마스킹 처리 후 감성분석과 BERT 모델을 결합하기 위해 파이토치의 tensor를 이용하였고, 감성분석의 가중치에 패널티를 부여하기 위해서 Adam 함수를 이용하였다. 
 
 - Adam 함수를 이용한 후 5000번의 반복 시행을 거쳐 생성된 데이터셋에 로지스틱 회귀분석을 적용한 결과는 다음과 같다. ![enter image description here](https://user-images.githubusercontent.com/79245484/147388937-be0096fd-2078-488c-9566-214ed58ae820.PNG)
+
 
 ### 추천 성능 평가
 - RMSE를 상품 추천의 평가지표로 사용하였다. 
