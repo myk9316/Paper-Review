@@ -114,22 +114,60 @@ Transformer에서는 3가지 방식으로 multi-head attention을 사용한다.
   - Encoder의 Self-attention layer와 동일하지만, auto-regressive 속성을 보존하기 위해 output을 생성할 때 leftward information flow를 차단한다. 
   - 즉, 해당 position 이전까지의 모든 position만 attention이 가능하도록 하며, 미래 시점의 단어들 또는 output에는 접근하지 못하도록 한다. --> 현재 토큰 이후 값들에 대해서 masking out  
 
+<br/>
+
+
 ### 3.3 Position-wise Feed-Forward Networks
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147884893-2d631fdc-0357-48c3-9dbc-467bb013799a.PNG" width="30%" height="30%"></p>
+
+
+- Attention sub-layers 외에도, encoder와 decoder의 각 layer는 fully connected feed-foward network를 포함하는데, 이것은 각 position마다 개별적으로 그리고 동일하게 적용된다. 
+- Position-wise Feed-Forward Network에서는 2번의 linear transformation을 수행하고, 두 linear transformation 사이에는 RELU 연산을 수행한다. 
+
+<br/>
+
+
 ### 3.4 Embeddings and Softmax
+- 
+
+<br/>
+
+
 ### 3.5 Positional Encoding
 
+
+<br/>
+
+
 ## 4. Why Self-Attention
+- 
+
+<br/>
+
 
 ## 5. Training
 ### 5.1 Training Data and Batching
+- 
+
 ### 5.2 Hardware and Schedule
+- 
+
 ### 5.3 Optimizer
+-
+
 ### 5.4 Regularization
+- 
 
 ## 6. Results
 ### 6.1 Machine Translation
+- 
+
 ### 6.2 Model Variations
+- 
 
 ## 7. Conclusion
+- 
 
 ## 8. Advice / limitation
+- 
+
