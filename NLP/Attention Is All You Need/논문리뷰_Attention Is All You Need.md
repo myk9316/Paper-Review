@@ -54,15 +54,19 @@ The dominant sequence transduction models are based on complex recurrent or conv
 
 #### Decoder
 - Decoder 역시 N=6개의 동일한 layer로 구성되어 있으며, 각 sub-layer를 residual connection으로 연결하고 이후 normalization을 한다. 
+
 - 2개의 sub-layer 외에도, decoder는 Encoder 스택의 출력을 통해 multi-head attetion을 수행하는 세번째 sub-layer를 가진다. 
+
 - 또한, decoder의 self-attention sub-layer에서는 현재 위치보다 뒤에 있는 요소에 Attention 하는 것을 막기 위해 masking을 추가한다. 
   - 이는, i번째 position의 예측이 i의 이전의 output에만 의존하도록 만들어준다. (즉, 앞에 있는 단어로만 예측하고 뒤에 있는 단어를 미리 알지 못하도록)
 
 
 ### 3.2 Attention
 - Attention은 한 문장 내에서 특정 단어를 이해하려고 할때 어떤 단어들을 중점적으로 봐야 단어를 더 잘 이해할 수 있을지에 관한 것이다. 
+
 - Attention fuction은 query와 key-value 쌍을 output에 맵핑한다.
   - Query(Q, 영향을 받는 단어), Key(K, 영향을 주는 단어), Values(V, 영향에 대한 가중치)는 모두 vector 형태이다.
+  
 - Output은 value의 가중치 합으로 계산 되는데, 각각의 value에 맞는 가중치는 query와 그에 맞는 key의 compatibility function에 의해 계산된다.
   - I Love You 라는 단어가 있을때, I라는 단어가 I, Love, You 각각에 대해 얼마큼의 연관성을 가지는지를 알아보고자 한다면, Query는 I, Key는 I, Love, You, Value는 예를 들면 0.2, 0.3, 0.5가 된다. 
 
@@ -70,8 +74,8 @@ The dominant sequence transduction models are based on complex recurrent or conv
 
 
 #### Scaled Dot-Product Attention
+- 입력으로는 d<sub>k<sub/> 차원의 query, key와 d<sub>v<sub/> 차원의 value를 가진다. 
 <img src="https://user-images.githubusercontent.com/79245484/147881003-3e255556-c51e-4a7a-aac8-cec4bbc8a0ca.PNG">
-- 입력은 
 
 #### Multi-Head Attention
 - 
