@@ -122,12 +122,16 @@ Transformer에서는 3가지 방식으로 multi-head attention을 사용한다.
 
 
 - Attention sub-layers 외에도, encoder와 decoder의 각 layer는 fully connected feed-foward network를 포함하는데, 이것은 각 position마다 개별적으로 그리고 동일하게 적용된다. 
+
 - Position-wise Feed-Forward Network에서는 2번의 linear transformation을 수행하고, 두 linear transformation 사이에는 RELU 연산을 수행한다. 
 
 <br/>
 
 
 ### 3.4 Embeddings and Softmax
+- 대부분의 sequence transduction modele들과 같이 input/output tokens들을 벡터로 변환하는데 learned embedding을 사용하였다.
+- 또한, Deocder output이 예측된 다음 토큰의 확률을 계산하기 위해 learned linear transformation과 softmax function을 사용한다. 
+- 두 개의 embedding layer와 pre-softmax linear transformation은 공통된 가중치 매트릭스를 가진다. 
 - 
 
 <br/>
