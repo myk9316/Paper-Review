@@ -139,7 +139,7 @@ Transformer에서는 3가지 방식으로 multi-head attention을 사용한다.
 
 
 ### 3.5 Positional Encoding
-
+- 
 
 <br/>
 
