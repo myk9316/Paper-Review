@@ -60,6 +60,25 @@ The dominant sequence transduction models are based on complex recurrent or conv
 
 
 ### 3.2 Attention
+- Attention은 한 문장 내에서 특정 단어를 이해하려고 할때 어떤 단어들을 중점적으로 봐야 단어를 더 잘 이해할 수 있을지에 관한 것이다. 
+- Attention fuction은 query와 key-value 쌍을 output에 맵핑한다.
+  - Query(Q, 영향을 받는 단어), Key(K, 영향을 주는 단어), Values(V, 영향에 대한 가중치)는 모두 vector 형태이다.
+- Output은 value의 가중치 합으로 계산 되는데, 각각의 value에 맞는 가중치는 query와 그에 맞는 key의 compatibility function에 의해 계산된다.
+  - I Love You 라는 단어가 있을때, I라는 단어가 I, Love, You 각각에 대해 얼마큼의 연관성을 가지는지를 알아보고자 한다면, Query는 I, Key는 I, Love, You, Value는 예를 들면 0.2, 0.3, 0.5가 된다. 
+
+<img src="https://user-images.githubusercontent.com/79245484/147879719-721bfccc-e553-40aa-8de8-7fca91afd7f7.PNG" width="50%" height="50%"/>
+
+
+#### Scaled Dot-Product Attention
+- 
+
+#### Multi-Head Attention
+- 
+
+#### Applications of Attention in our Model
+-
+
+
 ### 3.3 Position-wise Feed-Forward Networks
 ### 3.4 Embeddings and Softmax
 ### 3.5 Positional Encoding
