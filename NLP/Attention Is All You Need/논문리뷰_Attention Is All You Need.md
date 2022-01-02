@@ -33,8 +33,8 @@ The dominant sequence transduction models are based on complex recurrent or conv
 
 
 ## 3. Model Architecture
-<img src="https://user-images.githubusercontent.com/79245484/147875664-ab331085-dce4-4f20-83d4-4178a1843953.PNG" width="80%" height="80%"/>
-![The Transformer-model architecture](https://user-images.githubusercontent.com/79245484/147875664-ab331085-dce4-4f20-83d4-4178a1843953.PNG){: width="80%" height="80%"}
+<img src="https://user-images.githubusercontent.com/79245484/147875664-ab331085-dce4-4f20-83d4-4178a1843953.PNG" width="50%" height="50%"/>
+
 
 ### 3.1 Encoder and Decoder Stacks
 ### 3.2 Attention
