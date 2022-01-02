@@ -44,6 +44,14 @@ The dominant sequence transduction models are based on complex recurrent or conv
 
 
 ### 3.1 Encoder and Decoder Stacks
+#### Encoder
+- Encoder는 N=6 개의 동일한 layer로 구성되어 있다. 
+- 각 layer는 multi-head self-attention mechanism과 position-wise fully connected feed-foward로 구성된 2개의 sub-layer를 가지고 있다. 
+- 각 sub-layer는 residual connection으로 연결하였고, 이후 normalization을 한다. 
+
+
+#### Decoder
+- 
 
 
 ### 3.2 Attention
