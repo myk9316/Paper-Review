@@ -51,7 +51,7 @@ The dominant sequence transduction models are based on complex recurrent or conv
   - 따라서, sub-layer를 통과할 때마다 결과값으로 LayerNorm(x + sublayer(x))를 출력한다. 
 - residual connection을 수월하게 하기 위해, 모델의 모든 sub-layer 및 임베딩 layer는 512개의 차원으로 output을 생성한다. 
 
-
+<br/>
 #### Decoder
 - Decoder 역시 N=6개의 동일한 layer로 구성되어 있으며, 각 sub-layer를 residual connection으로 연결하고 이후 normalization을 한다. 
 
@@ -85,7 +85,7 @@ The dominant sequence transduction models are based on complex recurrent or conv
   - 본 논문에서 사용하는 Scaled dot-product attention은 dot-product attention에 scaling factor를 추가한 것만 제외하면 둘은 동일하다. 
     - d<sub>k</sub>의 값이 클 때는 softmax가 매우 작은 gradient 값을 가지는 것을 방지하기 위해 scaling factor를 추가함으로 성능 향상에 도움이 된다.
 
-
+<br/>
 #### Multi-Head Attention
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/147882456-defcf992-9cd0-44dc-9a20-741dcc476ac2.png" width="30%" height="30%"></p>
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/147883351-c8fda6bc-6129-4ea0-a2a3-7af31dfb0c67.PNG" width="50%" height="50%"></p>
@@ -93,8 +93,8 @@ The dominant sequence transduction models are based on complex recurrent or conv
 - d<sub>model</sub>-dimensional keys, values, queries를 가지고 single attention을 수행하는 것보다, key, value, query에 대해서 서로 다르게 학습된 d<sub>k</sub>, d<sub>v</sub>, d<sub>q</sub> 차원의 linear project를 h번 수행하는 것이 더 효과적이다. 
 - 이렇게 project된 key, value, query에 대해 attention을 병렬적으로 계산해 d<sub>v</sub> 차원의 output 값을 얻게 된다. 이 값들은 concatenate되고 project 연산을 거쳐 최종 값을 산출한다. 
 
-
-### Applications of Attention in our Model
+<br/>
+## Applications of Attention in our Model
 -
 
 
