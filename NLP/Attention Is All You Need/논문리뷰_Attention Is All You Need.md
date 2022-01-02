@@ -16,6 +16,7 @@ The dominant sequence transduction models are based on complex recurrent or conv
 
 
 
+
 ## 2. Background
 - Sequential한 연산을 줄이기 위해 다양한 연구들(Extended Neural GPU, ByteNet, ConvS2S)이 제안되었다.
   - CNN을 활용하여 input과 output의 위치에 대한 hidden representation을 병렬로 계산하는 방식을 통해 효율성을 증대시켰다. 
@@ -28,6 +29,8 @@ The dominant sequence transduction models are based on complex recurrent or conv
   - 지문이해, 요약 등의 다양한 task들에서 성공적으로 사용되고 있다. 
 
 - RNN 또는 CNN 없이 self-attention 만으로 input과 output의 representation을 구한 모델은 Transformer가 처음이다. 
+
+
 
 ## 3. Model Architecture
 ### 3.1 Encoder and Decoder Stacks
