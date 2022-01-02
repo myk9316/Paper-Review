@@ -86,6 +86,7 @@ The dominant sequence transduction models are based on complex recurrent or conv
     - d<sub>k</sub>의 값이 클 때는 softmax가 매우 작은 gradient 값을 가지는 것을 방지하기 위해 scaling factor를 추가함으로 성능 향상에 도움이 된다.
 
 <br/>
+
 #### Multi-Head Attention
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/147882456-defcf992-9cd0-44dc-9a20-741dcc476ac2.png" width="30%" height="30%"></p>
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/147883351-c8fda6bc-6129-4ea0-a2a3-7af31dfb0c67.PNG" width="50%" height="50%"></p>
@@ -94,7 +95,8 @@ The dominant sequence transduction models are based on complex recurrent or conv
 - 이렇게 project된 key, value, query에 대해 attention을 병렬적으로 계산해 d<sub>v</sub> 차원의 output 값을 얻게 된다. 이 값들은 concatenate되고 project 연산을 거쳐 최종 값을 산출한다. 
 
 <br/>
-## Applications of Attention in our Model
+
+#### Applications of Attention in our Model
 -
 
 
