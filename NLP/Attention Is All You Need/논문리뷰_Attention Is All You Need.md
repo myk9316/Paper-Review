@@ -14,8 +14,7 @@ The dominant sequence transduction models are based on complex recurrent or conv
 
 - 본 논문에서는, Recurrence를 제외하고 input과 output의 global dependecy를 찾는 attention 매커니즘에 전적으로 기반하는 Transformer를 제안한다. Transformer 구조는 병렬처리를 가능하게 하고 번역의 질 등의 성능에 있어서 새로운 SOTA를 달성할 수 있다. 
 
-
-
+<br/>
 
 ## 2. Background
 - Sequential한 연산을 줄이기 위해 다양한 연구들(Extended Neural GPU, ByteNet, ConvS2S)이 제안되었다.
@@ -30,7 +29,7 @@ The dominant sequence transduction models are based on complex recurrent or conv
 
 - RNN 또는 CNN 없이 self-attention 만으로 input과 output의 representation을 구한 모델은 Transformer가 처음이다. 
 
-
+<br/>
 
 ## 3. Model Architecture
 - sequence data를 다루는 많은 모델들은 encoder-decoder 구조를 가진다. 
@@ -39,7 +38,8 @@ The dominant sequence transduction models are based on complex recurrent or conv
 
 - Transformer도 마찬가지로 이러한 encoder-decoder 구조를 가지는데, self-attention과 point-wise fully connected layer를 쌓아 만든 encoder와 decoder로 구성되어있다. 
 
-<img src="https://user-images.githubusercontent.com/79245484/147875664-ab331085-dce4-4f20-83d4-4178a1843953.PNG" width="50%" height="50%"/>
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147875664-ab331085-dce4-4f20-83d4-4178a1843953.PNG" width="50%" height="50%"></p>
+
 
 
 
@@ -60,6 +60,7 @@ The dominant sequence transduction models are based on complex recurrent or conv
 - 또한, decoder의 self-attention sub-layer에서는 현재 위치보다 뒤에 있는 요소에 Attention 하는 것을 막기 위해 masking을 추가한다. 
   - 이는, i번째 position의 예측이 i의 이전의 output에만 의존하도록 만들어준다. (즉, 앞에 있는 단어로만 예측하고 뒤에 있는 단어를 미리 알지 못하도록)
 
+<br/>
 
 ### 3.2 Attention
 - Attention은 한 문장 내에서 특정 단어를 이해하려고 할때 어떤 단어들을 중점적으로 봐야 단어를 더 잘 이해할 수 있을지에 관한 것이다. 
@@ -70,17 +71,28 @@ The dominant sequence transduction models are based on complex recurrent or conv
 - Output은 value의 가중치 합으로 계산 되는데, 각각의 value에 맞는 가중치는 query와 그에 맞는 key의 compatibility function에 의해 계산된다.
   - I Love You 라는 단어가 있을때, I라는 단어가 I, Love, You 각각에 대해 얼마큼의 연관성을 가지는지를 알아보고자 한다면, Query는 I, Key는 I, Love, You, Value는 예를 들면 0.2, 0.3, 0.5가 된다. 
 
-<img src="https://user-images.githubusercontent.com/79245484/147879719-721bfccc-e553-40aa-8de8-7fca91afd7f7.PNG">
-
+<br/>
 
 #### Scaled Dot-Product Attention
-- 입력으로는 d<sub>k<sub/> 차원의 query, key와 d<sub>v<sub/> 차원의 value를 가진다. 
-<img src="https://user-images.githubusercontent.com/79245484/147881003-3e255556-c51e-4a7a-aac8-cec4bbc8a0ca.PNG">
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147882453-384d5f18-0b88-4985-a355-474547a3bead.png" width="30%" height="30%"></p>
+
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147881003-3e255556-c51e-4a7a-aac8-cec4bbc8a0ca.PNG" width="50%" height="50%"></p>
+
+- 입력으로는 d<sub>k</sub> 차원의 query, key와 d<sub>v</sub> 차원의 value를 가진다. query와 key들의 dot product를 구하고, ![image](https://user-images.githubusercontent.com/79245484/147881693-9fd8cedf-1529-43f6-bca4-1476850262c0.png) (scaling factor) 로 나눈 값에 softmax 를 적용하여 value에 대한 weight를 얻는다. 마지막으로, value와 weight를 곱해주어 최종적인 Attention Value를 얻는다. 
+
+- 대표적인 방법으로는 additive attention과 dot-product attention이 있다.
+  - additive attention과 dot-product attention은 이론적으로 유사한 복잡성을 가지지만, 후자가 더 빠르고 공간적으로 효율적이다. 
+  - 본 논문에서 사용하는 Scaled dot-product attention은 dot-product attention에 scaling factor를 추가한 것만 제외하면 둘은 동일하다. 
+    - d<sub>k</sub>의 값이 클 때는 softmax가 매우 작은 gradient 값을 가지는 것을 방지하기 위해 scaling factor를 추가함으로 성능 향상에 도움이 된다.
+
 
 #### Multi-Head Attention
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147882456-defcf992-9cd0-44dc-9a20-741dcc476ac2.png" width="30%" height="30%"></p>
+
+
 - 
 
-#### Applications of Attention in our Model
+### Applications of Attention in our Model
 -
 
 
