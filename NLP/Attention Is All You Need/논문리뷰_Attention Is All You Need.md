@@ -27,7 +27,7 @@ The dominant sequence transduction models are based on complex recurrent or conv
 - Self-attention은 representation of sequence를 계산하고자 single sequence에 있는 다른 position들을 연결시키는 attention 매커니즘이다. 
   - 지문이해, 요약 등의 다양한 task들에서 성공적으로 사용되고 있다. 
 
-- RNN 또는 CNN 없이 self-attention 만으로 input과 output의 representation을 구한 것은 Transformer가 첫 모델이다. 
+- RNN 또는 CNN 없이 self-attention 만으로 input과 output의 representation을 구한 모델은 Transformer가 처음이다. 
 
 ## 3. Model Architecture
 ### 3.1 Encoder and Decoder Stacks
