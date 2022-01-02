@@ -12,11 +12,17 @@ The dominant sequence transduction models are based on complex recurrent or conv
 
 - Attention 메커니즘은 input과 output의 길이의 관계 없이 dependency한 모델링을 할 수 있어서 sequence modeling과 transduction modeling에 중요한 요소를 차지해왔다. 하지만, 대부분의 경우에 Attention은 RNN과 함께 사용된다. 
 
-- 본 논문에서는, Recurrence를 제외하고 input과 output의 global dependecy를 찾는 attention 매커니즘에 전적으로 기반하는 Transformer를 제안한다. Transformer 구조는 병렬처리를 가능하게 하고 번역의 질에 있어서 새로운 SOTA를 달성할 수 있다. 
+- 본 논문에서는, Recurrence를 제외하고 input과 output의 global dependecy를 찾는 attention 매커니즘에 전적으로 기반하는 Transformer를 제안한다. Transformer 구조는 병렬처리를 가능하게 하고 번역의 질 등의 성능에 있어서 새로운 SOTA를 달성할 수 있다. 
 
 
 
 ## 2. Background
+- Sequential한 연산을 줄이기 위해 다양한 연구들(Extended Neural GPU, ByteNet, ConvS2S)이 제안되었다.
+  - 이러한 연구들은, CNN을 활용하여 input과 output의 위치에 대한 hidden representation을 병렬로 계산하는 방식을 통해 효율성을 증대시켰다. 
+  - 하지만, 이런 모델들에서는 input과 output을 연결하기 위해 필요로 하는 연산량은 거리에 따라서 증가한다. 따라서, distant position에 있는 dependency를 학습하기가 어렵다. (거리가 멀어질 수록 학습이 어려움)
+
+- Transformer에서는 attention-weighted position을 평균을 함으로 인해 효율성은 떨어질수 있지만, number of operation을 상수로 고정시켜서 연산량을 감소시킨다.
+  - 줄어든 효율성은 Multi-Head Attention 방식으로 상쇄할 수 있다고 한다.
 
 ## 3. Model Architecture
 ### 3.1 Encoder and Decoder Stacks
