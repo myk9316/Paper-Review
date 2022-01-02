@@ -24,6 +24,11 @@ The dominant sequence transduction models are based on complex recurrent or conv
 - Transformer에서는 attention-weighted position을 평균을 함으로 인해 효율성은 떨어질수 있지만, number of operation을 상수로 고정시켜서 연산량을 감소시킨다.
   - 줄어든 효율성은 Multi-Head Attention 방식으로 상쇄할 수 있다고 한다.
 
+- Self-attention은 representation of sequence를 계산하고자 single sequence에 있는 다른 position들을 연결시키는 attention 매커니즘이다. 
+  - 지문이해, 요약 등의 다양한 task들에서 성공적으로 사용되고 있다. 
+
+- RNN 또는 CNN 없이 self-attention 만으로 input과 output의 representation을 구한 것은 Transformer가 첫 모델이다. 
+
 ## 3. Model Architecture
 ### 3.1 Encoder and Decoder Stacks
 ### 3.2 Attention
