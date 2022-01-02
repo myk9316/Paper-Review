@@ -130,9 +130,10 @@ Transformer에서는 3가지 방식으로 multi-head attention을 사용한다.
 
 ### 3.4 Embeddings and Softmax
 - 대부분의 sequence transduction modele들과 같이 input/output tokens들을 벡터로 변환하는데 learned embedding을 사용하였다.
+
 - 또한, Deocder output이 예측된 다음 토큰의 확률을 계산하기 위해 learned linear transformation과 softmax function을 사용한다. 
+
 - 두 개의 embedding layer와 pre-softmax linear transformation은 공통된 가중치 매트릭스를 가진다. 
-- 
 
 <br/>
 
