@@ -66,11 +66,12 @@ The dominant sequence transduction models are based on complex recurrent or conv
 - Output은 value의 가중치 합으로 계산 되는데, 각각의 value에 맞는 가중치는 query와 그에 맞는 key의 compatibility function에 의해 계산된다.
   - I Love You 라는 단어가 있을때, I라는 단어가 I, Love, You 각각에 대해 얼마큼의 연관성을 가지는지를 알아보고자 한다면, Query는 I, Key는 I, Love, You, Value는 예를 들면 0.2, 0.3, 0.5가 된다. 
 
-<img src="https://user-images.githubusercontent.com/79245484/147879719-721bfccc-e553-40aa-8de8-7fca91afd7f7.PNG" />
+<img src="https://user-images.githubusercontent.com/79245484/147879719-721bfccc-e553-40aa-8de8-7fca91afd7f7.PNG">
 
 
 #### Scaled Dot-Product Attention
-- 
+<img src="https://user-images.githubusercontent.com/79245484/147881003-3e255556-c51e-4a7a-aac8-cec4bbc8a0ca.PNG">
+- 입력은 
 
 #### Multi-Head Attention
 - 
