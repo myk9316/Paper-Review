@@ -35,8 +35,8 @@ The dominant sequence transduction models are based on complex recurrent or conv
 ## 3. Model Architecture
 
 - sequence data를 다루는 많은 모델들은 encoder-decoder 구조를 가진다. 
-  - input (x<sub>1</sub> , ..., x<sub>~n</sub>)은 encoder를 통해 z = (z<sub>1</sub>, ... , z<sub>n</sub>)으로 매핑된다
-  - z가 주어지면, decoder는 (y<sub>1</sub>, ... , y<sub>n</sub>)의 ouput sequence를 생성한다. 
+  - Encoder는 input sequence (x<sub>1</sub> , ..., x<sub>~n</sub>)를 continuous representation인 z = (z<sub>1</sub>, ... , z<sub>n</sub>)으로 변환한다. 
+  - z가 주어지면, decoder는 output sequence (y<sub>1</sub>, ... , y<sub>n</sub>)를 하나씩 생성한다.  
 
 - Transformer도 마찬가지로 이러한 encoder-decoder 구조를 가지는데, self-attention과 point-wise fully connected layer를 쌓아 만든 encoder와 decoder로 구성되어있다. 
 
