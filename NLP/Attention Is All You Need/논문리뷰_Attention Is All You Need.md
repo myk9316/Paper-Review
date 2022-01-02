@@ -45,15 +45,18 @@ The dominant sequence transduction models are based on complex recurrent or conv
 
 ### 3.1 Encoder and Decoder Stacks
 #### Encoder
-- Encoder는 N=6 개의 동일한 layer로 구성되어 있다. 
-  - 각 layer는 multi-head self-attention mechanism과 position-wise fully connected feed-foward로 구성된 2개의 sub-layer를 가지고 있다. 
-    - 각 sub-layer는 residual connection으로 연결하였고, 이후 normalization을 한다. 
-    - 따라서, sublayer를 통과할 때마다 결과값으로 LayerNorm(x + sublayer(x))를 출력한다. 
-- 임베딩 Layer와 모든 sub-layer의 output의 dimension은 512이다. 
+- Encoder는 N=6개의 동일한 layer로 구성되어 있다. 
+- 각 layer는 multi-head self-attention mechanism과 position-wise fully connected feed-foward로 구성된 2개의 sub-layer를 가지고 있다. 
+- 각 sub-layer는 residual connection으로 연결하였고, 이후 normalization을 한다. 
+  - 따라서, sub-layer를 통과할 때마다 결과값으로 LayerNorm(x + sublayer(x))를 출력한다. 
+- residual connection을 수월하게 하기 위해, 모델의 모든 sub-layer 및 임베딩 layer는 512개의 차원으로 output을 생성한다. 
 
 
 #### Decoder
-- 
+- Decoder 역시 N=6개의 동일한 layer로 구성되어 있으며, 각 sub-layer를 residual connection으로 연결하고 이후 normalization을 한다. 
+- 2개의 sub-layer 외에도, decoder는 Encoder 스택의 출력을 통해 multi-head attetion을 수행하는 세번째 sub-layer를 가진다. 
+- 또한, decoder의 self-attention sub-layer에서는 현재 위치보다 뒤에 있는 요소에 Attention 하는 것을 막기 위해 masking을 추가한다. 
+  - 이는, i번째 position의 예측이 i의 이전의 output에만 의존하도록 만들어준다. (즉, 앞에 있는 단어로만 예측하고 뒤에 있는 단어를 미리 알지 못하도록)
 
 
 ### 3.2 Attention
