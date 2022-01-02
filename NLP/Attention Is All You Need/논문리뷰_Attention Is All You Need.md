@@ -91,8 +91,12 @@ The dominant sequence transduction models are based on complex recurrent or conv
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/147882456-defcf992-9cd0-44dc-9a20-741dcc476ac2.png" width="30%" height="30%"></p>
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/147883351-c8fda6bc-6129-4ea0-a2a3-7af31dfb0c67.PNG" width="50%" height="50%"></p>
 
-- d<sub>model</sub>-dimensional keys, values, queries를 가지고 single attention을 수행하는 것보다, key, value, query에 대해서 서로 다르게 학습된 d<sub>k</sub>, d<sub>v</sub>, d<sub>q</sub> 차원의 linear project를 h번 수행하는 것이 더 효과적이다. 
+- d<sub>model</sub>-dimensional keys, values, queries를 가지고 single attention을 수행하는 것보다, key, value, query에 대해서 서로 다르게 학습된 d<sub>k</sub>, d<sub>v</sub>, d<sub>q</sub> 차원의 linear project를 h번 수행하는 것이 더 효과적이다. (벡터들의 크기를 줄이고 병렬처리가 가능하기 때문)
+
 - 이렇게 project된 key, value, query에 대해 attention을 병렬적으로 계산해 d<sub>v</sub> 차원의 output 값을 얻게 된다. 이 값들은 concatenate되고 project 연산을 거쳐 최종 값을 산출한다. 
+
+- Multi-Head Attention을 사용해서 서로 다른 위치에 있는 representation subspace 들로부터 정보를 얻을 수 있다. 
+  - 각 head별로 차원 감소로 인해, 전체 계산 비용은 완전 차원을 가진 single-head Ateention과 비슷하다.  
 
 <br/>
 
