@@ -100,18 +100,20 @@ The dominant sequence transduction models are based on complex recurrent or conv
 <br/>
 
 #### Applications of Attention in our Model
-Transformer에서는 3가지 방식으로 multi-head attention을 사용한다
-- 1. encoder-decoder attention layer (Decoder 파트)
-  - query는 이전 decoder에서 가져오고, key와 value는 encoder의 output에서 가져온다. 
-  - 따라서, decoder의 모든 position에서 input sequence의 전체 position에 대해 attention 수행이 가능하다.
+Transformer에서는 3가지 방식으로 multi-head attention을 사용한다.
 
-- 2.  Self-attention layer (Encoder 파트)
-  - key, value, query가 모두 encoder의 이전 layer에서 나온 output이다. 
-  - encoder의 각각의 position에서 이전 encoder layer의 모든 position에 대해서 attention 수행이 가능하다. 
 
-- 3. Self-attention layer(Decoder 파트)
-  - Encoder의 Self-attention layer와 동일하지만, auto-regressive 속성을 보존하기 위해 output을 생성할 때 leftward information flow를 차단한다. 
-  - 즉, 해당 position 이전까지의 모든 position만 attention이 가능하도록 하며, 미래 시점의 단어들 또는 output에는 접근하지 못하도록 한다. --> 현재 토큰 이후 값들에 대해서 masking out  
+1. encoder-decoder attention layer (Decoder 파트)
+- query는 이전 decoder에서 가져오고, key와 value는 encoder의 output에서 가져온다. 
+- 따라서, decoder의 모든 position에서 input sequence의 전체 position에 대해 attention 수행이 가능하다.
+
+2.  Self-attention layer (Encoder 파트)
+- key, value, query가 모두 encoder의 이전 layer에서 나온 output이다. 
+- encoder의 각각의 position에서 이전 encoder layer의 모든 position에 대해서 attention 수행이 가능하다. 
+
+3. Self-attention layer(Decoder 파트)
+- Encoder의 Self-attention layer와 동일하지만, auto-regressive 속성을 보존하기 위해 output을 생성할 때 leftward information flow를 차단한다. 
+- 즉, 해당 position 이전까지의 모든 position만 attention이 가능하도록 하며, 미래 시점의 단어들 또는 output에는 접근하지 못하도록 한다. --> 현재 토큰 이후 값들에 대해서 masking out  
 
 ### 3.3 Position-wise Feed-Forward Networks
 ### 3.4 Embeddings and Softmax
