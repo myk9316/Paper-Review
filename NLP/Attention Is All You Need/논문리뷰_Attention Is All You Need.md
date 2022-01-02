@@ -10,7 +10,7 @@ The dominant sequence transduction models are based on complex recurrent or conv
 ## 1. Introduction
 - RNN, LSTM, 그리고 GRU가 언어모델링과 기계번역에서 SOTA로 자리 잡아왔다. 하지만, Recurrent model의 이전 결과를 입력으로 받는 sequential한 특성은 두 가지 문제가 있다. 첫 번째, 연속적으로 이어지는 것이기 때문에 학습에서 병렬처리를 배제한다. 두 번째, sequence가 길어질 수록 메모리에 문제가 생긴다. 
 - Attention 메커니즘은 input과 output의 길이의 관계 없이 dependency한 모델링을 할 수 있어서 sequence modeling과 transduction modeling에 중요한 요소를 차지해왔다. 하지만, 대부분의 경우에 Attention은 RNN과 함께 사용된다. 
-- 본 논문에서는, Recurrence를 피하고 input과 output의 global dependecy를 찾는 attention 매커니즘에 전적으로 기반하는 Transformer를 제안한다. Transformer는 병렬처리를 가능하게 하고 번역의 질에 있어서 새로운 SOTA로 자리 잡을 수 있다. 
+- 본 논문에서는, Recurrence를 피하고 input과 output의 global dependecy를 찾는 attention 매커니즘에 전적으로 기반하는 Transformer를 제안한다. Transformer는 병렬처리를 가능하게 하고 번역의 질에 있어서 새로운 SOTA를 달성할 수 있다. 
 
 
 
