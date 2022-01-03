@@ -46,7 +46,7 @@ The dominant sequence transduction models are based on complex recurrent or conv
 
 
 ### 3.1 Encoder and Decoder Stacks
-#### Encoder
+### Encoder
 - Encoder는 N=6개의 동일한 layer로 구성되어 있다. 
 
 - 각 layer는 multi-head self-attention mechanism과 position-wise fully connected feed-foward로 구성된 2개의 sub-layer를 가지고 있다. 
@@ -59,7 +59,7 @@ The dominant sequence transduction models are based on complex recurrent or conv
 
 <br/>
 
-#### Decoder
+### Decoder
 - Decoder 역시 N=6개의 동일한 layer로 구성되어 있으며, 각 sub-layer를 residual connection으로 연결하고 이후 normalization을 한다. 
 
 - 2개의 sub-layer 외에도, decoder는 Encoder 스택의 출력을 통해 multi-head attetion을 수행하는 세번째 sub-layer를 가진다. 
@@ -83,7 +83,7 @@ The dominant sequence transduction models are based on complex recurrent or conv
 
 <br/>
 
-#### Scaled Dot-Product Attention
+### Scaled Dot-Product Attention
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/147882453-384d5f18-0b88-4985-a355-474547a3bead.png" width="30%" height="30%"></p>
 
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/147881003-3e255556-c51e-4a7a-aac8-cec4bbc8a0ca.PNG" width="50%" height="50%"></p>
@@ -99,7 +99,7 @@ The dominant sequence transduction models are based on complex recurrent or conv
 
 <br/>
 
-#### Multi-Head Attention
+### Multi-Head Attention
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/147882456-defcf992-9cd0-44dc-9a20-741dcc476ac2.png" width="30%" height="30%"></p>
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/147883351-c8fda6bc-6129-4ea0-a2a3-7af31dfb0c67.PNG" width="50%" height="50%"></p>
 
@@ -112,7 +112,7 @@ The dominant sequence transduction models are based on complex recurrent or conv
 
 <br/>
 
-#### Applications of Attention in our Model
+### Applications of Attention in our Model
 Transformer에서는 3가지 방식으로 multi-head attention을 사용한다.
 
 - encoder-decoder attention layer (Decoder 파트)
