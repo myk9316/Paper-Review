@@ -161,9 +161,10 @@ Recurrent / Convolution 과 비교해서 Self-attention을 사용한데는 세 �
 - 첫 번째는, 레이어당 전체 계산 복잡도기 줄어든다. 
 
 - 두 번째는, 병렬화가 가능한 연산이 늘어난다.
+  - number of sequential operation 이 필요한 최소값으로 확인 가능하다. 
 
 - 세 번째는, Long range dependency가 용이하다. 
-  - Attention을 통해 모든 부분을 확인하니, RNN보다 훨씬 먼 거리에 있는 sequence를 더욱 잘 학습할 수 있다. 
+  - Attention을 통해 모든 부분을 확인하니, RNN보다 훨씬 먼 거리에 있는 sequence를 더욱 잘 학습할 수 있다. 즉, 단어와 단어 사이가 길때(길이가 긴 문장) 더 학습이 용이하다. 
 
 <br/>
 
@@ -171,10 +172,13 @@ Recurrent / Convolution 과 비교해서 Self-attention을 사용한데는 세 �
 
 <br/>
 
-<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147884894-ec562441-b6ce-4978-977f-cb8e2bedb831.PNG" width="50%" height="50%"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147884894-ec562441-b6ce-4978-977f-cb8e2bedb831.PNG" width="80%" height="80%"></p>
 
 <br/>
 
+- 위 세가지 외에도, Attention을 사용하면 모델 자체의 동작을 해석하기 쉽다는 이점도 있다. 
+
+<br/>
 
 ## 5. Training
 ### 5.1 Training Data and Batching
