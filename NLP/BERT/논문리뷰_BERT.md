@@ -14,7 +14,30 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 <br/>
 
 ## 2. Introduction
-- 
+- NLP에서 pre-training은 효과적이라는 것을 보여주었다. 
+
+- pre-trained language representation을 down-streak tasks에 적용하는데는 2가지 방법이 있다.
+  - feature-based
+    - task-specific architectures를 사용함으로, 기존의 input에 pre-trained representation을 feature로서 추가한다. 
+    - Ex) ELMo
+
+  - fine-tunning
+    -  최소한의 task-specific parameters만을 추가하고, 모든 pre-trained parameter들을 fine-tunning 함으로써 downstream task에서 학습한다. 
+    -  feature-based와 달리 fine-tunning 과정에서 pre-trained feature도 갱신된다. 
+    -  Ex) GPT
+
+- 하지만, ELMo와 GPT 같은 경우에는 pre-trained에서 단방향의 architecture만 사용하여 학습을 진행한다는 limitation이 있다. 
+  - OpenAI GPT의 경우에는 left to right 구조를 가지고 있는데, 이는 각각의 token이 이전에 나타난 token들에만 attend 할 수 있다. 따라서, 문장 단위 Task에서 최적의 성능을 얻지 못하고, question answering 같은 token에 민감한(문맥을 양쪽에서 모두 이해해야하는) Task에는 좋지 않은 성능을 보일 수 있다.  
+  - 즉, 한 방향으로만 문맥을 파악하는 것은 충분하지 않고 성능을 제한한다. 
+
+- 본 논문에서는, 양방향성을 고려한 fine-tunning based approach인 BERT(Bidirectional Encoder Representations from Transformers)를 제안한다. 
+  - BERT는 Masked Language Model(MLM)을 사용함으로 일부 tokens from the input을 마스크하고, original 단어를 예측하는 방식으로 학습을 진행한다. 이러한 학습 과정에서 MLM은 왼쪽과 오른쪽에 존재하는 모든 토큰을 고려하게 되는데, 이러한 점이 양방향 학습을 적용하는 것이다. 
+  - 또한, BERT는 Next Sentence Prediction을 사용하는데, 이를 통해 text-pair 간의 연관관계를 더 잘 나타낼 수 있게 한다. 
+
+- 본 논문의 contribution은 다음과 같다.
+  - Language representation에서 양방향 pre-training의 중요성을 증명했다. 
+  - pre-trained representation이 heavily-engineered task-specific architectures의 필요성을 감소시켰고, Fine-tunning based representation 모델로서 처음으로 SOTA를 달성했다. 
+  - BERT는 11개 NLP task에서 SOTA를 달성했다. 
 
 <br/>
 
