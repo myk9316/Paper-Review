@@ -182,16 +182,26 @@ Recurrent / Convolution 과 비교해서 Self-attention을 사용한데는 세 �
 
 ## 5. Training
 ### 5.1 Training Data and Batching
-- 
+- 4.5 million 문장 pair로 구성되어 있는 WMT 2014 English-German dataset과, 36 million 문장 pair로 구성되어 있는 WMT 2014 English-French datasaet을 사용했다. 
 
 ### 5.2 Hardware and Schedule
-- 
+- 8개의 NVIDIA P100 GPU가 있는 기계에서 모델을 훈련시켰다. 
+- base 모델은 각 training step 마다 0.4초가 걸렸고(10,000steps), 12시간동안 학습했다.
+- big 모델은 각 training step 마다 1.0초가 걸렸고(300,000steps), 3.5일동안 학습했다. 
 
 ### 5.3 Optimizer
--
+- Adam optimizer를 사용하였고, <img src="https://latex.codecogs.com/svg.image?\beta&space;_{1}&space;=&space;0.9,&space;\beta&space;_{2}&space;=&space;0.98&space;&space;\&space;and&space;\&space;&space;\epsilon&space;=&space;10^{-9}&space;" title="\beta _{1} = 0.9, \beta _{2} = 0.98 \ and \ \epsilon = 10^{-9} " /> 를 사용했다. 
+- learning rate는 식에 따라 변화한다. 
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147884896-a5f8ed5d-a046-4a34-97fa-cfc2c48f112a.PNG" width="80%" height="80%"></p>
+
+<br/>
 
 ### 5.4 Regularization
 - 
+
+
+<br/>
+
 
 ## 6. Results
 ### 6.1 Machine Translation
