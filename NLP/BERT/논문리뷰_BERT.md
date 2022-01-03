@@ -80,12 +80,21 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 
 ### 3.2 Pre-training BERT
 ### Masked LM
-- 
+- 직관적으로, deep bidirectional model이 left-to-right model이나 left-to-right과 right-to-left 모델의 shallow concatenation 보다 성능이 좋을 수 밖에 없다. 
+
+- deep bidirectional representation을 학습하기 위해, 다음과 같은 과정을 거친다.
+  - WordPiece token(input)의 15%를 랜덤하게 masking 하고, masked word만 예측한다. 
+   
+  - Fine-tuning에는 [MASK] token이 없으므로, pre-training과 fine-tuning 사이에 mismatch가 발생한다. 이 문제점을 완화하기 위해 'masked' words를 [MASK] token으로만 대체 하지 않고, 다양한 방식으로 대체한다. 
+  
+    - 전체 WordPiece token 중에서 15% 중 80%는 [MASK] token으로 대체하고, 10%는 random token으로 대체하고, 10%는 바꾸지 않고 원래 token으로 유지한다. 
+    - 이를 통해, Model이 모든 Token에 대해서 실제로 맞는 Token인지 의심을 하기 때문에 학습을 더 잘해낼수 있다.  
 
 <br/>
 
 ### Next Sentence Prediction(NSP)
--
+- 전체적 문맥을 이해하는 기법이다. 
+- 50%는 실제 다음 문장 A, 50%는 corpus의 랜덤 문장 
 
 <br/>
 
@@ -95,7 +104,18 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 <br/>
 
 ### 3.3 Fine-tunning BERT
-- 
+- Self-attention 매커니즘을 이용해서 두 문장을 하나의 sequence로 인코딩한다.
+- pre-training과 비교해서 fine-tuning은 비용이 더 적다. 
+
+
+
+
+
+
+
+
+
+
 
 <br/>
 
@@ -123,12 +143,13 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 
 ## 5. Ablation Studies
 ### 5.1 Effect of Pre-training Tasks
-- 
+- NPS를 뺏을 때의 성능이 떨어짐으로, NPS의 중요성을 확인할 수 있다. 
 
 <br/>
 
 ### 5.2 Effect of Model Size
-- 
+-
+
 
 <br/>
 
