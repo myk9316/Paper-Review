@@ -30,7 +30,7 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 
 - 본 논문에서는, 양방향성을 고려한 fine-tunning based approach인 BERT(Bidirectional Encoder Representations from Transformers)를 제안한다. 
   - BERT는 Masked Language Model(MLM)을 사용함으로 일부 tokens from the input을 마스크하고, original 단어를 예측하는 방식으로 학습을 진행한다. 이러한 학습 과정에서 MLM은 왼쪽과 오른쪽에 존재하는 모든 토큰을 고려하게 되는데, 이러한 점이 양방향 학습을 적용하는 것이다. 
-  - 또한, BERT는 Next Sentence Prediction을 사용하는데, 이를 통해 text-pair 간의 연관관계를 더 잘 나타낼 수 있게 한다. 
+  - 또한, BERT는 Next Sentence Prediction을 사용하는데, 이는 Text-pair representation을 사전학습 시키는 것이다. 
 
 - 본 논문의 contribution은 다음과 같다.
   - Language representation에서 양방향 pre-training의 중요성을 증명했다. 
