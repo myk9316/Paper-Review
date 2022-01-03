@@ -1,11 +1,13 @@
 # Attention Is All You Need
 
-본 논문은 2018년에 구글 리서치팀이 NIPS(Neural Information Processing Systems)에서 발표한 논문으로, 자연어처리(NLP)의 발전에 아주 큰 영향을 끼친 Transformer에 관한 논문이다. 
-저자들은 Recurrence와 Convolutions를 제거하고, 오로지 Attention에 기반하여 설계된 Transformer라는 새롭고 simple한 sequence transduction model 구조를 제안한다. 
+본 논문은 2018년에 구글 리서치팀이 NIPS(Neural Information Processing Systems)에서 발표한 논문으로, 저자들은 Recurrence와 Convolutions를 제거하고, 오로지 Attention에 기반하여 설계된 Transformer라는 simple한 sequence transduction model 구조를 제안한다. 자연어처리(NLP)의 발전에 아주 큰 영향을 끼친 Transformer에 관한 논문으로, 최신 고성능 모델들은 Transformer Architecture를 기반으로 한다. 예를 들면, GPT는 Transformer의 Decoder 부분을 활용하고 BERT는 Transformer의 Encoder 부분을 활용한다. 
+
+<br/>
 
 ## Abstract 
 The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 Englishto-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.0 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature.
 
+<br/>
 
 ## 1. Introduction
 - RNN, LSTM, 그리고 GRU가 언어모델링과 기계번역에서 SOTA로 자리 잡아왔다. 하지만, Recurrent model의 이전 결과를 입력으로 받는 sequential한 특성은 두 가지 문제가 있다. 첫 번째, 연속적으로 이어지는 것이기 때문에 학습에서 병렬처리를 배제한다. 두 번째, sequence가 길어질 수록 메모리에 문제가 생긴다. 
@@ -214,10 +216,11 @@ Recurrent / Convolution 과 비교해서 Self-attention을 사용한데는 세 �
 
 ## 6. Results
 ### 6.1 Machine Translation
-- WMT 2014 English-German 번역에서 big transformer model이 앙상블을 포함한 이전 모델보다 2.0 BLEU로 앞서며, new state-of-the art(BLEU score of 28.4)를 달성했다. 
+- WMT 2014 English-German 번역에서 big transformer model이 앙상블을 포함한 이전 SOTA 모델보다 2.0 BLEU로 앞서며, new SOTA(BLEU score of 28.4)를 달성했다. 
   - base model 역시 training 비용을 고려했을 때 이전 모델들을 뛰어넘었다.  
 
-- WMT 2014 English-French 번역에서도 big model이 이전의 다른 single model보다 학습시간은 1/4로 줄었음에도 불구하고 BLUE score(41.0)는 더 뛰어났다. 
+- WMT 2014 English-French 번역에서도 big transformer model이 이전의 다른 single model보다 학습시간은 1/4로 줄었음에도 불구하고 BLUE score(41.0)는 더 뛰어났다. 
+  - 학습 효율과 성능 둘 다 개선되었음  
 
 <br/>
 
@@ -227,13 +230,35 @@ Recurrent / Convolution 과 비교해서 Self-attention을 사용한데는 세 �
 <br/>
 
 ### 6.2 Model Variations
-- 
+- Transformer의 components의 중요도를 평가하기 위해 English-German 모델을 newstest2013이라는 새로운 데이터에 적용해보면서, base model을 다양하게 변형시켰다. 
+
+  - 연산량은 유지하면서 attention의 head와 key,value의 차원을 조절해보았다 --> head가 너무 적은 것도, 많은 것도 성능을 악화시켰다. (head=8 일 때 성능이 가장 좋음)
+  
+  - Attention key size를 줄이는 것도 성능에 악영향을 주었다. 
+  
+  - 모델의 size를 키우면 성능이 향상되었다.
+  
+  - dropout이 오버피팅 방지에 효과적이다 (=성능향상) 
+  
+  - 위치에 대한 정보를 주기 위해 sinusoids(Sine, Cosine 함수를 이용한 encoding) 대신 positional embedding을 사용했을 때는 base model과 비슷한 성능을 보인다. 
+
+<br/>
+
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147884898-8bc88a33-66eb-49a2-8d12-1c99bfa2718b.PNG" width="80%" height="80%"></p>
+
 
 <br/>
 
 ## 7. Conclusion
 - 본 연구에서, encoder-decoder 구조에서 가장 일반적으로 사용되는 recurrent layer를 multi-head attention으로 대체하면서, attention만 사용한 최초의 sequence 변환 모델인 transformer를 제시했다. 
+
 - 번역 과제의 경우 Transformer는 recurrent 또는 convolutional layer 기반 구조보다 훨씬 빠르게 학습하고 더 좋은 성능을 보여주었다. 
+  - 계산량이 줄고(RNN은 순차적인 계산으로 속도가 느림) 병렬화를 적용하여(Multi-head로 병렬로 계산가능) 학습 속도가 매우 빠르다.
+
+- Attention에 기반한 모델을 텍스트 뿐만 아니라, 오디오/이미지/영상 등의 상대적으로 큰 입출력을 필요로 하는 task에도 적용을 할 예정이다. 
+  - 즉, 특정 Task에 족송적이지 않고 general하게 사용이 가능할 것이다. 
+
+- Generation을 덜 Sequential 하게 만드는 것이 또 다른 연구 목적이다.
 
 <br/>
 
