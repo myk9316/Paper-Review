@@ -1,7 +1,7 @@
 # BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
 
 ## BERT
-본 논문은 2019년 구글에서 발표한 논문으로, 자연어처리(NLP) 
+본 논문은 2019년 구글에서 발표한 논문으로, 현재 사용하는 모든 언어 모델의 기반이 되는 BERT에 대한 논문이다. Attention is all you need에서 나온 Transformer 구조를 활용한 모델로써, NLP 분야에 큰 발전을 가져왔다. 
 
 <br/>
 
