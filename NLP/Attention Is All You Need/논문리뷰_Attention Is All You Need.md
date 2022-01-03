@@ -139,7 +139,18 @@ Transformer에서는 3가지 방식으로 multi-head attention을 사용한다.
 
 
 ### 3.5 Positional Encoding
-- 
+- Transformer는 recurrence나 convolution을 포함하지 않기 때문에, sequence의 순서 정보를 전달할 수 없다.
+
+- 따라서, sequence에 있는 토큰의 상대적/절대적인 position에 대한 정보를 주입하기 위해 Positional encoding을 진행하였다. (단어별로 position에 대한 정보를 추가) 
+
+- 이를 위해서, encoder 및 decoder 스택하단에 있는 input embedding에 positional encoding을 추가한다. positional encoding은 input embedding과 같은 d<sub>model</sub> 차원이므로, 두 값은 더해질 수 있다. 
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147884895-10595ba7-15fb-40f6-b416-681dd73e6a43.PNG" width="50%" height="50%"></p>
+
+- Transformer에서는 sine과 cosine처럼 주기를 가지는 함수를 사용하며, 아주 작은 값을 position 마다 두고 그 값을 embedding마다 더해준다. 위 식을 이용해서 positonal encoding을 하고 위치 정보를 주입할 수 있다. (pos는 position, i는 차원)
+
+- 성능의 차이는 크지 않았으나, 학습에서 접하지 못한 sequence가 들어왔을 때도 적절한 처리를 할 수 있는 Sinusoidal 방식을 하였다. 
+
+
 
 <br/>
 
