@@ -1,7 +1,7 @@
 # Attention Is All You Need
 
 본 논문은 2018년에 구글 리서치팀이 NIPS(Neural Information Processing Systems)에서 발표한 논문으로, 자연어처리(NLP)의 발전에 아주 큰 영향을 끼친 Transformer에 관한 논문이다. 
-저자들은 Recurrence와 Convolutions를 제거하고, 오로지 Attention에 기반하여 설계된 Transformer라는 새롭고 simple한 구조를 제안한다. 
+저자들은 Recurrence와 Convolutions를 제거하고, 오로지 Attention에 기반하여 설계된 Transformer라는 새롭고 simple한 sequence transduction model 구조를 제안한다. 
 
 ## Abstract 
 The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 Englishto-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.0 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature.
@@ -197,7 +197,16 @@ Recurrent / Convolution 과 비교해서 Self-attention을 사용한데는 세 �
 <br/>
 
 ### 5.4 Regularization
-- 
+#### Residual Dropout
+- 각 sub-layer의 output이 sub-layer의 input으로 사용되거나 normalized가 되기 전에 dropout을 적용했다.
+- 추가적으로, encoder와 decoder 스택 사이에 embedding과 positional encoding을 더하여 droput을 적용했다. 
+- <img src="https://latex.codecogs.com/svg.image?P&space;_{drop}&space;=&space;0.1&space;" title="P _{drop} = 0.1 " /> 를 사용했다. 
+
+#### Label Smoothing
+- 학습이 진행되는 동안, <img src="https://latex.codecogs.com/svg.image?\epsilon_{ls}=0.1&space;" title="\epsilon_{ls}=0.1 " /> 의 label smoothing 값을 적용했다. 
+  - 보통 딥러닝에서 softmax를 학습할 경우에는 레이블을 원-핫 인코딩으로 전환해준다.
+  - 하지만, 이 방식은 정답과 오답을 이분화하여 나타내는 것이 아니라 정답은 1에 가까운 값 / 오답은 0에 가까운 값, 즉 0~1 사이 값으로 표현하여 모델이 너무 학습데이터에 치중하여 학습하지 못하도록 보완하는 방법이다. 
+  - 이는, 모델의 perplextity를 해치기는 하지만, accuracy와 BLEU score를 개선시켰다. 
 
 
 <br/>
