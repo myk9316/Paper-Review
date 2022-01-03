@@ -169,6 +169,8 @@ Recurrent / Convolution 과 비교해서 Self-attention을 사용한데는 세 �
 
 이 세 가지를 정리한 표는 다음과 같다. 
 
+<br/>
+
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/147884894-ec562441-b6ce-4978-977f-cb8e2bedb831.PNG" width="50%" height="50%"></p>
 
 <br/>
