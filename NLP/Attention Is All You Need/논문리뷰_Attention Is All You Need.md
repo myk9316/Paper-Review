@@ -259,9 +259,3 @@ Recurrent / Convolution 과 비교해서 Self-attention을 사용한데는 세 �
   - 즉, 특정 Task에 족송적이지 않고 general하게 사용이 가능할 것이다. 
 
 - Generation을 덜 Sequential 하게 만드는 것이 또 다른 연구 목적이다.
-
-<br/>
-
-## 8. Advice / limitation
-- 
-
