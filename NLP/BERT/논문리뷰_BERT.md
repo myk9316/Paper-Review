@@ -44,9 +44,26 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 <br/>
 
 ## 3. BERT
-### 3.1 Model Architecture
-<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931233-ddaf27a2-b6ed-4060-9d0e-febd8556a326.PNG" width="50%" height="50%"></p>
-- 
+### Model Architecture
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931233-ddaf27a2-b6ed-4060-9d0e-febd8556a326.PNG" width="80%" height="80%"></p>
+
+- BERT는 크게 두 가지 단계로 나눠진다. 
+  - Pre-training: 대규모 데이터셋을 바탕으로 문장 이해를 학습하는 과정으로, 모델은 특정 pre-training task에 상관없이 unlabeled data로부터 학습된다.  
+  
+  - Fine-tunning: pre-training 과정에서 생성된 parameter를 바탕으로 labeled data를 통해서 fine-tuning을 진행하며, 각각의 downstream task에 대해서 개별적인 fine-tuned 모델들이 생성된다. 
+
+  - Pre-trained architecture와 final downstream architecture는 크게 다르지 않다 (Unified model). 마지막 encoder의 결과로 나온 token들을 어떻게 다루는지만 변한다. 
+
+- BERT의 모델 구조는 Transformer의 encoder 부분을 활용하였으며, 2가지 다른 모델로 실험을 진행하였다.
+  - Bert<sub>base</sub> : Layer = 12, Hidden size = 768, Multi-head Self Attention = 12, Total Parameter = 110M)
+    - 비교를 위해, OpenAI GPT와 비슷한 모델을 가진다. (BERT=bidirectional self-attention, GPT=현재 토큰의 왼쪽에 있는 문맥만 참조 가능)
+  - Bert<sub>Large</sub> : Layer = 24, Hidden size = 1024, Multi-head Self Attention = 16, Total Parameter = 340M)
+
+
+<br/>
+
+### Input/Output Representations
+
 
 <br/>
 
