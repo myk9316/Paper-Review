@@ -70,7 +70,7 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 - BERT의 input은 3가지 embedding의 합(Token Embdding + Segment Embeddding + Position Embedding)으로 이루어지며, WordPiece embedding을 사용한다.
 
 - 모든 sequence의 첫 번째 token은 Classification token[CLS]로 시작된다. 
-  - 전체의 transformer 층을 다 거치고 난 뒤의, [CLS]에 해당하는 마지막 hideen state는 classification tasks를 풀기 위한 것으로 모든 sequence 정보를 담고 있다.
+  - 전체의 transformer 층을 다 거치고 난 뒤의, [CLS]에 해당하는 마지막 hideen state는 classification tasks를 풀기 위한 것으로 모든 sequence 정보를 담고 있다. (앞에서 모든 입력 전체를 바라봄)
 
 - Sentence pair는 single sequence로 묶어져 입력되며, 문장을 구분하기 위해 2가지 방법을 사용한다.
   - 먼저, Special Token[SEP]을 사용해서 구분한다.
@@ -113,24 +113,18 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 <br/>
 
 ### 3.3 Fine-tunning BERT
-- Transformer의 self-attention 구조가 많은 downstream task에 적용할 수 있기 때문에, BERT의 fine-tuning 과정은 매우 간단하다. 또한, pre-training과 비교 했을 때 상대적으로 적은 비용으로 수행할 수 있다. 
-
-- pre-training에 비해 매우 적은 비용으로 수행할 수 있다. 
+- Transformer의 self-attention 구조가 많은 downstream task에 적용할 수 있기 때문에, BERT의 fine-tuning 과정은 매우 간단하다. 또한, pre-training과 비교 했을 때 적은 비용으로 수행할 수 있다. 
 
 - 보통 text-pair task에서는 문자열 쌍의 관계를 알아내기 위한 bidirectional cross attention을 적용하기 전에, 입력으로 들어온 sentence 각각에 대한 encoding을 먼저 수행해야 한다. 
 
-- BERT의 경우에는 두 문장의 입력을 하나의 sequence로 생성해서 모델의 입력으로 제공한다. 그 후에 self-attention을 수행하기 때문에, 이 self-attention 과정 안에 두 문장 사이의 bidirectional cross attention이 이미 포함되어 있기 때문에 별도의 처리가 없어도 된다. 
+- 반면, BERT의 경우에는 두 문장의 입력을 하나의 sequence로 생성해서 모델의 입력으로 제공한다. 그 후에 self-attention을 수행하기 때문에, 이 self-attention 과정 안에 두 문장 사이의 bidirectional cross attention이 이미 포함되어 있어서 별도의 처리가 필요 없다. 
   - 즉, 입력이 한 문장이든 여러 문장이든 관계없이 단일 모델, 같은 fine-tuning 방법으로 간단하게 처리할 수 있다.  
 
-- Fine-tuning 방법은, task에 알맞는 input과 output을 BERT에 적용하고, 파라미터들은 해당 task에 맞게 end-to-end로 학습한다. 
+- 각 task에 대해, 각 task에 알맞는 input과 output을 BERT에 적용하고, 파라미터들은 해당 task에 맞게 end-to-end로 학습한다. 
 
 - Token representation은 sequence tagging이나 question answering 같은 token level task에 사용된다. 
 
-- 문장 제일 앞에 넣은 [CLS] token은 entailment 또는 sentiment analysis 같은 classification 문제를 풀 수 있다. 
-
-
-CLS는 문장 내에 속하는 토큰이 아니고, 문장에 제일 앞에 위치해 모든 입력 시퀀스 전체를 바라볼 수 있는 효과를 가진다고 합니다. 
-
+- 문장 제일 앞에 위치한 CLS token은 entailment 또는 sentiment analysis 같은 classification 문제를 풀 수 있다. 
 
 
 
