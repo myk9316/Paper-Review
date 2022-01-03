@@ -14,9 +14,7 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 <br/>
 
 ## 2. Introduction
-- NLP에서 pre-training은 효과적이라는 것을 보여주었다. 
-
-- pre-trained language representation을 down-streak tasks에 적용하는데는 2가지 방법이 있다.
+- NLP에서 pre-training은 효과적이라는 것을 보여주었으며, pre-trained language representation을 down-streak tasks에 적용하는데는 2가지 방법이 있다.
   - feature-based
     - task-specific architectures를 사용함으로, 기존의 input에 pre-trained representation을 feature로서 추가한다. 
     - Ex) ELMo
