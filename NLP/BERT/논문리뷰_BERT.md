@@ -63,6 +63,17 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 <br/>
 
 ### Input/Output Representations
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931235-2d2ffe79-9af2-495a-94f4-6d1401b4081a.PNG" width="80%" height="80%"></p>
+
+- BERT를 여러 자연어 문제에 적용하기 위해서는 input으로 들어오는 sequence가 single sentence인지, pair of sentence (e.g. <Question, Answer>)를 나타내는지 명확하게 알 수 있어야 한다. 
+
+- BERT의 input은 3가지 embedding의 합(Token Embdding + Segment Embeddding + Position Embedding)으로 이루어지며, WordPiece embedding을 사용한다.
+
+- 모든 sequence의 첫 번째 token은 Classification token[CLS]로 시작된다. 
+  - 전체의 transformer 층을 다 거치고 난 뒤의, [CLS]에 해당하는 마지막 hideen state는 classification tasks를 풀기 위한 것으로 모든 sequence 정보를 담고 있다.
+
+- Sentence pair는 single sequence로 묶어져 입력되며, 문장을 구분하기 위해 2가지 방법을 사용한다.
+  - Special Token[SEP]을 사용해서 구분하거나, 두 sentence 중 어디에 속한 token 인지를 나타내는 segment embedding을 사용하여 sentence A 또는 sentence B를 token에 더해준다.  
 
 
 <br/>
