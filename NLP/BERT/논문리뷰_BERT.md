@@ -73,12 +73,23 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
   - 전체의 transformer 층을 다 거치고 난 뒤의, [CLS]에 해당하는 마지막 hideen state는 classification tasks를 풀기 위한 것으로 모든 sequence 정보를 담고 있다.
 
 - Sentence pair는 single sequence로 묶어져 입력되며, 문장을 구분하기 위해 2가지 방법을 사용한다.
-  - Special Token[SEP]을 사용해서 구분하거나, 두 sentence 중 어디에 속한 token 인지를 나타내는 segment embedding을 사용하여 sentence A 또는 sentence B를 token에 더해준다.  
-
+  - 먼저, Special Token[SEP]을 사용해서 구분한다.
+  - 그 후, 두 sentence 중 어디에 속한 token 인지를 나타내는 학습된 segment embedding을 각각의 token에 더해준다 --> 해당 token이 sentence A 또는 sentence B 어디에 속하는지 구분 가능해짐
 
 <br/>
 
 ### 3.2 Pre-training BERT
+### Masked LM
+- 
+
+<br/>
+
+### Next Sentence Prediction(NSP)
+-
+
+<br/>
+
+### Pre-training data
 - 
 
 <br/>
