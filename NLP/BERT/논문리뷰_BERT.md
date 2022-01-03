@@ -113,7 +113,7 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 <br/>
 
 ### 3.2 Fine-tunning BERT
-- Transformer의 self-attention 구조가 많은 downstream task에 적용할 수 있기 때문에, BERT의 fine-tuning 과정은 매우 간단하다. 또한, pre-training과 비교 했을 때 적은 비용으로 수행할 수 있다. 
+- Transformer의 self-attention 구조가 많은 downstream task에 적용할 수 있기 때문에, BERT의 fine-tuning 과정은 매우 간단하다. 
 
 - 보통 text-pair task에서는 문자열 쌍의 관계를 알아내기 위한 bidirectional cross attention을 적용하기 전에, 입력으로 들어온 sentence 각각에 대한 encoding을 먼저 수행해야 한다. 
 
@@ -122,9 +122,11 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 
 - 각 task에 대해, 각 task에 알맞는 input과 output을 BERT에 적용하고, 파라미터들은 해당 task에 맞게 end-to-end로 학습한다. 
 
-- Token representation은 sequence tagging이나 question answering 같은 token level task에 사용된다. 
+- Token representation은 sequence tagging이나 question answering 같은 token level task에 사용하기 위해 output layer에 보낸다. 
 
-- 문장 제일 앞에 위치한 CLS token은 entailment 또는 sentiment analysis 같은 classification 문제를 풀 수 있다. 
+- 문장 제일 앞에 위치한 [CLS] representation은 entailment 또는 sentiment analysis 같은 classification task에 사용된다. 
+
+- Pre-training과 비교 했을 때, Fine-tuning 단계는 비교적 적은 비용으로 수행할 수 있다. 
 
 
 
