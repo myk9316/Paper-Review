@@ -78,7 +78,7 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 
 <br/>
 
-### 3.2 Pre-training BERT
+### 3.1 Pre-training BERT
 ### Masked LM
 - 직관적으로, deep bidirectional model이 left-to-right model이나 left-to-right과 right-to-left 모델의 shallow concatenation 보다 성능이 좋을 수 밖에 없다. 
 
@@ -112,7 +112,7 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 
 <br/>
 
-### 3.3 Fine-tunning BERT
+### 3.2 Fine-tunning BERT
 - Transformer의 self-attention 구조가 많은 downstream task에 적용할 수 있기 때문에, BERT의 fine-tuning 과정은 매우 간단하다. 또한, pre-training과 비교 했을 때 적은 비용으로 수행할 수 있다. 
 
 - 보통 text-pair task에서는 문자열 쌍의 관계를 알아내기 위한 bidirectional cross attention을 적용하기 전에, 입력으로 들어온 sentence 각각에 대한 encoding을 먼저 수행해야 한다. 
