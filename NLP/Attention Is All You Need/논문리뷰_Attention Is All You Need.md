@@ -214,13 +214,28 @@ Recurrent / Convolution 과 비교해서 Self-attention을 사용한데는 세 �
 
 ## 6. Results
 ### 6.1 Machine Translation
-- 
+- WMT 2014 English-German 번역에서 big transformer model이 앙상블을 포함한 이전 모델보다 2.0 BLEU로 앞서며, new state-of-the art(BLEU score of 28.4)를 달성했다. 
+  - base model 역시 training 비용을 고려했을 때 이전 모델들을 뛰어넘었다.  
+
+- WMT 2014 English-French 번역에서도 big model이 이전의 다른 single model보다 학습시간은 1/4로 줄었음에도 불구하고 BLUE score(41.0)는 더 뛰어났다. 
+
+<br/>
+
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147884897-c31c6a31-76ca-44e8-a775-564595db4ab9.PNG" width="80%" height="80%"></p>
+
+
+<br/>
 
 ### 6.2 Model Variations
 - 
 
+<br/>
+
 ## 7. Conclusion
-- 
+- 본 연구에서, encoder-decoder 구조에서 가장 일반적으로 사용되는 recurrent layer를 multi-head attention으로 대체하면서, attention만 사용한 최초의 sequence 변환 모델인 transformer를 제시했다. 
+- 번역 과제의 경우 Transformer는 recurrent 또는 convolutional layer 기반 구조보다 훨씬 빠르게 학습하고 더 좋은 성능을 보여주었다. 
+
+<br/>
 
 ## 8. Advice / limitation
 - 
