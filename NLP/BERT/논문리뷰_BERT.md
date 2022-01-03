@@ -15,14 +15,14 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 
 ## 2. Introduction
 - NLP에서 pre-training은 효과적이라는 것을 보여주었으며, pre-trained language representation을 down-streak tasks에 적용하는데는 2가지 방법이 있다.
-  - feature-based
-    - task-specific architectures를 사용함으로, 기존의 input에 pre-trained representation을 feature로서 추가한다. 
-    - Ex) ELMo
+  - Feature-based
+    - Task-specific architectures를 사용함으로, 기존의 input에 pre-trained representation을 feature로서 추가한다. 
+    - Ex) ELMo (단방향의 LSTM으로 구성된 두 개의 모델을 붙여 양방향으로 학습하도록 하는 모델, Shallow concatenation, left-to-right & right-to-left)
 
-  - fine-tunning
+  - Fine-tunning
     -  최소한의 task-specific parameters만을 추가하고, 모든 pre-trained parameter들을 fine-tunning 함으로써 downstream task에서 학습한다. 
-    -  feature-based와 달리 fine-tunning 과정에서 pre-trained feature도 갱신된다. 
-    -  Ex) GPT
+    -  Feature-based와 달리 fine-tunning 과정에서 pre-trained feature도 갱신된다. 
+    -  Ex) GPT (token이 이전의 것에만 참여할 수 있음)
 
 
 - 하지만, ELMo와 GPT 같은 경우에는 pre-trained에서 단방향의 architecture만 사용하여 학습을 진행한다는 limitation이 있다. 
