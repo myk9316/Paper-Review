@@ -45,6 +45,7 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 
 ## 3. BERT
 ### 3.1 Model Architecture
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931233-ddaf27a2-b6ed-4060-9d0e-febd8556a326.PNG" width="50%" height="50%"></p>
 - 
 
 <br/>
