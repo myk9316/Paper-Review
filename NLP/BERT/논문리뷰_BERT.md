@@ -135,33 +135,40 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 
 ### 4.1 GLUE (The General Language Understanding Evaluation)
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931237-e2249652-12b2-4a3a-a764-53fe3b11f3ca.PNG" width="80%" height="80%"></p>
+
 - BERT가 모든 task에 대해 기존 모델들을 능가한다.
 - BERT larger가 BERT base를 모든 task에서 뛰어나다. 
 
 <br/>
+<br/>
 
 ### 4.2 SQuAD v1.1  (Question, Answer pair data set)
-<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931239-e00b81f6-0cb1-448f-8f57-48980cd32765.PNG" width="80%" height="80%"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931239-e00b81f6-0cb1-448f-8f57-48980cd32765.PNG" width="50%" height="50%"></p>
+
 - Wikipedia에서 추출하여 만든 질의응답 벤치마크로, 지문과 질문이 주어지면 모델은 지문안에서 맞는 답을 찾아야 한다. 
 - BERT single model이 top ensemble model을 능가한다.
 - BERT ensemble model이 top leaderboard model을 능가한다. 
 
 <br/>
+<br/>
 
 ### 4.3 SQuAD v2.0  (Question, Answer pair data set)
-<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931240-173d0c89-416b-4169-ba22-769e9d50156e.PNG" width="80%" height="80%"></p>
-- SQuAD v2.0은 v1.1의 확장판으로 주어진 paragraphs에 정답이 없는 경우도 포함시켜서 좀 더 realistic한 학습을 할 수 있다.
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931240-173d0c89-416b-4169-ba22-769e9d50156e.PNG" width="50%" height="50%"></p>
+
+- SQuAD v2.0은 v1.1의 확장판으로 주어진 paragraphs에 정답이 없는 경우도 포함시켜서 좀 더 현실적인 학습을 할 수 있다.
 - BERT는 이전의 best system보다 +5.1 F1 개선을 이루어냈다. 
 
 <br/>
+<br/>
 
 ### 4.4 SWAG  (Situation With Adversarial Generations dataset(113K sentence-pair)
-<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931241-f37637bc-382e-4f04-945f-90e098f72a88.PNG" width="80%" height="80%"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931241-f37637bc-382e-4f04-945f-90e098f72a88.PNG" width="50%" height="50%"></p>
+
 - 4개의 선택지 중 주어진 sentence의 다음 상황으로 가장 알맞은 sentence 고르는 task 이다. 
 - BERT가 SOTA를 달성한다. 
 
 <br/>
-
+<br/>
 
 ## 5. Ablation Studies
 ### 5.1 Effect of Pre-training Tasks
