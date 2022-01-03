@@ -35,7 +35,9 @@ The dominant sequence transduction models are based on complex recurrent or conv
 
 ## 3. Model Architecture
 - sequence data를 다루는 많은 모델들은 encoder-decoder 구조를 가진다. 
+
   - Encoder는 input sequence (x<sub>1</sub> , ..., x<sub>n</sub>)를 continuous representation인 z = (z<sub>1</sub>, ... , z<sub>n</sub>)으로 변환한다. 
+  
   - z가 주어지면, decoder는 output sequence (y<sub>1</sub>, ... , y<sub>n</sub>)를 하나씩 생성한다.  
 
 - Transformer도 마찬가지로 이러한 encoder-decoder 구조를 가지는데, self-attention과 point-wise fully connected layer를 쌓아 만든 encoder와 decoder로 구성되어있다. 
@@ -46,9 +48,13 @@ The dominant sequence transduction models are based on complex recurrent or conv
 ### 3.1 Encoder and Decoder Stacks
 #### Encoder
 - Encoder는 N=6개의 동일한 layer로 구성되어 있다. 
+
 - 각 layer는 multi-head self-attention mechanism과 position-wise fully connected feed-foward로 구성된 2개의 sub-layer를 가지고 있다. 
+
 - 각 sub-layer는 residual connection으로 연결하였고, 이후 normalization을 한다. 
+
   - 따라서, sub-layer를 통과할 때마다 결과값으로 LayerNorm(x + sublayer(x))를 출력한다. 
+  
 - residual connection을 수월하게 하기 위해, 모델의 모든 sub-layer 및 임베딩 layer는 512개의 차원으로 output을 생성한다. 
 
 <br/>
@@ -59,6 +65,7 @@ The dominant sequence transduction models are based on complex recurrent or conv
 - 2개의 sub-layer 외에도, decoder는 Encoder 스택의 출력을 통해 multi-head attetion을 수행하는 세번째 sub-layer를 가진다. 
 
 - 또한, decoder의 self-attention sub-layer에서는 현재 위치보다 뒤에 있는 요소에 Attention 하는 것을 막기 위해 masking을 추가한다. 
+
   - 이는, i번째 position의 예측이 i의 이전의 output에만 의존하도록 만들어준다. (즉, 앞에 있는 단어로만 예측하고 뒤에 있는 단어를 미리 알지 못하도록)
 
 <br/>
@@ -67,9 +74,11 @@ The dominant sequence transduction models are based on complex recurrent or conv
 - Attention은 한 문장 내에서 특정 단어를 이해하려고 할때 어떤 단어들을 중점적으로 봐야 단어를 더 잘 이해할 수 있을지에 관한 것이다. 
 
 - Attention fuction은 query와 key-value 쌍을 output에 맵핑한다.
+
   - Query(Q, 영향을 받는 단어), Key(K, 영향을 주는 단어), Values(V, 영향에 대한 가중치)는 모두 vector 형태이다.
   
 - Output은 value의 가중치 합으로 계산 되는데, 각각의 value에 맞는 가중치는 query와 그에 맞는 key의 compatibility function에 의해 계산된다.
+
   - I Love You 라는 단어가 있을때, I라는 단어가 I, Love, You 각각에 대해 얼마큼의 연관성을 가지는지를 알아보고자 한다면, Query는 I, Key는 I, Love, You, Value는 예를 들면 0.2, 0.3, 0.5가 된다. 
 
 <br/>
@@ -82,7 +91,9 @@ The dominant sequence transduction models are based on complex recurrent or conv
 - 입력으로는 d<sub>k</sub> 차원의 query, key와 d<sub>v</sub> 차원의 value를 가진다. query와 key들의 dot product를 구하고, ![image](https://user-images.githubusercontent.com/79245484/147881693-9fd8cedf-1529-43f6-bca4-1476850262c0.png) (scaling factor) 로 나눈 값에 softmax 를 적용하여 value에 대한 weight를 얻는다. 마지막으로, value와 weight를 곱해주어 최종적인 Attention Value를 얻는다. 
 
 - 대표적인 방법으로는 additive attention과 dot-product attention이 있다.
+
   - additive attention과 dot-product attention은 이론적으로 유사한 복잡성을 가지지만, 후자가 더 빠르고 공간적으로 효율적이다. 
+  
   - 본 논문에서 사용하는 Scaled dot-product attention은 dot-product attention에 scaling factor를 추가한 것만 제외하면 둘은 동일하다. 
     - d<sub>k</sub>의 값이 클 때는 softmax가 매우 작은 gradient 값을 가지는 것을 방지하기 위해 scaling factor를 추가함으로 성능 향상에 도움이 된다.
 
@@ -105,15 +116,21 @@ The dominant sequence transduction models are based on complex recurrent or conv
 Transformer에서는 3가지 방식으로 multi-head attention을 사용한다.
 
 - encoder-decoder attention layer (Decoder 파트)
+
   - query는 이전 decoder에서 가져오고, key와 value는 encoder의 output에서 가져온다. 
+  
   - 따라서, decoder의 모든 position에서 input sequence의 전체 position에 대해 attention 수행이 가능하다.
   
 - Self-attention layer (Encoder 파트)
+
   - key, value, query가 모두 encoder의 이전 layer에서 나온 output이다. 
+  
   - encoder의 각각의 position에서 이전 encoder layer의 모든 position에 대해서 attention 수행이 가능하다. 
   
 - Self-attention layer(Decoder 파트)
+
   - Encoder의 Self-attention layer와 동일하지만, auto-regressive 속성을 보존하기 위해 output을 생성할 때 leftward information flow를 차단한다. 
+  
   - 즉, 해당 position 이전까지의 모든 position만 attention이 가능하도록 하며, 미래 시점의 단어들 또는 output에는 접근하지 못하도록 한다. --> 현재 토큰 이후 값들에 대해서 masking out  
 
 <br/>
@@ -188,11 +205,14 @@ Recurrent / Convolution 과 비교해서 Self-attention을 사용한데는 세 �
 
 ### 5.2 Hardware and Schedule
 - 8개의 NVIDIA P100 GPU가 있는 기계에서 모델을 훈련시켰다. 
+
 - base 모델은 각 training step 마다 0.4초가 걸렸고(10,000steps), 12시간동안 학습했다.
+
 - big 모델은 각 training step 마다 1.0초가 걸렸고(300,000steps), 3.5일동안 학습했다. 
 
 ### 5.3 Optimizer
 - Adam optimizer를 사용하였고, <img src="https://latex.codecogs.com/svg.image?\beta&space;_{1}&space;=&space;0.9,&space;\beta&space;_{2}&space;=&space;0.98&space;&space;\&space;and&space;\&space;&space;\epsilon&space;=&space;10^{-9}&space;" title="\beta _{1} = 0.9, \beta _{2} = 0.98 \ and \ \epsilon = 10^{-9} " /> 를 사용했다. 
+
 - learning rate는 아래의 공식에 따라 변화하며, warmup_step까지는 linear하게 learning rate를 증가시켰다가, warmup_step 이후에는 step_num의 inverse square root에 비례하게 감소시킨다. 본 논문에서는 warmup_steps = 4000으로 설정하였다. 
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/147884896-a5f8ed5d-a046-4a34-97fa-cfc2c48f112a.PNG" width="80%" height="80%"></p>
 
@@ -201,13 +221,18 @@ Recurrent / Convolution 과 비교해서 Self-attention을 사용한데는 세 �
 ### 5.4 Regularization
 #### Residual Dropout
 - 각 sub-layer의 output이 sub-layer의 input으로 사용되거나 normalized가 되기 전에 dropout을 적용했다.
+
 - 추가적으로, encoder와 decoder 스택 사이에 embedding과 positional encoding을 더하여 droput을 적용했다. 
+
 - <img src="https://latex.codecogs.com/svg.image?P&space;_{drop}&space;=&space;0.1&space;" title="P _{drop} = 0.1 " /> 를 사용했다. 
 
 #### Label Smoothing
 - 학습이 진행되는 동안, <img src="https://latex.codecogs.com/svg.image?\epsilon_{ls}=0.1&space;" title="\epsilon_{ls}=0.1 " /> 의 label smoothing 값을 적용했다. 
+
   - 보통 딥러닝에서 softmax를 학습할 경우에는 레이블을 원-핫 인코딩으로 전환해준다.
+  
   - 하지만, 이 방식은 정답과 오답을 이분화하여 나타내는 것이 아니라 정답은 1에 가까운 값 / 오답은 0에 가까운 값, 즉 0~1 사이 값으로 표현하여 모델이 너무 학습데이터에 치중하여 학습하지 못하도록 보완하는 방법이다. 
+  
   - 이는, 모델의 perplextity를 해치기는 하지만, accuracy와 BLEU score를 개선시켰다. 
 
 
@@ -217,6 +242,7 @@ Recurrent / Convolution 과 비교해서 Self-attention을 사용한데는 세 �
 ## 6. Results
 ### 6.1 Machine Translation
 - WMT 2014 English-German 번역에서 big transformer model이 앙상블을 포함한 이전 SOTA 모델보다 2.0 BLEU로 앞서며, new SOTA(BLEU score of 28.4)를 달성했다. 
+
   - base model 역시 training 비용을 고려했을 때 이전 모델들을 뛰어넘었다.  
 
 - WMT 2014 English-French 번역에서도 big transformer model이 이전의 다른 single model보다 학습시간은 1/4로 줄었음에도 불구하고 BLUE score(41.0)는 더 뛰어났다. 
@@ -253,9 +279,11 @@ Recurrent / Convolution 과 비교해서 Self-attention을 사용한데는 세 �
 - 본 연구에서, encoder-decoder 구조에서 가장 일반적으로 사용되는 recurrent layer를 multi-head attention으로 대체하면서, attention만 사용한 최초의 sequence 변환 모델인 transformer를 제시했다. 
 
 - 번역 과제의 경우 Transformer는 recurrent 또는 convolutional layer 기반 구조보다 훨씬 빠르게 학습하고 더 좋은 성능을 보여주었다. 
+
   - 계산량이 줄고(RNN은 순차적인 계산으로 속도가 느림) 병렬화를 적용하여(Multi-head로 병렬로 계산가능) 학습 속도가 매우 빠르다.
 
 - Attention에 기반한 모델을 텍스트 뿐만 아니라, 오디오/이미지/영상 등의 상대적으로 큰 입출력을 필요로 하는 task에도 적용을 할 예정이다. 
+
   - 즉, 특정 Task에 족송적이지 않고 general하게 사용이 가능할 것이다. 
 
 - Generation을 덜 Sequential 하게 만드는 것이 또 다른 연구 목적이다.
