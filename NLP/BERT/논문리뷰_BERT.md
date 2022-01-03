@@ -113,14 +113,14 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 <br/>
 
 ### 3.2 Fine-tunning BERT
-- Transformer의 self-attention 구조가 많은 downstream task에 적용할 수 있기 때문에, BERT의 fine-tuning 과정은 매우 간단하다. 
+- Transformer의 self-attention 구조가 BERT를 많은 downstream task에 적용할 수 있도록 하기 때문에, BERT의 fine-tuning 과정은 매우 간단하다. (BERT 모델은 가져가고 해당 모델의 appropriate한 input과 output을 swapping out만 하면됨) 
 
 - 보통 text-pair task에서는 문자열 쌍의 관계를 알아내기 위한 bidirectional cross attention을 적용하기 전에, 입력으로 들어온 sentence 각각에 대한 encoding을 먼저 수행해야 한다. 
 
 - 반면, BERT의 경우에는 두 문장의 입력을 하나의 sequence로 생성해서 모델의 입력으로 제공한다. 그 후에 self-attention을 수행하기 때문에, 이 self-attention 과정 안에 두 문장 사이의 bidirectional cross attention이 이미 포함되어 있어서 별도의 처리가 필요 없다. 
   - 즉, 입력이 한 문장이든 여러 문장이든 관계없이 단일 모델, 같은 fine-tuning 방법으로 간단하게 처리할 수 있다.  
 
-- 각 task에 대해, 각 task에 알맞는 input과 output을 BERT에 적용하고, 파라미터들은 해당 task에 맞게 end-to-end로 학습한다. 
+- 각 task에 대해 알맞는 input과 output을 BERT에 적용하고, 파라미터들은 해당 task에 맞게 end-to-end로 학습한다. 
 
 - Token representation은 sequence tagging이나 question answering 같은 token level task에 사용하기 위해 output layer에 보낸다. 
 
@@ -128,33 +128,39 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 
 - Pre-training과 비교 했을 때, Fine-tuning 단계는 비교적 적은 비용으로 수행할 수 있다. 
 
-
-
-
-
-
-
-
 <br/>
 
 ## 4. Experiments
-### 4.1 GLUE
-- 
+본 연구는 BERT의 검증을 위해 11개의 NLP task에서 fine-tuning을 진행하였음
 
 <br/>
 
-### 4.2 SQuAD v1.1
-- 
+### 4.1 GLUE (The General Language Understanding Evaluation)
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931237-e2249652-12b2-4a3a-a764-53fe3b11f3ca.PNG" width="80%" height="80%"></p>
+- BERT가 모든 task에 대해 기존 모델들을 능가한다.
+- BERT larger가 BERT base를 모든 task에서 뛰어나다. 
 
 <br/>
 
-### 4.3 SQuAD v2.0
--
+### 4.2 SQuAD v1.1  (Question, Answer pair data set)
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931239-e00b81f6-0cb1-448f-8f57-48980cd32765.PNG" width="80%" height="80%"></p>
+- Wikipedia에서 추출하여 만든 질의응답 벤치마크로, 지문과 질문이 주어지면 모델은 지문안에서 맞는 답을 찾아야 한다. 
+- BERT single model이 top ensemble model을 능가한다.
+- BERT ensemble model이 top leaderboard model을 능가한다. 
 
 <br/>
 
-### 4.4 SWAG
-- 
+### 4.3 SQuAD v2.0  (Question, Answer pair data set)
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931240-173d0c89-416b-4169-ba22-769e9d50156e.PNG" width="80%" height="80%"></p>
+- SQuAD v2.0은 v1.1의 확장판으로 주어진 paragraphs에 정답이 없는 경우도 포함시켜서 좀 더 realistic한 학습을 할 수 있다.
+- BERT는 이전의 best system보다 +5.1 F1 개선을 이루어냈다. 
+
+<br/>
+
+### 4.4 SWAG  (Situation With Adversarial Generations dataset(113K sentence-pair)
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931241-f37637bc-382e-4f04-945f-90e098f72a88.PNG" width="80%" height="80%"></p>
+- 4개의 선택지 중 주어진 sentence의 다음 상황으로 가장 알맞은 sentence 고르는 task 이다. 
+- BERT가 SOTA를 달성한다. 
 
 <br/>
 
