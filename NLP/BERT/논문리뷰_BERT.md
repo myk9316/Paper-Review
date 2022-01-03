@@ -133,8 +133,6 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 ## 4. Experiments
 본 연구는 BERT의 검증을 위해 11개의 NLP task에서 fine-tuning을 진행하였음
 
-<br/>
-
 ### 4.1 GLUE (The General Language Understanding Evaluation)
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931237-e2249652-12b2-4a3a-a764-53fe3b11f3ca.PNG" width="80%" height="80%"></p>
 - BERT가 모든 task에 대해 기존 모델들을 능가한다.
