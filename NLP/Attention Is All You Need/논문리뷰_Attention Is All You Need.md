@@ -191,7 +191,7 @@ Recurrent / Convolution 과 비교해서 Self-attention을 사용한데는 세 �
 
 ### 5.3 Optimizer
 - Adam optimizer를 사용하였고, <img src="https://latex.codecogs.com/svg.image?\beta&space;_{1}&space;=&space;0.9,&space;\beta&space;_{2}&space;=&space;0.98&space;&space;\&space;and&space;\&space;&space;\epsilon&space;=&space;10^{-9}&space;" title="\beta _{1} = 0.9, \beta _{2} = 0.98 \ and \ \epsilon = 10^{-9} " /> 를 사용했다. 
-- learning rate는 식에 따라 변화한다. 
+- learning rate는 아래의 공식에 따라 변화하며, warmup_step까지는 linear하게 learning rate를 증가시켰다가, warmup_step 이후에는 step_num의 inverse square root에 비례하게 감소시킨다. 본 논문에서는 warmup_steps = 4000으로 설정하였다. 
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/147884896-a5f8ed5d-a046-4a34-97fa-cfc2c48f112a.PNG" width="80%" height="80%"></p>
 
 <br/>
