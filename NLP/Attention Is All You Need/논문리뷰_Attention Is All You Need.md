@@ -156,7 +156,7 @@ Transformer에서는 3가지 방식으로 multi-head attention을 사용한다.
 
 
 ## 4. Why Self-Attention
-Recurrent 와 Convolution에 비해 Self-attention을 사용한데는 세 가지 이유가 있다.
+Recurrent 와 Convolution와 비교해서 Self-attention을 사용한데는 세 가지 이유가 있다.
 
 - 첫 번째는, 레이어당 전체 계산 복잡도기 줄어든다. 
 
