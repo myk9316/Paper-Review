@@ -187,7 +187,7 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 
 - larger model을 사용했을 때 모든 task에서 더 좋은 성능을 보여주었다. 
 
-  - 특히, small dataset에서는 모델 크기가 커지면 overfitting으로 인한 성능 감소가 일어날 수 있다고 하는데, BERT는 MRPC와 같은 작은 dataset에서도 larger model이 더 좋은 정확도를 보여주었다. 
+  - 특히, small dataset에서는 모델 크기가 커지면 overfitting으로 인한 성능 감소가 일어날 수 있는데, BERT는 MRPC와 같은 작은 dataset에서도 larger model이 더 좋은 정확도를 보여주었다. 
 
 - 즉, 모델 size의 증가는 기계번역과 언어모델링 같은 large-scale task에서도 성능 향상에 기여를 하고, 충분한 pre-training이 있었다는 전제하에 small-scale task에서도 성능 향상에 기여한다. 
 
