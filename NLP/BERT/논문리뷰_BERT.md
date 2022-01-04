@@ -143,7 +143,7 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 <br/>
 
 ### 4.2 SQuAD v1.1  (Question, Answer pair data set)
-<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931239-e00b81f6-0cb1-448f-8f57-48980cd32765.PNG" width="50%" height="50%"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931239-e00b81f6-0cb1-448f-8f57-48980cd32765.PNG" width="40%" height="40%"></p>
 
 - Wikipedia에서 추출하여 만든 질의응답 벤치마크로, 지문과 질문이 주어지면 모델은 지문안에서 맞는 답을 찾아야 한다. 
 - BERT single model이 top ensemble model을 능가한다.
@@ -152,7 +152,7 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 <br/>
 
 ### 4.3 SQuAD v2.0  (Question, Answer pair data set)
-<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931240-173d0c89-416b-4169-ba22-769e9d50156e.PNG" width="50%" height="50%"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931240-173d0c89-416b-4169-ba22-769e9d50156e.PNG" width="40%" height="40%"></p>
 
 - SQuAD v2.0은 v1.1의 확장판으로 주어진 paragraphs에 정답이 없는 경우도 포함시켜서 좀 더 현실적인 학습을 할 수 있다.
 - BERT는 이전의 best system보다 +5.1 F1 개선을 이루어냈다. 
@@ -160,7 +160,7 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 <br/>
 
 ### 4.4 SWAG  (Situation With Adversarial Generations dataset(113K sentence-pair)
-<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931241-f37637bc-382e-4f04-945f-90e098f72a88.PNG" width="50%" height="50%"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931241-f37637bc-382e-4f04-945f-90e098f72a88.PNG" width="40%" height="40%"></p>
 
 - 4개의 선택지 중 주어진 sentence의 다음 상황으로 가장 알맞은 sentence 고르는 task 이다. 
 - BERT가 SOTA를 달성한다. 
@@ -169,7 +169,7 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 
 ## 5. Ablation Studies
 ### 5.1 Effect of Pre-training Tasks
-<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931247-0499870a-3ff2-4850-9da6-3f98453d909a.PNG" width="50%" height="50%"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931247-0499870a-3ff2-4850-9da6-3f98453d909a.PNG" width="40%" height="40%"></p>
 
 - BERT vs No NSP : NSP 효과 관찰
   - MLM으로만 학습되고 NSP를 하지 않은 경우, MNLI, QUNI, SQUaD에서 성능이 떨어지는 것을 확인할 수 있다. 
@@ -183,15 +183,18 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 <br/>
 
 ### 5.2 Effect of Model Size
-<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931248-8fe42209-ae3f-4821-8faf-d42e99e6dc19.PNG" width="50%" height="50%"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931248-8fe42209-ae3f-4821-8faf-d42e99e6dc19.PNG" width="40%" height="40%"></p>
 
-- 모델의 크기가 크면 클수록 성능이 증가
+- larger model을 사용했을 때 모든 task에서 더 좋은 성능을 보여주었다. 
 
+- small dataset에서는 모델 크기가 커지면 overfitting이 생길 수 있는데, MRPC와 같은 작은 dataset에서도 larger model이 더 좋은 정확도를 보여주었다. 
+
+- 즉, 모델 size의 증가는 기계번역과 언어모델링 같은 large-scale task에서도 성능 향상에 기여를 하고, 충분한 pre-training이 있었다는 전제하에 small-scale task에서도 성능 향상에 기여한다. 
 
 <br/>
 
 ### 5.3 Featured-based Approach with BERT
-<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931251-3bd8de41-d41b-4520-a88f-b277a9feb7cf.PNG" width="50%" height="50%"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931251-3bd8de41-d41b-4520-a88f-b277a9feb7cf.PNG" width="40%" height="40%"></p>
 
 - 
 
