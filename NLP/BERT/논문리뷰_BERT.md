@@ -187,16 +187,23 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 
 - larger model을 사용했을 때 모든 task에서 더 좋은 성능을 보여주었다. 
 
-  - 특히, small dataset에서는 모델 크기가 커지면 overfitting으로 인한 성능 감소가 일어날 수 있는데, BERT는 MRPC와 같은 작은 dataset에서도 larger model이 더 좋은 정확도를 보여주었다. 
+  - 특히, small dataset에서는 model size가 커지면 overfitting으로 인한 성능 감소가 일어날 수 있는데, BERT는 MRPC와 같은 작은 dataset에서도 larger model이 더 좋은 정확도를 보여주었다. 
 
-- 즉, 모델 size의 증가는 기계번역과 언어모델링 같은 large-scale task에서도 성능 향상에 기여를 하고, 충분한 pre-training이 있었다는 전제하에 small-scale task에서도 성능 향상에 기여한다. 
+- 즉, model size의 증가는 기계번역과 언어모델링 같은 large-scale task에서도 성능 향상에 기여를 하고, 충분한 pre-training이 있었다는 전제하에 small-scale task에서도 성능 향상에 기여한다. 
 
 <br/>
 
 ### 5.3 Featured-based Approach with BERT
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931251-3bd8de41-d41b-4520-a88f-b277a9feb7cf.PNG" width="40%" height="40%"></p>
 
-- 
+- Feature-based : Fixed features are extracted from the pre-trained model
+
+-   BERT를 feature-based approach로도 사용할 수 있는데, 이러한 방식에는 몇 가지 장점이 있다.
+  -   첫 번째, Transformer encoder는 모든 task를 represent 하지 못하므로, task-specific model을 추가해서 사용해야 한다. 
+  -   두 번째, Pre-compute를 통해서 training data의 representation을 생성하고, 적은 비용이 드는 모델을 해당 representation에서 여러번 학습함으로 Computational benefit을 얻을 수 있다. 
+
+- BERT를 ELMo와 같이 마지막 layer에 Bi-LSTM을 부착시켜, 해당 layer만 학습시키는 방법론을 사용하여 실험을 했다.
+  - Concat Last Four Hidden만 사용하면, Fine-tunning approach와 0.3 F1 score 차이 밖에 나지 않는다.  --> BERT는 feature-based approach에도 효과적이다. 
 
 <br/>
 
