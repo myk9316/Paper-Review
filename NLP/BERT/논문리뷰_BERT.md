@@ -211,6 +211,8 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 ## 6. Conclusion
 - BERT는 Transformer의 encoder 부분을 활용한 모델로, 이를 이용해 다양한 NLP task에 쉽게 적용이 가능하고 높은 성능을 보여주었다. 기존의 연구들과의 차이점은 bidirecitonal pre-training으로 좋은 품질의 pre-trained language representation을 얻음과 동시에 downstream-task에도 fine-tuning이 쉽게 가능한 점이다. 이를 통해, dataset의 사이즈의 관계없이, 다양한 NLP task에 대해 약간의 fine-tuning만으로 매우 우수한 성능을 보여주었다. 또한, language model에 있어, righ, unsupervised pre-training이 매우 중요한 요소라는 것을 입증하였다. 
 
+- 저자들이 복잡한 수식없이 NLP 초심자들도 직관적으로 이해할 수 있도록 설득력 있게 주장을 펄쳐나가고, 여러 검증을 통해 매우 뛰어난 성능을 보여준 점이 굉장히 인상깊었다. 
+
 
 
 
