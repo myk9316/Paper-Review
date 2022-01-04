@@ -196,18 +196,22 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 ### 5.3 Featured-based Approach with BERT
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931251-3bd8de41-d41b-4520-a88f-b277a9feb7cf.PNG" width="40%" height="40%"></p>
 
+
 - Feature-based : Fixed features are extracted from the pre-trained model
 
--   BERT를 feature-based approach로도 사용할 수 있는데, 이러한 방식에는 몇 가지 장점이 있다.
-  -   첫 번째, Transformer encoder는 모든 task를 represent 하지 못하므로, task-specific model을 추가해서 사용해야 한다. 
-  -   두 번째, Pre-compute를 통해서 training data의 representation을 생성하고, 적은 비용이 드는 모델을 해당 representation에서 여러번 학습함으로 Computational benefit을 얻을 수 있다. 
-
+- BERT를 feature-based approach로도 사용할 수 있는데, 이러한 방식에는 몇 가지 장점이 있다.
+  - Transformer encoder는 모든 task를 represent 하지 못하므로, task-specific model을 추가해서 사용해야 한다. 
+  - Pre-compute를 통해서 training data의 representation을 생성하고, 적은 비용이 드는 모델을 해당 representation에서 여러번 학습함으로 Computational benefit을 얻을 수 있다. 
+  
 - BERT를 ELMo와 같이 마지막 layer에 Bi-LSTM을 부착시켜, 해당 layer만 학습시키는 방법론을 사용하여 실험을 했다.
-  - Concat Last Four Hidden만 사용하면, Fine-tunning approach와 0.3 F1 score 차이 밖에 나지 않는다.  --> BERT는 feature-based approach에도 효과적이다. 
+  - 'Concat Last Four Hidden'만 사용하면, Fine-tunning approach와 0.3 F1 score 차이 밖에 나지 않는다.  --> BERT는 feature-based approach에도 효과적이다. 
 
 <br/>
 
 ## 6. Conclusion
-- 
+- BERT는 Transformer의 encoder 부분을 활용한 모델로, 이를 이용해 다양한 NLP task에 쉽게 적용이 가능하고 높은 성능을 보여주었다. 기존의 연구들과의 차이점은 bidirecitonal pre-training으로 좋은 품질의 pre-trained language representation을 얻음과 동시에 downstream-task에도 fine-tuning이 쉽게 가능한 점이다. 이를 통해, dataset의 사이즈의 관계없이, 다양한 NLP task에 대해 약간의 fine-tuning만으로 매우 우수한 성능을 보여주었다. 또한, language model에 있어, righ, unsupervised pre-training이 매우 중요한 요소라는 것을 입증하였다. 
+
+
+
 
 <br/>
