@@ -113,7 +113,8 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 <br/>
 
 ### 3.2 Fine-tunning BERT
-- Transformer의 self-attention 구조가 BERT를 많은 downstream task에 적용할 수 있도록 하기 때문에, BERT의 fine-tuning 과정은 매우 간단하다. (BERT 모델은 가져가고 해당 모델의 appropriate한 input과 output을 swapping out만 하면됨) 
+- Transformer의 self-attention 구조가 BERT를 많은 downstream task에 적용할 수 있도록 하기 때문에, BERT의 fine-tuning 과정은 매우 간단하다. 
+(BERT 모델은 가져가고 해당 모델의 appropriate한 input과 output을 swapping out만 하면됨) 
 
 - 보통 text-pair task에서는 문자열 쌍의 관계를 알아내기 위한 bidirectional cross attention을 적용하기 전에, 입력으로 들어온 sentence 각각에 대한 encoding을 먼저 수행해야 한다. 
 
@@ -168,17 +169,30 @@ BERT is conceptually simple and empirically powerful. It  btains new state-of-th
 
 ## 5. Ablation Studies
 ### 5.1 Effect of Pre-training Tasks
-- NPS를 뺏을 때의 성능이 떨어짐으로, NPS의 중요성을 확인할 수 있다. 
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931247-0499870a-3ff2-4850-9da6-3f98453d909a.PNG" width="50%" height="50%"></p>
+
+- BERT vs No NSP : NSP 효과 관찰
+  - MLM으로만 학습되고 NSP를 하지 않은 경우, MNLI, QUNI, SQUaD에서 성능이 떨어지는 것을 확인할 수 있다. 
+
+- No NSP vs LTR & No NSP : Bidirectionality 효과 관찰
+  - LTR 모델에서 모든 task에 대해 성능이 떨어지고, 특히 MRPC와 SQuAD task는 큰 폭으로 성능이 떨어졌다.
+  - BiLSTM을 추가했을때, SQuAD의 경우에는 성능이 향상 되었다. (pre-trained birectional model에 비해서는 성능이 떨어짐) 
+
+- ELMo 처럼 LTR과 RTL을 각각 학습해서 representation을 concantenate하는 방법도 있으나, 이 경우에는 bidirectional model에 비해 비용이 2배로 들고 less powerful 하다. 
 
 <br/>
 
 ### 5.2 Effect of Model Size
--
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931248-8fe42209-ae3f-4821-8faf-d42e99e6dc19.PNG" width="50%" height="50%"></p>
+
+- 모델의 크기가 크면 클수록 성능이 증가
 
 
 <br/>
 
 ### 5.3 Featured-based Approach with BERT
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/147931251-3bd8de41-d41b-4520-a88f-b277a9feb7cf.PNG" width="50%" height="50%"></p>
+
 - 
 
 <br/>
