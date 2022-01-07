@@ -59,7 +59,7 @@
 <br/>
 
 ## 3. A Basic Matrix Factorization Model
-- MF 모델은 사용자와 아이템 모두를 차원 f의 공동 잠재 요인 공간에 매핑하븐데, 사용자-아이템 간의 상호작용은 해당 공간에서 내적으로 모델링 된다. 
+- MF 모델은 사용자와 아이템 모두를 차원 f의 공동 잠재 요인 공간에 매핑하는데, 사용자-아이템 간의 상호작용은 해당 공간에서 내적으로 모델링 된다. 
 - 각각의 아이템 i는 q<sub>i</sub>로, 사용자 u는 p<sub>u</sub>라는 벡터 표현된다. q<sub>i</sub>와 p<sub>u</sub>의 내적의 결과는 사용자-아이템 사이의 상호작용을 반영하며, 이는 아이템에 대한 사용자의 전반적인 관심도를 표현한다. 이를 수식으로 나타내면 아래와 같다. 
 
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148522790-0ecd351f-ada8-4b7b-a8cd-9d3afb61e20b.PNG"></p>
