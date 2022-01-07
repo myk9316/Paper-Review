@@ -163,8 +163,8 @@ collaborative filtering에 대한 matrix factorization 방식의 한 가지 이�
 ## 9. Netflix Prize Competition
 - 
 
-<p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569174-8450a6ce-3f6c-4b05-820c-3cf9a3ce9b25.PNG"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569174-8450a6ce-3f6c-4b05-820c-3cf9a3ce9b25.PNG" width="50%" height="50%"></p>
 
-<p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569175-23fba36d-acde-4ef9-841b-ebf701d25c58.PNG"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569175-23fba36d-acde-4ef9-841b-ebf701d25c58.PNG" width="50%" height="50%"></p>
 
 <br/>
