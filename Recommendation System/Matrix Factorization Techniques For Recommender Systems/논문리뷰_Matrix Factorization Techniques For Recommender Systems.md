@@ -113,7 +113,11 @@
 <br/>
 
 ## 5. Adding Biases
--
+collaborative filtering에 대한 matrix factorization 방식의 한 가지 이점은 다양한 데이터의 측면 및 다른 어플리케이션 별 요구사항을 처리할 수 있는 유연성이다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148522790-0ecd351f-ada8-4b7b-a8cd-9d3afb61e20b.PNG"></p> 위 식은 여러 평점 값을 만들어내는 사용자와 아이템 간의 상호관계를 파악하는 것이 목적이다. 하지만, 많은 경우 상호관계 외에 사용자나 이이템 자체의 특성이 이러한 평점 값의 변화에 영향을 미치며, 그러한 영향을 **biases** 또는 **intercepts**라고 한다. 예를 들면, 어떠한 사용자는 다른 사용자에 비해 높은 점수를 주는 경향과, 일부 아이템은 다른 아이템에 비해 높은 점수를 받는 경향이 존재할 수 있다.  
+
+<br/>
+
+따라서, <img src="https://latex.codecogs.com/svg.image?q_{i}^{T}p_{u}" title="q_{i}^{T}p_{u}" />만을 이용하여 전체 평점 값을 계산하는 것은 현명하지 않을 수 있다. 대신에, 개별 사용자 또는 아이템에 biases가 존재한다고 보고, r<sub>ui</sub>를 다음과 같이 나타낼 수 있다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569161-f3c97a32-89f5-4caa-a3d6-f746577fe44e.PNG"></p>
 
 <br/>
 
