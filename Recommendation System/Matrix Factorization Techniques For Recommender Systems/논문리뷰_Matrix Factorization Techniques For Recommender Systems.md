@@ -130,7 +130,11 @@ collaborative filtering에 대한 matrix factorization 방식의 한 가지 이�
 <br/>
 
 ## 6. Additional Input Sources
--
+- 추천시스템은 종종 cold start problem을 직면하게 되는데, 사용자에 대한 추가적인 정보를 포함하는 것이 이 문제를 해결할 수도 있다 (implicit feedback으로 부터 유저의 선호도에 대한 insight를 획득). 즉, 사용자가 explicit 평점을 제공하고 싶은 의지와 상관없이 행동 정보를 수집할 수 있다. 예를 들어, 소매업자는 고객의 구매 또는 브라우저 히스토리를 통해 고객의 성향을 알 수 있고, 고객이 제공할 만한 평점에 대해 알 수 있을 것이다.
+
+- 간단하게 생각해서, Boolean implicit feedback이 있는 경우를 고려해보자. N(u)는 사용자 u가 implicit한 선호를 표현한 아이템의 set 인데, 이를 이용해서 사용자의 profile을 만들 수 있다. N(u) 항목을 선호한 사용자는 다음과 같이 표현되고, <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569165-f16cef9e-9e94-4543-9fdc-2e6f7eec7dea.PNG"></p> 이 식을 정규화 하면 다음고 같이 표현된다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569168-ed157c2b-454c-47b3-8502-ff59667fbed7.PNG"></p>.
+
+- 또 다른 정보는 인구 통계 같은 사용자의 속성인데, 이를 표현하면 다음과 같고, <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569169-959d773d-5d60-4fe1-a2c4-3b1e44d12c6c.PNG"></p> 모든 Signal source를 통합하여 개선된 사용자 표현식은 다음과 같다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569170-e9531863-cd8d-417d-a6e3-ce427fc6767b.PNG"></p>
 
 <br/>
 
