@@ -8,7 +8,7 @@
 <br/>
 
 ## 1. Recommender System Stratgies
-추천시스템은 크게 Content-based filtering(콘텐츠 기반 필터링)과 Collaborative Filtering(협업 필터링)으로 구분할 수 있다.
+추천시스템은 크게 **Content-based filtering**(콘텐츠 기반 필터링)과 **Collaborative Filtering**(협업 필터링)으로 구분할 수 있다.
 
 ### Content-based Filtering
 - 각 사용자 또는 아이템에 대한 프로필을 만들고, 그 특성을 구체화시킨다. 
@@ -23,7 +23,7 @@
 ### Collaborative Filtering
 - 사용자와 아이템 간의 상호 상관 관계를 분석하여 새로운 사용자-아이템 관계를 찾아주는 것으로, Explicit한 프로필을 만들지 않고 구매 기록이나 구매 평점 같은 사용자의 과거 행동에만 의존한다. 
 
-- Domain Free로 특정 domain에 대한 지식이 필요없는 장점이 있는 반면, 새로운 아이템과 사용자에 대해서 Cold Start Problem 이라는 문제가 존재한다. 
+- **Domain Free**로 특정 domain에 대한 지식이 필요없는 장점이 있는 반면, 새로운 아이템과 사용자에 대해서 **Cold Start Problem** 이라는 문제가 존재한다. 
 
 - Collaborative Filtering은 또 2가지 방식으로 나뉜다.
   - **Neighborhood method (근접이웃 방식)**
@@ -130,7 +130,7 @@ collaborative filtering에 대한 matrix factorization 방식의 한 가지 이�
 <br/>
 
 ## 6. Additional Input Sources
-- 추천시스템은 종종 cold start problem을 직면하게 되는데, 사용자에 대한 추가적인 정보를 포함하는 것이 이 문제를 해결할 수도 있다 (implicit feedback으로 부터 유저의 선호도에 대한 insight를 획득). 즉, 사용자가 explicit 평점을 제공하고 싶은 의지와 상관없이 행동 정보를 수집할 수 있다. 예를 들어, 소매업자는 고객의 구매 또는 브라우저 히스토리를 통해 고객의 성향을 알 수 있고, 고객이 제공할 만한 평점에 대해 알 수 있을 것이다.
+- 추천시스템은 종종 **cold start problem**을 직면하게 되는데, 사용자에 대한 추가적인 정보를 포함하는 것이 이 문제를 해결할 수도 있다 (implicit feedback으로 부터 유저의 선호도에 대한 insight를 획득). 즉, 사용자가 explicit 평점을 제공하고 싶은 의지와 상관없이 행동 정보를 수집할 수 있다. 예를 들어, 소매업자는 고객의 구매 또는 브라우저 히스토리를 통해 고객의 성향을 알 수 있고, 고객이 제공할 만한 평점에 대해 알 수 있을 것이다.
 
 - 간단하게 생각해서, Boolean implicit feedback이 있는 경우를 고려해보자. N(u)는 사용자 u가 implicit한 선호를 표현한 아이템의 set 인데, 이를 이용해서 사용자의 profile을 만들 수 있다. N(u) 항목을 선호한 사용자는 다음과 같이 표현되고, <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569165-f16cef9e-9e94-4543-9fdc-2e6f7eec7dea.PNG"></p> 이 식을 정규화 하면 다음고 같이 표현된다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569168-ed157c2b-454c-47b3-8502-ff59667fbed7.PNG"></p>.
 
