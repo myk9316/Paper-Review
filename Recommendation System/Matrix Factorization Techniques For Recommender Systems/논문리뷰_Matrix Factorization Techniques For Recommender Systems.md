@@ -86,21 +86,29 @@
 
 <br/>
 
-### Stochastic gradient descent (확률적 경사 하강법)
-- 한번 학습할 때 training set에 있는 모든 평점을 순회하면서 예측 오차(e<sub>ui</sub>)를 계산하고, 가중치(r<sub>ui</sub>)를 업데이트 한다. 
+### Stochastic gradient descent (확률적 경사 하강법, SGD)
+한번 학습할 때 training set에 있는 모든 평점을 순회하면서 예측 오차(e<sub>ui</sub>)를 계산하고, 가중치(r<sub>ui</sub>)를 업데이트 한다. 
 
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569153-9596354b-e23f-4acf-a0fa-54a2538bbda5.PNG"></p>
 
-- 이후, 예측된 오차를 기반으로 gradient의 반대 방향에서 <img src="https://latex.codecogs.com/svg.image?\gamma&space;" title="\gamma " />에 비례하는 정도로 파라미터를 수정해서 p<sub>u</sub> 와 q<sub>i</sub>를 아래와 같이 업데이트 한다. 
+이후, 예측된 오차를 기반으로 gradient의 반대 방향에서 <img src="https://latex.codecogs.com/svg.image?\gamma&space;" title="\gamma " />에 비례하는 정도로 파라미터를 수정해서 p<sub>u</sub> 와 q<sub>i</sub>를 아래와 같이 업데이트 한다. 
 
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569156-6d2ac175-5679-4c2a-9210-2a1b2171ee42.PNG"></p>
 
-- 이 방식은 구현이 쉽고 빠르다는 장점이 있다. 
+이 방식은 구현이 쉽고 빠르다는 장점이 있다. 
 
 <br/>
 
-### Alternating least squares
--
+### Alternating least squares (ALS)
+- p<sub>u</sub> 와 q<sub>i</sub>가 둘 다 unknown하기 때문에, 앞서 본 최소화하려고 했던 식은 convex 하지 못하다. 
+
+- 만약 둘 중 하나를 fix 할 수 있으면, 최적화 문제는 quadratic하게 바뀌어 해를 구할 수 있게 된다. 
+
+- 따라서, 이 방식은 둘 중 하나를 fix 시킨 후에 나머지 변수에 대한 least square problem을 풀어 최적화 시키고, 다른 변수에 대해서도 최적화 과정을 진행한다. 이러한 방식으로 앞서 최소화하려 했던 식을 최소화 시킬 수 있다. 
+
+- 일반적으로 SGD가 쉽고 더 빠르게 최적값에 수렴하지만, ALS는 다음과 같은 두 경우에 선호된다. 
+  - 시스템이 병렬화가 가능할 때
+  - 암시적(Implicit)데이터에 중점을 둔 경우에
 
 <br/>
 
