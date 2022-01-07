@@ -117,7 +117,15 @@ collaborative filtering에 대한 matrix factorization 방식의 한 가지 이�
 
 <br/>
 
-따라서, <img src="https://latex.codecogs.com/svg.image?q_{i}^{T}p_{u}" title="q_{i}^{T}p_{u}" />만을 이용하여 전체 평점 값을 계산하는 것은 현명하지 않을 수 있다. 대신에, 개별 사용자 또는 아이템에 biases가 존재한다고 보고, r<sub>ui</sub>를 다음과 같이 나타낼 수 있다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569161-f3c97a32-89f5-4caa-a3d6-f746577fe44e.PNG"></p>
+따라서, <img src="https://latex.codecogs.com/svg.image?q_{i}^{T}p_{u}" title="q_{i}^{T}p_{u}" />만을 이용하여 전체 평점 값을 계산하는 것은 현명하지 않을 수 있다. 대신에, 개별 사용자와 아이템에 biases가 존재한다고 보고, r<sub>ui</sub>(관측된 평점)를 다음과 같이 나타낼 수 있다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569161-f3c97a32-89f5-4caa-a3d6-f746577fe44e.PNG"></p>
+
+(<img src="https://latex.codecogs.com/svg.image?\mu" title="\mu" /> : global average,       <img src="https://latex.codecogs.com/svg.image?b_{i}" title="b_{i}" /> : item bias,        <img src="https://latex.codecogs.com/svg.image?b_{u}" title="b_{u}" /> : user bias,       <img src="https://latex.codecogs.com/svg.image?q_{i}^{T}p_{u}" title="q_{i}^{T}p_{u}" /> : user-item interaction)
+
+<br/>
+
+시스템은 squared error function을 최소화 함으로 학습한다. 
+
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569164-07a430e1-a115-4d1d-921a-e210bbf364e6.PNG"></p>
 
 <br/>
 
