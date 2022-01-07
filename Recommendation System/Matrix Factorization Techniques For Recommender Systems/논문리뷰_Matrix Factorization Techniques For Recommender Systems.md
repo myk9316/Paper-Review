@@ -82,12 +82,20 @@
 <br/>
 
 ## 4. Learning Algorithms
--
+- 위의 공식을 최소화하기 위한 방식으로는 다음의 두 가지가 있다. 
 
 <br/>
 
-### Stochastic gradient descent
--
+### Stochastic gradient descent (확률적 경사 하강법)
+- 한번 학습할 때 training set에 있는 모든 평점을 순회하면서 예측 오차(e<sub>ui</sub>)를 계산하고, 가중치(r<sub>ui</sub>)를 업데이트 한다. 
+
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569153-9596354b-e23f-4acf-a0fa-54a2538bbda5.PNG"></p>
+
+- 이후, 예측된 오차를 기반으로 gradient의 반대 방향에서 <img src="https://latex.codecogs.com/svg.image?\gamma&space;" title="\gamma " />에 비례하는 정도로 파라미터를 수정해서 p<sub>u</sub> 와 q<sub>i</sub>를 아래와 같이 업데이트 한다. 
+
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569156-6d2ac175-5679-4c2a-9210-2a1b2171ee42.PNG"></p>
+
+- 이 방식은 구현이 쉽고 빠르다는 장점이 있다. 
 
 <br/>
 
