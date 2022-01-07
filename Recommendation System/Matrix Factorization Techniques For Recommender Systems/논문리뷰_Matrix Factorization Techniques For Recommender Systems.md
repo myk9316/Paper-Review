@@ -68,13 +68,15 @@
 
 - 이러한 모델은 SVD(Singular Value Decomposition)와 매우 유사하지만, 추천시스템에서는 결측값의 존재로 인해 적용하기가 힘들다.
   - 적은 수의 알려진 항목만 사용하는 것은 과적합을 일으킬 수 있으나, 결측값을 채워넣는 것은 비효율적이고 데이터를 왜곡 시킬 수 있다.
-  - 따라서, 최근 연구에서는 관찰된 평점만을 직접적으로 모델링하는 방법이 제시되었으며, 이때 규제화를 통해 과적합을 방지하였다. 
+  - 따라서, 최근 연구에서는(MF) 관찰된 평점만을 직접적으로 모델링하는 방법이 제시되었으며, 이때 규제화를 통해 과적합을 방지하였다. 
 
-- 요인 벡터(p<sub>u</sub> 와 q<sub>i</sub>)를 알기 위해, 시스템은 아래의 식처럼 관측된 평점 세트를 통해 정규화된 squared error를 최소화한다. 여기서, k는 r<sub>ui</sub>이 관측됐을 때의 (u, i)의 세트를 의미한다. 
+- 요인 벡터(p<sub>u</sub> 와 q<sub>i</sub>)를 알기 위해, 시스템은 아래의 식처럼 관측된 평점 세트를 통해 정규화된 squared error를 최소화한다. 여기서, k는 r<sub>ui</sub>이 관측됐을 때의 (u, i)의 세트를 의미한다. (아래의 loss function은 학습데이터(알려진 부분)에 대한 regularized squared error)
 
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148557996-9836110b-b63d-4732-938d-c07595b8637d.PNG"></p>
 
-- 결국 이 모델에서 하고자 하는 것은, 알려지지 않은 평점을 예측하는 것이기 때문에 규제화를 통해 과적합을 방지해야 한다. <img src="https://latex.codecogs.com/svg.image?\lambda&space;" title="\lambda " /> 가 규제의 정도를 제어하며, 주로 cross-validation을 통해 값이 결정된다. 
+- 결국 이 모델에서 하고자 하는 것은, 알려지지 않은 평점(미래)을 예측하는 것이기 때문에 규제화를 통해 과적합을 방지해야 한다. <img src="https://latex.codecogs.com/svg.image?\lambda&space;" title="\lambda " /> 가 규제의 정도를 제어하며, 주로 cross-validation을 통해 값이 결정된다. 
+
+- 즉, MF는 아이템과 사용자를 요인 벡터에 매핑하기 위해 관찰된 평점만을 사용한 학습을 통해, 알려지지 않은 평점을 예측한다. 이 때, 데이터의 수가 적기 때문에 과적합을 방지하기 위해 규제화를 적용한다. 
 
 
 <br/>
