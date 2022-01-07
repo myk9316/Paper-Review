@@ -74,7 +74,7 @@
 
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148557996-9836110b-b63d-4732-938d-c07595b8637d.PNG"></p>
 
-- 결국 이 모델에서 하고자 하는 것은, 알려지지 않은 평점을 예측하는 것이기 때문에 규제화를 통해 과적합을 방지해야 한다. 이때 규제항이 필요한데, <img src="https://latex.codecogs.com/svg.image?\lambda&space;" title="\lambda " /> 가 규제의 정도를 제어하며, <img src="https://latex.codecogs.com/svg.image?\lambda&space;" title="\lambda " />는 주로 cross-validation을 통해 값이 결정된다. 
+- 결국 이 모델에서 하고자 하는 것은, 알려지지 않은 평점을 예측하는 것이기 때문에 규제화를 통해 과적합을 방지해야 한다. <img src="https://latex.codecogs.com/svg.image?\lambda&space;" title="\lambda " /> 가 규제의 정도를 제어하며, 주로 cross-validation을 통해 값이 결정된다. 
 
 
 <br/>
