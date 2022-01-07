@@ -150,11 +150,19 @@ collaborative filtering에 대한 matrix factorization 방식의 한 가지 이�
 <br/>
 
 ## 8. Inputs With Varing Confidence Levels
--
+- 모든 평점 데이터가 같은 가중치 또는 신뢰도를 가지는 것은 아니다. 예를 들어, 대규모 광고로 인해 특정 아이템의 선호도가 높아질 수 있고, 적대적인 사용자에 의해 선호도가 낮아질 수 있다. 
+
+- 또 다른 예시로는, implicit feedback을 중심으로 구축된 추천시스템은 사용자의 정확한 선호도를 정량화하기가 어렵다 ("이 제품을 아마도 좋아할꺼다" 또는 "이 제품에 흥미가 없을거다" 이런식으로 binary 로 표현됨). 따라서, 선호도와 함께 신뢰도 점수를 부여하는 것이 중요하다. 이 경우 신뢰도는 행동 빈도를 설명하는 숫자 값인데, 예를 들어 사용자가 특정 프로그램을 얼마나 오래 또는 얼마나 자주 보았는지가 신뢰도 값이 될 수가 있다. 사용자의 선호도와 무관한 다양한 요소들은 일회성 이벤트를 야기할 수 있으나, 반복되는 이벤트는 사용자의 의견을 반영할 가능성이 더 높다. 이러한 특성을 반영하는 목적함수는 다음과 같다. 
+
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/148588881-86dec24e-9909-4084-bcb7-1f496eadaaf0.PNG"></p>
 
 <br/>
 
 ## 9. Netflix Prize Competition
 - 
+
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569174-8450a6ce-3f6c-4b05-820c-3cf9a3ce9b25.PNG"></p>
+
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569175-23fba36d-acde-4ef9-841b-ebf701d25c58.PNG"></p>
 
 <br/>
