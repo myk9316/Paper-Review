@@ -64,7 +64,7 @@
 
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148522790-0ecd351f-ada8-4b7b-a8cd-9d3afb61e20b.PNG"></p>
 
-- ㄴ
+- 이때, 주요 challenge는 각 아이템과 사용자를 요인 벡터에 매핑하는 것인데, 이 과정만 끝내면 사용자가 아이템을 어떻게 평가할 것인지 쉽게 알 수 있다. 
 
 <br/>
 
