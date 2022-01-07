@@ -1,5 +1,5 @@
 # Matrix Factorization Techniques For Recommender Systems
-- 본 논문은 2009년에 발표된 추천시스템 논문이다.
+본 논문은 2009년에 발표된 추천시스템 논문이다.
 
 <br/>
 
