@@ -145,9 +145,9 @@ collaborative filtering에 대한 matrix factorization 방식의 한 가지 이�
 
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569171-84f78264-7344-40df-b8b5-6150b2ad70ed.PNG"></p>
 
-- <img src="https://latex.codecogs.com/svg.image?b_{i}(t)" title="b_{i}(t)" /> : 아이템의 인기는 시간이 지남에 따라 변할 수 있다. (Ex. 영화의 인기도)
-- <img src="https://latex.codecogs.com/svg.image?b_{u}(t)" title="b_{u}(t)" /> : 사용자의 성향은 시간이 지남에 따라 변한 수 있다. (Ex. 보통 4점을 준 사용자가 보통 3점을 줄 수 있다)
-- <img src="https://latex.codecogs.com/svg.image?p_{u}(t)" title="p_{u}(t)" /> : 아이템에 대한 사용자의 성향은 시간이 지남에 따라 변할 수 있다. 
+  - <img src="https://latex.codecogs.com/svg.image?b_{i}(t)" title="b_{i}(t)" /> : 아이템의 인기는 시간이 지남에 따라 변할 수 있다. (Ex. 영화의 인기도)
+  - <img src="https://latex.codecogs.com/svg.image?b_{u}(t)" title="b_{u}(t)" /> : 사용자의 성향은 시간이 지남에 따라 변한 수 있다. (Ex. 보통 4점을 준 사용자가 보통 3점을 줄 수 있다)
+  - <img src="https://latex.codecogs.com/svg.image?p_{u}(t)" title="p_{u}(t)" /> : 아이템에 대한 사용자의 성향은 시간이 지남에 따라 변할 수 있다. 
 
 <br/>
 
