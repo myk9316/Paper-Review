@@ -141,9 +141,7 @@ collaborative filtering에 대한 matrix factorization 방식의 한 가지 이�
 ## 7. Temporal Dynamics
 - 지금까지 살펴본 모델들은 정적인 모델들이였는데, 현실에서는 새로운 선택지가 나타남에 따라 상품의 인식과 인기도는 끊임없이 변하고 고객의 성향 역시 변한다. 따라서, 추천시스템은 **동적이고 시간에 따라 변하는 사용자-아이템 간의 상호관계**를 반영하는 **temporal effect**를 나타낼 수 있어야 한다. 
 
-- MF는 아래의 식으로 이러한 temporal effect를 모델링할 수 있다. 
-
-<p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569171-84f78264-7344-40df-b8b5-6150b2ad70ed.PNG"></p>
+- MF는 아래의 식으로 이러한 temporal effect를 모델링할 수 있다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569171-84f78264-7344-40df-b8b5-6150b2ad70ed.PNG"></p>
 
   - <img src="https://latex.codecogs.com/svg.image?b_{i}(t)" title="b_{i}(t)" /> : 아이템의 인기는 시간이 지남에 따라 변할 수 있다. (Ex. 영화의 인기도)
   - <img src="https://latex.codecogs.com/svg.image?b_{u}(t)" title="b_{u}(t)" /> : 사용자의 성향은 시간이 지남에 따라 변한 수 있다. (Ex. 보통 4점을 준 사용자가 보통 3점을 줄 수 있다)
