@@ -123,9 +123,9 @@ collaborative filtering에 대한 matrix factorization 방식의 한 가지 이�
 
 <br/>
 
-시스템은 squared error function을 최소화 함으로 학습한다. 
+이를 앞서 보았던 최소화 해야하는 식에 적용해보면, 모델이 최소화해야할 식은 다음과 같다. 
 
-<p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569164-07a430e1-a115-4d1d-921a-e210bbf364e6.PNG"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/148583053-f0335f70-9154-416f-81a6-8c4e6b542e30.PNG"></p>
 
 <br/>
 
