@@ -112,7 +112,7 @@
 
 <br/>
 
-## 5. Adding Biases
+## 5. Adding Biases (특성)
 collaborative filtering에 대한 matrix factorization 방식의 한 가지 이점은 다양한 데이터의 측면 및 다른 어플리케이션 별 요구사항을 처리할 수 있는 유연성이다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148522790-0ecd351f-ada8-4b7b-a8cd-9d3afb61e20b.PNG"></p> 위 식은 여러 평점 값을 만들어내는 사용자와 아이템 간의 상호관계를 파악하는 것이 목적이다. 하지만, 많은 경우 상호관계 외에 사용자나 이이템 자체의 특성이 이러한 평점 값의 변화에 영향을 미치며, 그러한 영향을 **biases** 또는 **intercepts**라고 한다. 예를 들면, 어떠한 사용자는 다른 사용자에 비해 높은 점수를 주는 경향과, 일부 아이템은 다른 아이템에 비해 높은 점수를 받는 경향이 존재할 수 있다.  
 
 <br/>
@@ -129,7 +129,7 @@ collaborative filtering에 대한 matrix factorization 방식의 한 가지 이�
 
 <br/>
 
-## 6. Additional Input Sources
+## 6. Additional Input Sources (추가적인 데이터 소스)
 - 추천시스템은 종종 **cold start problem**을 직면하게 되는데, 사용자에 대한 추가적인 정보를 포함하는 것이 이 문제를 해결할 수도 있다 (implicit feedback으로 부터 유저의 선호도에 대한 insight를 획득). 즉, 사용자가 explicit 평점을 제공하고 싶은 의지와 상관없이 행동 정보를 수집할 수 있다. 예를 들어, 소매업자는 고객의 구매 또는 브라우저 히스토리를 통해 고객의 성향을 알 수 있고, 고객이 제공할 만한 평점에 대해 알 수 있을 것이다.
 
 - 간단하게 생각해서, Boolean implicit feedback이 있는 경우를 고려해보자. N(u)는 사용자 u가 implicit한 선호를 표현한 아이템의 set 인데, 이를 이용해서 사용자의 profile을 만들 수 있다. N(u) 항목을 선호한 사용자는 다음과 같이 표현되고, <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569165-f16cef9e-9e94-4543-9fdc-2e6f7eec7dea.PNG"></p> 이 식을 정규화 하면 다음고 같이 표현된다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569168-ed157c2b-454c-47b3-8502-ff59667fbed7.PNG"></p>.
@@ -138,7 +138,7 @@ collaborative filtering에 대한 matrix factorization 방식의 한 가지 이�
 
 <br/>
 
-## 7. Temporal Dynamics
+## 7. Temporal Dynamics (시간적 정보)
 - 지금까지 살펴본 모델들은 정적인 모델들이였는데, 현실에서는 새로운 선택지가 나타남에 따라 상품의 인식과 인기도는 끊임없이 변하고 고객의 성향 역시 변한다. 따라서, 추천시스템은 **동적이고 시간에 따라 변하는 사용자-아이템 간의 상호관계**를 반영하는 **temporal effect**를 나타낼 수 있어야 한다. 
 
 - MF는 아래의 식으로 이러한 temporal effect를 모델링할 수 있다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569171-84f78264-7344-40df-b8b5-6150b2ad70ed.PNG"></p>
@@ -149,7 +149,7 @@ collaborative filtering에 대한 matrix factorization 방식의 한 가지 이�
 
 <br/>
 
-## 8. Inputs With Varing Confidence Levels
+## 8. Inputs With Varing Confidence Levels (신뢰도 정보)
 - 모든 평점 데이터가 같은 가중치 또는 신뢰도를 가지는 것은 아니다. 예를 들어, 대규모 광고로 인해 특정 아이템의 선호도가 높아질 수 있고, 적대적인 사용자에 의해 선호도가 낮아질 수 있다. 
 
 - 또 다른 예시로는, implicit feedback을 중심으로 구축된 추천시스템은 사용자의 정확한 선호도를 정량화하기가 어렵다 ("이 제품을 아마도 좋아할꺼다" 또는 "이 제품에 흥미가 없을거다" 이런식으로 binary 로 표현됨). 
@@ -168,3 +168,7 @@ collaborative filtering에 대한 matrix factorization 방식의 한 가지 이�
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569175-23fba36d-acde-4ef9-841b-ebf701d25c58.PNG" width="50%" height="50%"></p>
 
 <br/>
+
+## 요약
+- 정리하자면, MF는 User-Item Matrix에 추가적으로 다양하게 응이 가능하다. 
+  - 사용자/아이템의 특성, 추가적인 데이터 소스, 시간적 정보, 사용자/아이템의 신뢰도
