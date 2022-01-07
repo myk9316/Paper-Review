@@ -123,7 +123,7 @@ collaborative filtering에 대한 matrix factorization 방식의 한 가지 이�
 
 <br/>
 
-이를 앞서 보았던 최소화 해야하는 식에 적용해보면, 모델이 최소화해야할 식은 다음과 같다. 
+이를 앞서 보았던 최소화 해야하는 식에 적용해보면, 모델이 최소화해야할 식(목적함수)은 다음과 같다. 
 
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148583053-f0335f70-9154-416f-81a6-8c4e6b542e30.PNG"></p>
 
