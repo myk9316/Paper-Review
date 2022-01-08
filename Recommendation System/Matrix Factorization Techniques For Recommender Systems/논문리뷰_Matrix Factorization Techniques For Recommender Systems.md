@@ -161,9 +161,13 @@ collaborative filtering에 대한 matrix factorization 방식의 한 가지 이�
 <br/>
 
 ## 9. Netflix Prize Competition
-- 
+- 넷플리스의 사용자-영화 매트릭스의 행렬 분해를 통해 영화 선호도를 예측하기 위한 가장 설명적인 차원을 찾을 수 있다. 행렬 분해를 통해 가장 중요한 몇 가지 차원을 식별하고, 새로운 공간에서 영화의 위치를 탐색할 수 있다. 
 
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569174-8450a6ce-3f6c-4b05-820c-3cf9a3ce9b25.PNG" width="50%" height="50%"></p>
+
+  - 첫 번째 요소 벡터(x-axis)는 남성과 성인 관객을 겨냥한 코미디와 공포 영화이고, 반대편에는 진지한 음색과 강한 여성이 주연인 드라마와 코미디가 위치한다. 
+  - 두 번째 요소 벡터(y-axis)는 상단일수록 독립적이고 평론가의 호평을 받은 기발한 영화들로, 아래 쪽일수록 주류 영화들이 위치한다. 
+  - 따라서, 좌측 상단에는 폭력적인 주제를 다루는 예술적인 인디 영화가 위치해 있고, 우쯕 하단에는 여성 중심의 진지한 주류 영화가 위치해 있다. 
 
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569175-23fba36d-acde-4ef9-841b-ebf701d25c58.PNG" width="50%" height="50%"></p>
 
