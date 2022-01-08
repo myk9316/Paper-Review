@@ -1,8 +1,6 @@
 # Matrix Factorization Techniques For Recommender Systems
 본 논문은 2009년에 발표된 추천시스템 논문이다. Netflix Competition을 통해서 Matrix Factorization 모델이 기존의 nearest-neighbor techniques보다 우월함을 증명함과 동시에 쉽게 학습할 수 있는 메모리 효율적인 모델임을 증명하였다. 또한, 이 모델의 장점은 여러 형태의 피드백과, temporal dynamics, 그리고 신뢰도 등의 데이터의 많은 중요한 측면들을 통합할 수 있다는 것이다. 
 
-<br/>
-
 ## Introduction
 시장에 너무나도 많고 다양한 제품이 제공됨에 따라, 소비자들은 선택의 폭이 넓어졌다. 따라서, 소비자에게 적절한 상품을 매칭하는 것이 소비자의 만족도와 충성도를 높이기 위한 중요한 일이 되었다. 이에 따라, 많은 업체들이 사용자들의 흥미와 관심사를 분석하여 개인화된 추천을 제공하는 추천시스템에 더욱 관심을 가지게 되었다. 
 
@@ -167,7 +165,10 @@ collaborative filtering에 대한 matrix factorization 방식의 한 가지 이�
   - 두 번째 요소 벡터(y-axis)는 상단일수록 독립적이고 평론가의 호평을 받은 기발한 영화들로, 아래 쪽일수록 주류 영화들이 위치한다. 
   - 따라서, 좌측 상단에는 폭력적인 주제를 다루는 예술적인 인디 영화가 위치해 있고, 우쯕 하단에는 여성 중심의 진지한 주류 영화가 위치해 있다. 
 
-<p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569175-23fba36d-acde-4ef9-841b-ebf701d25c58.PNG" width="50%" height="50%"></p>
+- 행렬 분해를 위해 다양항 구현과 파라미터화를 시도하였다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148569175-23fba36d-acde-4ef9-841b-ebf701d25c58.PNG" width="50%" height="50%"></p>
+  - 위 그래프는 **다양한 모델**과 **파라미터의 수**가 RMSE에 미치는 영향을 보여준다. 본 논문에서 제안하는 MF의 여러가지 Variation(Bias, implicit feedback, temporal dynamic)을 실험을 통해 비교하였다. 
+  - 모든 모델에서 파라미터의 수가 증가(= 차원의 수 증가)할수록 정확도가 증가하였다. 
+  - 모델이 복잡할수록 정확도가 증가하였으며, 특히 temporal components가 중요하였다. 
 
 <br/>
 
