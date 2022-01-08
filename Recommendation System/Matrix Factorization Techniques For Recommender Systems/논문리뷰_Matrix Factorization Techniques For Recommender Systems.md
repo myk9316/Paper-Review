@@ -1,5 +1,5 @@
 # Matrix Factorization Techniques For Recommender Systems
-본 논문은 2009년에 발표된 추천시스템 논문이다.
+본 논문은 2009년에 발표된 추천시스템 논문이다. Netflix Competition을 통해서 Matrix Factorization 모델이 기존의 nearest-neighbor techniques보다 우월함을 증명함과 동시에 쉽게 학습할 수 있는 메모리 효율적인 모델임을 증명하였다. 또한, 이 모델의 장점은 여러 형태의 피드백과, temporal dynamics, 그리고 신뢰도 등의 데이터의 많은 중요한 측면들을 통합할 수 있다는 것이다. 
 
 <br/>
 
