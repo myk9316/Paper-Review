@@ -105,7 +105,7 @@ Generalized linear models with nonlinear feature transformations are widely used
 <br/>
 
 ### 3.3 Joint Training of Wide & Deep Model
-<p align="center"><img src="https://user-images.githubusercontent.com/79245484/148804633-8667463e-f7a8-42d0-a2aa-0eca72ad81f5.PNG"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/148809494-8662cd99-1fd5-4ee4-8c94-232babe7d71e.PNG"></p>
 
 - Wide Component와 Deep Component는 예측치로서 각각의 output log odds의 가중치 합으로 결합되고, 그것은 joint training을 위해 하나의 공통의 로지스틱 함수로 fed 된다. 
 
