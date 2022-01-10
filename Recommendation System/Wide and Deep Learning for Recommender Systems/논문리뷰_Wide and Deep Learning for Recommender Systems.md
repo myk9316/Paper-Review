@@ -1,5 +1,5 @@
 # Wide & Deep Learning for Recommeder Systems
-본 논문은 2006년 구글에서 발표한 wide and deep 추천랭킹 알고리즘에 관한 논문이다. 이 알고리즘은 구글플레이에서 앱 추천에 실제로 적용된 알고리즘으로, 선형 모델과 신경말 모델을 함께 적용하여 Memorization과 Generalization 둘다를 얻어 추천랭킹을 개선하는 것이 목표이다. 
+본 논문은 2006년 구글에서 발표한 wide and deep 추천랭킹 알고리즘에 관한 논문이다. 구글플레이에서 앱 추천에 실제로 적용된 알고리즘으로, 선형 모델과 신경말 모델을 함께 적용하여 Memorization과 Generalization 둘다를 얻어 추천랭킹을 개선하는 것이 목표이다. 
 
 <br/>
 
