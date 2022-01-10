@@ -18,18 +18,32 @@ Generalized linear models with nonlinear feature transformations are widely used
 
 - 추천시스템이 마주하는 어려운 점 중 한가지는 암기(Memorization)와 일반화(Generalization)를 동시에 달성하는 것이다. 
 
-- 본 논문에서는 선형 모델의 요소와 신경망의 요소를 결합해서 학습함에 따라, 암기와 일반화를 한 모델에서 달성하였다. 
+- 본 논문에서는 선형 모델과 신경망을 결합해서 학습함에 따라, 암기와 일반화를 한 모델에서 달성하여 각각의 이점을 결합하였다. 
 
-## 암기(Memorization)
-  - 동시에 발생하는 아이템 또는 피처를 학습하고 사용 가능한 과거 데이터로부터 상관관계를 추출하는 작업이다.
-  - 암기에 기반한 추천은 사용자가 실행한 행동과 관련된 아이템과 직접적으로 관련이 있다.
-  - 장단점: sparse feature (ex. AND(user_installed_app=netflix, imporession_app=pandora)에 대해 cross-product transformation 사용하여 효과적으로 달성할 수 있지만, cross-product transformation의 한계는 학습 데이터에 나타나지 않은 query-item 변수 쌍은 일반화할 수 없다. 
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/148770417-18c60700-98fa-4be0-94a0-e6b18932b880.PNG"></p>
 
-## 일반화(Generalization)
-  - 상관관계의 이행성에 기반하고, 과거에 전혀 혹은 드물게 발생한 새로운 변수들의 조합을 탐구한다.
-  - 추천의 다양성을 향상시키려는 경향이 있다. 
-  - 장단점: 덜 세분화된 변수(ex. AND(user_installed_category=video, imporession_category=music)를 사용해서 일반화 할 수 있지만, 피처엔지니어링에 많은 노력이 필요하다. 
-    - Embedding based 모델(FM or deep neural network)은 저차원 임베딩 벡터의 학습을 통해 이전에 보지 못했던 쿼리-아이템 쌍을 피처엔지니어링을 줄이면서 일반화를 할 수 있지만, 특정 선호도를 가진 사용자나 틈새 아이템과 같이 sparse하고 차원이 높은 경우에는 쿼리 아이템 행렬에 대해 저차원 표현으로 학습하는 것은 어렵다. 이러한 경우에, 과도한 일반화를 하여 관련없는 추천이 이루어질 수 있다. 
+
+### 암기(Memorization) - Wide한 영역 담당
+- 암기는 동시에 발생하는 아이템 또는 피처를 학습하고 사용 가능한 과거 데이터로부터 상관관계를 추출하는 작업으로, 암기에 기반한 추천은 사용자가 실행한 행동과 관련된 아이템과 직접적으로 관련이 있다.
+
+- Linear model을 사용하며, 동시출현 빈도를 표현하는 cross-product를 통해 적은 parameter로도 모든 feature의 조합을 기억할 수 있어 wide하고 sparse한 정보 기억이 효과적이다. 
+
+- sparse feature (ex. AND(user_installed_app=netflix, imporession_app=pandora)에 대해 **cross-product transformation** 사용하여 효과적으로 달성할 수 있다. 덜 세분화된 변수(ex. AND(user_installed_category=video, imporession_category=music)를 사용해서 일반화 할 수 있지만, **피처 엔지니어링에 많은 노력**이 필요하다. 
+
+- 단점: cross-product transformation의 한계는 학습 데이터에 나타나지 않은 query-item 변수 쌍은 학습하지 못하고, 뻔한 추천을 한다. 또한, Wide의 일반화는 feature engineering이 많이 필요하다. 
+
+### 일반화(Generalization) - Deep한 영역 담당
+- 일반화는 상관관계의 이행성에 기반하고, 과거에 전혀 혹은 드물게 발생한 새로운 변수들의 조합을 탐구하여 추천의 다양성을 향상시키려는 경향이 있다. (비주류 아이템을 거의 추천하지 않는 Long-tail problem 극복에 도움) 
+
+- Deep neural netowrk를 사용하는데, 피처 엔지니어링에 적은 effort가 들어가며 non-linear한 output을 내기 때문에 이전에 나타나지 않은 변수들에 대해서도 연관성을 학습 시킬 수 있다. 
+
+- Embedding based 모델(FM or deep neural network)은 저차원 임베딩 벡터의 학습을 통해 이전에 보지 못했던 query-item 쌍을 **피처 엔지니어링을 줄이면서** 일반화를 할 수 있다.
+  - 단점: 특정 선호도를 가진 사용자나 틈새 아이템과 같이 sparse하고 high-rank인 경우에는 쿼리 아이템 행렬에 대해 저차원 표현으로 학습하는 것은 어렵다. 즉, 실제로 존재할 수 없는 관계에 대해서도 지나친 일반화를 하여 관련이 적은 추천이 이루어질 수 있다. 
+
+### Contribution
+- Sparse input에 대한 추천시스템을 위해 임베딩을 통한 피드포워드 신경망과 변수 변환을 통한 선형 모델을 함께 훈련 시키는 Winde & Deep 모델
+- 10억명 이상의 활성 사용자와 100만개 이상의 앱이 있는 모바일 앱스토어 구글 플레이 에서 Wide & Deep 추천시스템의 구현 및 평가
+- Tensorflow에 오픈소스화
 
 <br/>
 
