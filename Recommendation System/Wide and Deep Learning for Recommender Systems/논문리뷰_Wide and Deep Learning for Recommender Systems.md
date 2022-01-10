@@ -92,7 +92,7 @@ Generalized linear models with nonlinear feature transformations are widely used
 <br/>
 
 ### 3.2 The Deep Component
-<p align="center"><img src="https://user-images.githubusercontent.com/79245484/148809494-8662cd99-1fd5-4ee4-8c94-232babe7d71e.PNG"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/148809491-bbd4cfff-8fec-4856-beae-6d268052b829.PNG"></p>
 
 - Generalization을 구현하는 Deep Component는 피드포워드 신경망이다. 
 
