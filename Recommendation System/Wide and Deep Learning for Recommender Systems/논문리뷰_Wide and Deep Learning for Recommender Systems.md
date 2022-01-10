@@ -53,12 +53,14 @@ Generalized linear models with nonlinear feature transformations are widely used
   - 추천시스템은 사용자가 클릭이나 구매 같은 특정한 행동을 수행할 수 있는 앱 목록을 반환한다. 
   - 이러한 사용자 행동은 query와 impression과 함께 학습을 위한 훈련 데이터로 로그에 기록된다. 
 
-- 사용자의 query가 들어오면, 검색(retrieval)시스템은 다양한 신호(일반적으로 머신러닝 모형과 사람이 정의한 규칙으로)를 사용하여 해당 query에 적합한 짧은 앱 후보 목록을 반환한다. 
-- 이어서, Ranking 시스템은 앱 후보 목록에 있는 모든 아이템에 대해 점수를 매겨서 정렬한다. 여기서 점수는 사용자의 정보 x가 주어졌을때, 사용자가 앱 y에 action할 확률인 P(y|x)를 구한다. 
-- Wide & Deep을 사용한 Ranking 모델이 후 앱들의 점수를 매기는데 사용되는 것이다. 
+- 하지만, 데이터베이스에 100만개가 넘는 앱이 있기 때문에, 요구되는 서비스 대시 시간 이내로 모든 쿼리에 대하여 모든 앱에 점수를 주는 것은 어렵다. 
+  - 따라서, 사용자의 query가 들어오면 검색(retrieval)시스템은 다양한 신호(일반적으로 머신러닝 모형과 사람이 정의한 규칙으로)를 사용하여 해당 query에 가장 적합한 짧은 앱 목록을 반환한다. 
+  - 이어서, Ranking 시스템은 앱 목록에 있는 모든 아이템에 대해 점수를 매긴다. 여기서 점수는 사용자의 정보인 다양한 피처들을 기반으로 사용자 x가 앱 y에 action할 확률인 P(y|x)를 구한다. 
+
+- 본 논문은, Wide & Deep learning를 사용한 Ranking 모델을 제안한다. (앱 목록의 점수를 매기는데 사용) 
 
 
-<p align="center"><img src="https://user-images.githubusercontent.com/79245484/148770419-09437a62-6a19-4441-9be5-5819e51f1b00.PNG"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/148804633-8667463e-f7a8-42d0-a2aa-0eca72ad81f5.PNG"></p>
 
 <br/>
 
