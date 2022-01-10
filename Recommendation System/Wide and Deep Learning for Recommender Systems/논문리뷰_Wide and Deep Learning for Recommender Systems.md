@@ -38,17 +38,27 @@ Generalized linear models with nonlinear feature transformations are widely used
 - Deep neural netowrk를 사용하는데, 피처 엔지니어링에 적은 effort가 들어가며 non-linear한 output을 내기 때문에 이전에 나타나지 않은 변수들에 대해서도 연관성을 학습 시킬 수 있다. 
 
 - Embedding based 모델(FM or deep neural network)은 저차원 임베딩 벡터의 학습을 통해 이전에 보지 못했던 query-item 쌍을 **피처 엔지니어링을 줄이면서** 일반화를 할 수 있다.
-  - 단점: 특정 선호도를 가진 사용자나 틈새 아이템과 같이 sparse하고 high-rank인 경우에는 쿼리 아이템 행렬에 대해 저차원 표현으로 학습하는 것은 어렵다. 즉, 실제로 존재할 수 없는 관계에 대해서도 지나친 일반화를 하여 관련이 적은 추천이 이루어질 수 있다. 
+  - 단점: 특정 선호도를 가진 사용자나 틈새 아이템과 같이 sparse하고 high-rank인 경우에는 query-item 행렬에 대해 저차원 표현으로 학습하는 것은 어렵다. 즉, 실제로 존재할 수 없거나 희소한 관계에 대해서도 지나친 일반화를 하여 관련이 적은 추천이 이루어질 수 있다. 
 
 ### Contribution
 - Sparse input에 대한 추천시스템을 위해 임베딩을 통한 피드포워드 신경망과 변수 변환을 통한 선형 모델을 함께 훈련 시키는 Winde & Deep 모델
 - 10억명 이상의 활성 사용자와 100만개 이상의 앱이 있는 모바일 앱스토어 구글 플레이 에서 Wide & Deep 추천시스템의 구현 및 평가
-- Tensorflow에 오픈소스화
+- Tensorflow 고수준 API를 통한 오픈소스화
 
 <br/>
 
 ## 2. Recommender System Overview
-- 
+- 아래 그림은 구글 스토어 추천시스템의 개요이다. 
+  - 사용자가 앱 스토어에 방문하면 사용자 본인과 맥락에 관련한 다양한 피처가 포함된 query가 생성된다. 
+  - 추천시스템은 사용자가 클릭이나 구매 같은 특정한 행동을 수행할 수 있는 앱 목록을 반환한다. 
+  - 이러한 사용자 행동은 query와 impression과 함께 학습을 위한 훈련 데이터로 로그에 기록된다. 
+
+- 사용자의 query가 들어오면, 검색(retrieval)시스템은 다양한 신호(일반적으로 머신러닝 모형과 사람이 정의한 규칙으로)를 사용하여 해당 query에 적합한 짧은 앱 후보 목록을 반환한다. 
+- 이어서, Ranking 시스템은 앱 후보 목록에 있는 모든 아이템에 대해 점수를 매겨서 정렬한다. 여기서 점수는 사용자의 정보 x가 주어졌을때, 사용자가 앱 y에 action할 확률인 P(y|x)를 구한다. 
+- Wide & Deep을 사용한 Ranking 모델이 후 앱들의 점수를 매기는데 사용되는 것이다. 
+
+
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/148770419-09437a62-6a19-4441-9be5-5819e51f1b00.PNG"></p>
 
 <br/>
 
