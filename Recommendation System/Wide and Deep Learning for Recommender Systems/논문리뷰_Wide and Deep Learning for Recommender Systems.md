@@ -100,7 +100,9 @@ Generalized linear models with nonlinear feature transformations are widely used
 
 - 이런 sparse하고 고차원인 변주형 변수 각각은 임베딩 벡터라고 불리는 저차원의 밀집한 실수 값 벡터로 변환되고, 임베딩 벡터는 임의로 초기화되고 모델 학습 중에 최종 손실 함수를 최소화 하도록 값이 훈련된다.
 
-- 이러한 저차원의 밀집한 임베딩 벡터는 포워드 과정 중에 신경망의 hidden layers로 fed 되어진다. 구체적으로 각각의 hidden layer는 다음의 계산을 수행한다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148812070-1d92fd1c-97cc-43a1-a6e9-946c3ba96821.PNG"></p> (l: layer number, f: activation function(ReLu))
+- 이러한 저차원의 밀집한 임베딩 벡터는 포워드 과정 중에 신경망의 hidden layers로 fed 되어진다. 구체적으로 각각의 hidden layer는 다음의 계산을 수행한다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148812070-1d92fd1c-97cc-43a1-a6e9-946c3ba96821.PNG"></p>
+  - l: layer number
+  - f: activation function(ReLu)
 
 <br/>
 
@@ -119,6 +121,10 @@ Generalized linear models with nonlinear feature transformations are widely used
 - 본 논문에서는, Deep part에는 Ada Grad를, Wide part에는 L1 regularization을 최적화 알고리즘으로 적용하며, Follow-the-regularized-leader(FTRL) 알고리즘을 함께 사용하였다. 
 
 - 로지스틱 회귀 문제의 경우, 모델의 예측은 다음과 같다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148812074-32f26fa6-db97-40bd-b616-83acc14c5ce2.PNG"></p>
+  - <img src="https://latex.codecogs.com/svg.image?\sigma&space;" title="\sigma " /> : sigmoid 함수
+  - <img src="https://latex.codecogs.com/svg.image?\phi(x)&space;" title="\phi(x) " /> : 초기 변수 x의 cross product transformation
+  - <img src="https://latex.codecogs.com/svg.image?w_{wide}" title="w_{wide}" /> : wide 모델 전체의 가중치 벡터
+  - <img src="https://latex.codecogs.com/svg.image?w_{deep}" title="w_{deep}" /> : 마지막 활성화 함수 <img src="https://latex.codecogs.com/svg.image?a^{(l_{f})}" title="a^{(l_{f})}" /> 가 적용된 가중치
 
 <br/>
 
