@@ -111,7 +111,8 @@ Generalized linear models with nonlinear feature transformations are widely used
 
 - Joint training과 앙상블의 차이
   
-  -  앙상블의 경우 두 Model을 개별적으로 학습되고, 그 결과값을 학습할 때는 말고 inference 단계에서만 결합되어 사용된다. 반면에, Joint training은 두 Component를 하나의 학습 과정으로 묶여있으며, 훈련시간에 합계의 가중치 뿐만 아니라 두 Component의 모든 파라미터를 동시에 optimize 시킨다. 
+  -  앙상블의 경우 두 Model을 개별적으로 학습되고, 그 결과값을 학습할 때는 말고 inference 단계에서만 결합되어 사용된다. 
+  -  반면에, Joint training은 두 Component를 하나의 학습 과정으로 묶여있으며, 훈련시간에 합계의 가중치 뿐만 아니라 두 Component의 모든 파라미터를 동시에 optimize 시킨다. 
 
 - Wide & Deep 모델에서의 Joint Training은 미니배치 확률적 최적화를 사용하여 output layer에서 wide와 deep component로 동시에 gradient를 역전파하여 수행한다. 
 
