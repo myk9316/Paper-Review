@@ -113,12 +113,12 @@ Generalized linear models with nonlinear feature transformations are widely used
 
 - Joint training과 앙상블의 차이
   
-  -  앙상블의 경우 두 Model을 개별적으로 학습되고, 그 결과값을 학습할 때는 말고 inference 단계에서만 결합되어 사용된다. 
-  -  반면에, Joint training은 두 Component를 하나의 학습 과정으로 묶여있으며, 훈련시간에 합계의 가중치 뿐만 아니라 두 Component의 모든 파라미터를 동시에 optimize 시킨다. 
+  -  앙상블은 두 Model은 서로 모르는채로 개별적으로 학습되고, 그 결과값을 학습할 때는 말고 inference 단계에서만 결합되어 사용된다. 
+  -  Joint training은 두 Component를 하나의 학습 과정으로 묶여있으며, 훈련시간에 합계의 가중치 뿐만 아니라 두 Component의 모든 파라미터를 동시에 optimize 시킨다. 
 
-- Wide & Deep 모델에서의 Joint Training은 미니배치 확률적 최적화를 사용하여 output layer에서 wide와 deep component로 동시에 gradient를 역전파하여 수행한다. 
+- Wide & Deep 모델에서의 Joint Training은 미니배치 확률적 최적화를 사용하여, output의 gradient를 wide와 deep component에 동시에 역전파하여 학습한다. 
 
-- 본 논문에서는, Deep part에는 Ada Grad를, Wide part에는 L1 regularization을 최적화 알고리즘으로 적용하며, Follow-the-regularized-leader(FTRL) 알고리즘을 함께 사용하였다. 
+  - 본 논문에서는, Deep part에는 Ada Grad를, Wide part에는 L1 regularization을 최적화 알고리즘으로 적용하며 Follow-the-regularized-leader(FTRL) 알고리즘을 함께 사용하였다. 
 
 - 로지스틱 회귀 문제의 경우, 모델의 예측은 다음과 같다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148812074-32f26fa6-db97-40bd-b616-83acc14c5ce2.PNG"></p>
   - <img src="https://latex.codecogs.com/svg.image?\sigma&space;" title="\sigma " /> : sigmoid 함수
