@@ -118,6 +118,8 @@ Generalized linear models with nonlinear feature transformations are widely used
 
 - 본 논문에서는, Deep part에는 Ada Grad를, Wide part에는 L1 regularization을 최적화 알고리즘으로 적용하며, Follow-the-regularized-leader(FTRL) 알고리즘을 함께 사용하였다. 
 
+- 로지스틱 회귀 문제의 경우, 모델의 예측은 다음과 같다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148812074-32f26fa6-db97-40bd-b616-83acc14c5ce2.PNG"></p>
+
 <br/>
 
 ## 4. System Implementation
