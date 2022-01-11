@@ -202,6 +202,9 @@ Wide & Deep 모델의 성능을 검증하기 위해 실험을 통해 두가지 �
 
 ## 6. Conclusion
 - 추천시스템에서 Memorization과 Generalization은 모두 중요하다.
+
 - Wide 선형 모델은 sparse 변수 간 상호작용을 cross-product feature transformation을 통해 효과적으로 memorize 할 수 있고, Deep neural network는 이전에 나타나지 않은 변수 긴 상호작용을 저차원 임베딩을 통해 일반화 시킬 수 있다. 
+
 - 본 논문에서는, Wide와 Deep 모델 각각의 장점을 합치기 위해 Wide & Deep 학습 프레임워크를 제시하였다. 
+
 - Wide & Deep 모델을 대규모 상업용 앱 스토어인 구글 플레이에서 구축하고 평가하였고, 온라인 실험 결과에 따르면 Wide만 또는 Deep만 사용한 모델보다 눈에 띄게 높은 앱 설치율을 보여주었다. 
