@@ -176,15 +176,27 @@ Generalized linear models with nonlinear feature transformations are widely used
 <br/>
 
 ## 5. Experiment Results
-Wide & Deep 모델의 성능을 검증하기 위해 두가지 측면에서 평가를 진행하였다.
+Wide & Deep 모델의 성능을 검증하기 위해 실험을 통해 두가지 측면에서 평가를 진행하였다.
 
 ### 5.1 App Acquisitions
-- 
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/148770435-66d8821b-738d-4665-a895-e7519d792eaf.PNG"></p>
+
+- 실험은 3주간의 실시간 온라인 A/B 테스트로 진행되었는데, Wide-only, Deep-only, Wide & Deep 3가지 모델을 각각 랜덤으로 선택한 전체의 1%에 해당하는 사용자에게 적용하였다. 
+
+- 실험 결과, Wide & Deep 모델이 Wide-only 모델(대조군)에 비해서는 3.9% 더 높은 앱 설치율을 보였고, Deep-only 모델에 비해서는 1% 더 높은 앱 설치율을 보였다. 
+
+- 오프라인 테스트 셋을 통해 얻은 오프라인 AUC의 경우에도 Wide & Deep 모델이 가장 우수한 성능을 보였지만, 온라인 트래픽 만큼의 큰 영향을 주지 못했다. 
+
+  - 이는 오프라인 데이터 셋에서는 노출과 레이블이 고정되어 있지만, 온라인에서는 generalization과 memorization을 함께 고려하여 탐색적으로 추천해볼 수 있고 그에 따라 사용자 응답으로 학습이 가능하다는 점이 이유 중 하나일 것이라고 한다. 
 
 <br/>
 
 ### 5.2 Serving Performance
-- 
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/148770437-0a9bda40-768f-4f78-b7be-29fb76479570.PNG"></p>
+
+- 상용 모바일 앱 스토어는 트래픽이 많기 때문에, 짧은 대기 시간 내 처리량을 높게 유지하며 서비스하기에 어려움이 많다. 
+
+- 본 실험에서 멀티쓰레드를 구현하고 각각의 배치를 더 작은 사이즈로 나누었는데, 이는 client-side에서 지연시간을 14ms로 현저하게 감소시켰다. (31ms -> 14ms)
 
 <br/>
 
