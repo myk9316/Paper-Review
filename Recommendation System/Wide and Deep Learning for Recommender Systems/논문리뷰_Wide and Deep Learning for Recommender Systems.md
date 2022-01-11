@@ -129,6 +129,10 @@ Generalized linear models with nonlinear feature transformations are widely used
 <br/>
 
 ## 4. System Implementation
+앱 추천 파이프라인은 데이터 생성, 모델 학습, 모델 서비스의 3단계로 구성된다. 
+
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/148804514-aec1ba1d-bbe7-458a-a466-f3e705247fce.PNG"></p>
+
 ### 4.1 Data Generation
 - 
 
