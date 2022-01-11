@@ -135,7 +135,9 @@ Generalized linear models with nonlinear feature transformations are widely used
 
 ### 4.1 Data Generation
 - 이 단계에서는 일정 시간 동안 사용자와 앱 노출 데이터를 통해 학습 데이터를 생성한다. 이때, 레이블은 '앱 가입'인데, 노출된 앱을 설치하면 1이고 그렇지 않으면 0이다.
+
 - 범주형 문자열 변수를 정수 ID로 매핑하는 어휘 테이블도 이 단계에서 생성된다.
+
 - 시스템은 최소 횟수 이상으로 발생하는 모든 문자열 변수에 대해 ID 공간을 계산한다. 
 
 <br/>
@@ -145,12 +147,17 @@ Generalized linear models with nonlinear feature transformations are widely used
 
 - 실험에서 사용한 모델의 구조는 위와 같다. 
   - 훈련 중, 입력 레이어는 훈련 데이터와 어휘사전을 받아서 레이블과 함께 sparse하고 dense한 변수를 생성한다. 
+  
   - Wide Component는 사용자가 설치한 앱과 노출된 앱들의 cross-product transformation으로 구성
+  
   - Deep Component는 32차원의 임베딩 벡터가 각각의 범주형 변수들에 대해 학습 
+  
   - 모든 임베딩을 dense 변수들과 연결하여 대략 1200차원의 dense 벡터를 생성
+  
   - 연결된 벡터는 3개의 RELU층으로 전달되고, 마지막으로 로지스틱 output unit으로 전달
 
-- Wide & Deep 모델은 5천억 개가 넘는 샘플로 훈련되었는데, 새로운 학습 데이터가 도착할 때마다 모델은 다시 훈련을 해야한다. 하지만, 매번 다시 훈련시키는 것은 너무 많은 비용이 들고 데이터 수집부터 서비스까지 시간이 많이 소요된다. 이러한 문제를 해결하기 위해, warm-starting system을 구현했다. 
+- Wide & Deep 모델은 5천억 개가 넘는 샘플로 훈련되었는데, 새로운 학습 데이터가 도착할 때마다 모델은 다시 훈련을 해야한다. 하지만, 매번 다시 훈련시키는 것은 너무 많은 비용이 들고 데이터 수집부터 서비스까지 시간이 많이 소요된다. 이러한 문제를 해결하기 위해, 본 논문은 warm-starting system을 구현했다. 
+
   - warm-starting system: 이전 모델로부터 온 임베딩과 선형 모델의 가중치로 새로운 모델을 초기화  
 
 <br/>
