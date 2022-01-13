@@ -98,7 +98,7 @@ Generalized linear models with nonlinear feature transformations are widely used
 
 - 범주형 변수의 경우, 원래 입력값은 문자열 변수(ex. "language=en")이다.
 
-- 이런 sparse하고 고차원인 변주형 변수 각각은 임베딩 벡터라고 불리는 저차원의 밀집한 실수 값 벡터로 변환되고, 임베딩 벡터는 임의로 초기화되고 모델 학습 중에 최종 손실 함수를 최소화 하도록 값이 훈련된다.
+- 이런 sparse하고 고차원인 주형 변수 각각은 임베딩 벡터라고 불리는 저차원의 밀집한 실수 값 벡터로 변환되고, 임베딩 벡터는 임의로 초기화되고 모델 학습 중에 최종 손실 함수를 최소화 하도록 값이 훈련된다.
 
 - 이러한 저차원의 밀집한 임베딩 벡터는 포워드 과정 중에 신경망의 hidden layers로 fed 되어진다. 구체적으로 각각의 hidden layer는 다음의 계산을 수행한다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/148812070-1d92fd1c-97cc-43a1-a6e9-946c3ba96821.PNG"></p>
   - l: layer number
