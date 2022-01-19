@@ -1,5 +1,5 @@
 # Wide & Deep Learning for Recommeder Systems
-본 논문은 2006년 구글에서 발표한 wide and deep 추천랭킹 알고리즘에 관한 논문이다. 구글플레이에서 앱 추천에 실제로 적용된 알고리즘으로, 선형 모델과 신경말 모델을 함께 적용하여 Memorization과 Generalization 둘다를 얻어 추천랭킹을 개선하는 것이 목표이다. 
+본 논문은 2006년 구글에서 발표한 wide and deep 추천랭킹 알고리즘에 관한 논문이다. 구글플레이에서 앱 추천에 실제로 적용된 알고리즘으로, 선형 모델과 신경망 모델을 함께 적용하여 Memorization과 Generalization 둘다를 얻어 추천랭킹을 개선하는 것이 목표이다. 
 
 <br/>
 
@@ -50,7 +50,7 @@ Generalized linear models with nonlinear feature transformations are widely used
   - 즉, 실제로 존재할 수 없거나 희소한 관계에 대해서도 지나친 Generalization을 하여 관련이 적은 추천이 이루어질 수 있다. 
 
 ### Contribution
-- Sparse input에 대한 추천시스템을 위해 임베딩을 통한 피드포워드 신경망과 변수 변환을 통한 선형 모델을 함께 훈련 시키는 Winde & Deep 모델
+- Sparse input에 대한 추천시스템을 위해 임베딩을 통한 피드포워드 신경망과 변수 변환을 통한 선형 모델을 함께 훈련 시키는 Wide & Deep 모델
 - 10억명 이상의 활성 사용자와 100만개 이상의 앱이 있는 모바일 앱스토어 구글 플레이 에서 Wide & Deep 추천시스템의 구현 및 평가
 - Tensorflow 고수준 API를 통한 오픈소스화
 
@@ -62,7 +62,7 @@ Generalized linear models with nonlinear feature transformations are widely used
   - 추천시스템은 사용자가 클릭이나 구매 같은 특정한 행동을 수행할 수 있는 앱 목록을 반환한다. 
   - 이러한 사용자 행동은 query와 impression과 함께 학습을 위한 훈련 데이터로 로그에 기록된다. 
 
-- 하지만, 데이터베이스에 100만개가 넘는 앱이 있기 때문에, 요구되는 서비스 대시 시간 이내로 모든 쿼리에 대하여 모든 앱에 점수를 주는 것은 어렵다. 
+- 하지만, 데이터베이스에 100만개가 넘는 앱이 있기 때문에, 요구되는 서비스 대기 시간 이내로 모든 쿼리에 대하여 모든 앱에 점수를 주는 것은 어렵다. 
   - 따라서, 사용자의 query가 들어오면 검색(retrieval)시스템은 다양한 신호(일반적으로 머신러닝 모형과 사람이 정의한 규칙으로)를 사용하여 해당 query에 가장 적합한 짧은 앱 목록을 반환한다. 
   
   - 이어서, Ranking 시스템은 앱 목록에 있는 모든 아이템에 대해 점수를 매긴다. 여기서 점수는 사용자의 정보인 다양한 피처들을 기반으로 사용자 x가 앱 y에 action할 확률인 P(y|x)를 구한다. 
