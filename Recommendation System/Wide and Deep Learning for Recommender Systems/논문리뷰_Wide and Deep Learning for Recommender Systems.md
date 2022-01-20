@@ -41,7 +41,7 @@ Generalized linear models with nonlinear feature transformations are widely used
 ### Generalization - Deep한 영역 담당
 - Generalization는 상관관계의 이행성에 기반하고, 과거에 전혀 혹은 드물게 발생한 새로운 변수들의 조합을 탐구하여 추천의 다양성을 향상시키려는 경향이 있다. (비주류 아이템을 거의 추천하지 않는 Long-tail problem 극복에 도움) 
 
-- Deep neural netowrk를 사용하는데, 피처 엔지니어링에 적은 effort가 들어가며 non-linear한 output을 내기 때문에 이전에 나타나지 않은 변수들에 대해서도 연관성을 학습 시킬 수 있다. 
+- Deep neural network를 사용하는데, 피처 엔지니어링에 적은 effort가 들어가며 non-linear한 output을 내기 때문에 이전에 나타나지 않은 변수들에 대해서도 연관성을 학습 시킬 수 있다. 
 
 - Embedding based 모델(FM or deep neural network)은 저차원 임베딩 벡터의 학습을 통해 이전에 보지 못했던 query-item 쌍을 **피처 엔지니어링을 줄이면서** Generalization을 할 수 있다.
 
