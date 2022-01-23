@@ -1,5 +1,5 @@
 # BPR: Bayesian Personalized Ranking from Implicit Feedback
-
+본 논문은 2009년에 발표된 논문으로, 
 
 <br/>
 
