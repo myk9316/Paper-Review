@@ -72,7 +72,7 @@ Item recommendation is the task of predicting a personalized ranking on a set of
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670074-ee9b1225-9a5d-464f-9004-1b60148b6b53.PNG" width="40%" height="40%"></p>
 
 - 따라서, 저자는 아래와 같은 방법을 사용하여 기존의 방법과 다른 방식으로 문제를 해결한다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670076-f6ca18cb-4885-4442-b890-4a2835aeb57d.PNG" width="40%" height="40%"></p>
-  - 단순히 missing value를 negative feedback으로 간주하는 방법보다 문제를 더 잘 표현하는 방법으로, 단일 아이템에 점수를 매기는 대신에 두 아이템 pair의 랭크를 매기는 것으로 데이터셋을 가공한다. 
+  - 단순히 missing value를 negative feedback으로 간주하는 방법보다 문제를 더 잘 표현하는 방법으로, 단일 아이템에 점수를 매기는 대신에 두 아이템 pair의 랭크를 매기는 것으로 데이터셋을 가공한다. (관측되지 않은 item에도 정보를 부여해 간접적으로 학습시킬 수 있음) 
   - 가정
     - 사용자는 관측된 아이템을 관측되지 않은 아이템들보다 선호한다. (item i가 관측되었고 item j가 관측되지 않았다면, item i를 더 선호한다)
     - 관측된 아이템들 간에는 선호도를 추론할 수 없다. (item i와 j가 모두 관측되었으면, 어떤 아이템을 더 선호하는지 알 수 없다)
