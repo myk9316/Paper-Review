@@ -73,14 +73,16 @@ Item recommendation is the task of predicting a personalized ranking on a set of
 
 - 따라서, 저자는 아래와 같은 방법을 사용하여 기존의 방법과 다른 방식으로 문제를 해결한다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670076-f6ca18cb-4885-4442-b890-4a2835aeb57d.PNG" width="40%" height="40%"></p>
   - 단순히 missing value를 negative feedback으로 간주하는 방법보다 문제를 더 잘 표현하는 방법으로, 단일 아이템에 점수를 매기는 대신에 두 아이템 pair의 랭크를 매기는 것으로 데이터셋을 가공한다. 
-  - 사용자는 관측된 아이템을 관측되지 않은 아이템들보다 선호한다. (item i가 관측되었고 item j가 관측되지 않았다면, item i를 더 선호한다)
-  - 관측된 아이템들 간에는 선호도를 추론할 수 없다. (item i와 j가 모두 관측되었으면, 어떤 아이템을 더 선호하는지 알 수 없다)
-  - 관측되지 않은 아이템들 간에는 선호도를 추론할 수 없다. (item i와 j가 모두 관측되지 않았으면, 어떤 아이템을 더 비선호하는지 알 수 없다) 
+  - 가정
+    - 사용자는 관측된 아이템을 관측되지 않은 아이템들보다 선호한다. (item i가 관측되었고 item j가 관측되지 않았다면, item i를 더 선호한다)
+    - 관측된 아이템들 간에는 선호도를 추론할 수 없다. (item i와 j가 모두 관측되었으면, 어떤 아이템을 더 선호하는지 알 수 없다)
+    - 관측되지 않은 아이템들 간에는 선호도를 추론할 수 없다. (item i와 j가 모두 관측되지 않았으면, 어떤 아이템을 더 비선호하는지 알 수 없다) 
   - +는 사용자가 item i를 item j에 비해 선호하는 것을 뜻하고, -는 사용자가 item j를 item i에 비해 선호하는 것을 뜻한다. 
   - 학습 데이터를 다음과 같이 표시할 수 있다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670075-e028bb54-7bba-49ab-aef6-434ec8ef8a24.PNG" width="40%" height="40%"></p>
 
 - 이러한 방식은 장점은 다음과 같다.
-  -  학습 데이터는 positive 뿐만 아닌, positive, negative, missing value로 구성되며, 아이템쌍(i,j)에서 관측되지 않은 missing value는 테스트 데이터셋이 된다. 
+  - 학습 데이터는 positive 뿐만 아닌, positive, negative, missing value로 구성되며, 아이템쌍(i,j)에서 관측되지 않은 missing value는 추후에 랭크가 매겨져야하는 테스트 데이터셋이 된다. 즉, 학습 데이터와 테스트 데이터가 서로 disjoint(상호 배타적)임
+  - 학습 데이터는 실제 랭킹 목적에 맞게 만들어지고, 관측된 데이터의 부분집합인 D<sub>s</sub> 는 학습 데이터로 사용된다. 
 
 <br/>
 
