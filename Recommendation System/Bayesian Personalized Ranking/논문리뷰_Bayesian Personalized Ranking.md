@@ -66,7 +66,7 @@ Item recommendation is the task of predicting a personalized ranking on a set of
 - 앞서 설명했듯이 implicit feedback은 긍정적인 클래스만 관측되며, 관측되지 않은 데이터(real negative feedback + missing value)도 모두 고려하여 모델링을 한다. 
 
 - 하지만, 기존 item recommendation의 머신러닝 접근 방법은 관측된 데이터는 1로, 관측되지 않은 데이터는 0으로 표시된다. (1은 선호함, 0은 선호하지 않음)
-  - 하지만, 이러한 방법의 문제점은 missing value를 모두 negative feedback으로 간주함에 따라, 미래에 선호할 수도 있는 아이템들이 모두 무시되고 0으로 표기된다. 
+  - 이러한 방법의 문제점은 missing value를 모두 negative feedback으로 간주함에 따라, 미래에 선호할 수도 있는 아이템들이 모두 무시되고 0으로 표기된다. 
   - 따라서, 사용자가 실제로 구매할지 모르는 아이템들도 0으로 예측되는 문제가 발생한다. (머신러닝 모델이 구분을 잘 못하게됨) 
 
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670074-ee9b1225-9a5d-464f-9004-1b60148b6b53.PNG" width="40%" height="40%"></p>
