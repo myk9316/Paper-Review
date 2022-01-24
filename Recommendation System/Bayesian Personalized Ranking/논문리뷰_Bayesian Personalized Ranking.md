@@ -100,7 +100,7 @@ Item recommendation is the task of predicting a personalized ranking on a set of
 ### 4.1 BPR Optimization Criterion
 - 베이지안 optimization의 목적은 아래의 사후확률을 최대화 하는 파라미터 <img src="https://latex.codecogs.com/svg.image?\Theta" title="\Theta" />를 찾는 것이다. (최대 사후 확률  추정, MAP) <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670077-ce9320dd-846f-4c59-b9bb-74e8470aa641.PNG" width="30%" height="30%"></p>
 
-#### Likelihood
+### Likelihood
 - 모든 사용자는 독립적이고, 특정 사용자의 아이템에 대한 랭킹은 독립적이라고 가정한다. 따라서, user-specific likelihood function은 다음과 같이 D<sub>s</sub>에 포함되는(특정 사용자 u의 item i의 랭크가 item j의 랭크보다 높은 경우)와 포함되지 않은 경우의 곱으로 표현할 수 있다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670078-5c1b5903-c4bd-4d9a-85dd-158ab09c1471.PNG" width="50%" height="50%"></p> <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670079-be108125-82df-4ad9-869c-6167a05d4cc8.PNG" width="30%" height="30%"></p>  
 
 - 위 수식은, Totality와 antisymmetry에 따라서 다음과 같이 D<sub>s</sub>의 모든 경우를 곱하는 것으로 simplified할 수 있다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670081-fc3e590d-b8a9-4e78-9814-39da7d17f7d1.PNG" width="40%" height="40%"></p> 
@@ -108,17 +108,35 @@ Item recommendation is the task of predicting a personalized ranking on a set of
 - 아직까지는 사용자 각각의 아이템에 대한 랭킹이 보장되지 않으므로, 다음과 같이 각 사용자의 아이템 (i,j)에 대한 선호 확률을 정의한다. 여기서 x<sub>uij</sub>는 MF나 knn으로 구한다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670082-8db1cbf5-7e0a-4848-ae2c-6222ff95e784.PNG" width="30%" height="30%"></p> <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670083-250d7aea-d88e-4d86-9afe-f383f26e630e.PNG" width="20%" height="20%"></p> 
 
 
-#### Prior probability
+### Prior probability
 - 사전 확률 분포를 구하기 위해 general prior density를 다음과 같이 정의한다. (mean 0, variance-covariance matrix) <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670085-4f0c6a22-3a08-49a1-acd9-82d384305648.PNG" width="20%" height="20%"></p>, <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150720514-c2b15ccb-19a6-41e2-95b9-5e441a1afd6a.PNG" width="15%" height="15%"></p>
 
 
-#### BPR-OPT
+### BPR-OPT
 - 최종 BPR-OPT의 maximum posterior estimator 형태는 다음과 같다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670087-66e22a30-6d5c-467c-b743-937f00031c7a.PNG" width="50%" height="50%"></p> 
 
 <br/>
 
 ### 4.2 BPR Learning Algorithm
-- 
+- 미분이 가능하기 때문에, gradient descent로 optimization한다. 
+
+- 하지만, 일반적인 gradient descent는 좋은 선택지가 아니다. 따라서, 부스트랩 Triples 훈련 샘플링 기반의 stochastic gradient descent 알고리즘을 사용한 LearnBPR을 제안한다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670096-25e8fada-fbae-479f-8b59-fd8c1249b416.PNG" width="50%" height="50%"></p> <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670098-c9a15e0b-e36c-4c1f-9bc7-1903a05d68b6.PNG" width="50%" height="50%"></p> 
+
+### Full Gradient
+- 각 step 마다 모든 학습 데이터를 사용하므로 일반적으로 정확한 방향으로 감소하도록 이끌지만, 수렴하는데 시간이 오래걸린다. 
+
+- 관측된 i 집단과, 관측되지 않은 j 집단의 비대칭성 문제가 있다고 생각해보자
+  - 일반적으로 i 집단이 j 집단보다 개수가 적으므로, optimization function에 i에 종속적인 모델 파라미터의 gradient가 gradient를 주로 지배한다. 
+  - 즉, 매우 작은 학습률이 선택되어야 한다는 것을 뜻한다. --> 속도가 느려지게 됨 
+  
+- 또한, 동일한 사용자-아이템 조합을 연속적으로 업데이트 할 경우 poor convergence로 이끈다. 
+
+### SGD
+- 관측된 i 집단과, 관측되지 않은 j 집단의 비대칭성 문제를 해소한다. 
+
+- 랜덤하게 부트스트랩 샘플링 방법을 통해 Triples를 랜덤하게 선택하므로, 비대칭성 문제를 해결하고 동일한 사용자-아이템 조합을 선택할 확률이 적다. --> 성능/속도 개선
+
+- Full cycles 아이디어를 거부하고 부트스트랩 샘플링 기법(모든 데이터를 무작위로 샘플링하여 배치 단위로 학습)을 사용한 것은 우리 경우에 특히 유용한데, 이는 데이터가 충분하여 수렴을 하기 위해 데이터의 일부만으로도 충분하기 때문이다. 
 
 <br/>
 
