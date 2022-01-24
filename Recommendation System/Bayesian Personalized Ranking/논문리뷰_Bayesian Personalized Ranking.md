@@ -106,15 +106,14 @@ Item recommendation is the task of predicting a personalized ranking on a set of
 - 위 수식은, Totality와 antisymmetry에 따라서 다음과 같이 D<sub>s</sub>의 모든 경우를 곱하는 것으로 simplified할 수 있다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670081-fc3e590d-b8a9-4e78-9814-39da7d17f7d1.PNG" width="40%" height="40%"></p> 
 
 - 아직까지는 사용자 각각의 아이템에 대한 랭킹이 보장되지 않으므로, 다음과 같이 각 사용자의 아이템 (i,j)에 대한 선호 확률을 정의한다. 여기서 x<sub>uij</sub>는 MF나 knn으로 구한다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670082-8db1cbf5-7e0a-4848-ae2c-6222ff95e784.PNG" width="30%" height="30%"></p> <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670083-250d7aea-d88e-4d86-9afe-f383f26e630e.PNG" width="20%" height="20%"></p> 
-- 
+
 
 #### Prior probability
-- 
+- 사전 확률 분포를 구하기 위해 general prior density를 다음과 같이 정의한다. (mean 0, variance-covariance matrix) <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670085-4f0c6a22-3a08-49a1-acd9-82d384305648.PNG" width="20%" height="20%"></p>, <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150720514-c2b15ccb-19a6-41e2-95b9-5e441a1afd6a.PNG" width="15%" height="15%"></p>
 
-<br/>
 
-#### 4.1.1 Analogies to AUC optimization
-- 
+#### BPR-OPT
+- 최종 BPR-OPT의 maximum posterior estimator 형태는 다음과 같다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670087-66e22a30-6d5c-467c-b743-937f00031c7a.PNG" width="50%" height="50%"></p> 
 
 <br/>
 
