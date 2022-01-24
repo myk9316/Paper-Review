@@ -1,5 +1,5 @@
 # BPR: Bayesian Personalized Ranking from Implicit Feedback
-본 논문은 2009년에 발표된 논문으로, 
+본 논문은 2009년에 발표된 논문으로, personalized ranking을 위해 베이지안 최적화 기법을 제안한다. 
 
 <br/>
 
@@ -141,55 +141,41 @@ Item recommendation is the task of predicting a personalized ranking on a set of
 <br/>
 
 ### 4.3 Learning models with BPR
-- 
+- BPR을 Matrix Factorization과 learned k-nearest-neighbor에 적용하는 방법을 보여준다. 
+- 두 아이템에 대한 관계는 다음과 같다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670103-3a007a7a-dcef-41ac-b847-7f8062f0eeb0.PNG" width="30%" height="30%"></p>
+- LearnBPR 최적화를 위해서는 모든 모델 파라미터 <img src="https://latex.codecogs.com/svg.image?\Theta" title="\Theta" /> 에 대한 x<sub>uij</sub>의 gradient만 알면된다. 
 
 <br/>
 
-#### 4.3.1 Matrix Factorization
-- 
+### 4.3.1 Matrix Factorization
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670105-011566cf-c6ed-4879-955c-a250b8fd5668.PNG" width="40%" height="40%"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670108-9fff0abc-d29c-4745-a774-b9c58e95b958.PNG" width="40%" height="40%"></p>
+
+- W의 각 행 w<sub>u</sub>: 유저 u를 설명하는 feature 벡터
+- H의 각 행 h<sub>i</sub>: 아이템 i를 설명하는 feature 벡터
 
 <br/>
 
-#### 4.3.2 Adaptive k-Nearest-Neighbor
-- 
+### 4.3.2 Adaptive k-Nearest-Neighbor
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670109-a7790ddc-e5ce-43e3-bec6-d352b362b6f8.PNG" width="25%" height="25%"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670111-9916d6cd-da3b-42c9-8bb2-95d00b79e02b.PNG" width="45%" height="45%"></p>
+
+- C: I x I : 대칭적인 아이템 상관관계/아이템-유사도 행렬
+- 따라서, KNN의 모델 파라미터는 <img src="https://latex.codecogs.com/svg.image?\Theta" title="\Theta" /> = C
 
 <br/>
 
-## 5. Relations to other methods
-### 5.1 Weighteed Regularized Matrix Factorization (WR-MF)
-- 
-
-<br/>
-
-### 5.2 Maximum Margin Matrix Factorization (MMMF)
--
-
-<br/> 
-
-## 6. Evaluation
--
-
-<br/>
-
-### 6.1 Datsets
--
-
-<br/>
-
-### 6.2 Evaluation Methodology
--
-
-<br/>
-
-### 6.3 Results and Discussion
--
-
-<br/>
-
-### 6.4 Non-personalized ranking
--
+## 5. Evaluation
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/150728959-fd395169-26ca-4ca3-953b-abfc415202e7.PNG" width="80%" height="80%"></p>
+- MF와 KNN과 비교하였다. 
+- 데이터셋: Rossmann dataset (from online shop, buying history of 10,000 users on 4000 items), DVD rental dataset of Netflix
+- BPR을 적용한 모델이 personalized ranking from implicit feedback에 대해 다른 state-of-the-art model들을 능가하였다. 
 
 <br/>
 
 ## 7. Conclusion
-- 
+- 본 논문에서 포괄적인 최적화 기준과 personalized ranking을 위한 학습 알고리즘을 제시함
+  - 포괄적인 최적화 기준: 사후확률을 최대화하는 베이지안 방법
+  - Personalized ranking을 위한 학습 알고리즘: BPR-Opt,  부트스트랩 샘플링을 이용한 SGD 기반 알고리즘 LearnBPR으로 파라미터를 업데이트
+
+- 기존 MF와 KNN에 적용했으며, Personalized ranking task에서는 다른 기준보다 BPR을 통해 학습한 최적화가 더 좋은 성능을 보인다는 것을 입증함
