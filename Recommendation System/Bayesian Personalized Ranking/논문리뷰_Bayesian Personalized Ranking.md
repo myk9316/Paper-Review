@@ -67,6 +67,7 @@ Item recommendation is the task of predicting a personalized ranking on a set of
 
 - 하지만, 기존 item recommendation의 머신러닝 접근 방법은 관측된 데이터는 1로, 관측되지 않은 데이터는 0으로 표시된다. (1은 선호함, 0은 선호하지 않음)
   - 이러한 방법의 문제점은 missing value를 모두 negative feedback으로 간주함에 따라, 미래에 선호할 수도 있는 아이템들이 모두 무시되고 0으로 표기된다. 
+  
   - 따라서, 사용자가 실제로 구매할지 모르는 아이템들도 0으로 예측되는 문제가 발생한다. (머신러닝 모델이 구분을 잘 못하게됨) 
 
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670074-ee9b1225-9a5d-464f-9004-1b60148b6b53.PNG" width="40%" height="40%"></p>
@@ -75,24 +76,39 @@ Item recommendation is the task of predicting a personalized ranking on a set of
   - 단순히 missing value를 negative feedback으로 간주하는 방법보다 문제를 더 잘 표현하는 방법으로, 단일 아이템에 점수를 매기는 대신에 두 아이템 pair의 랭크를 매기는 것으로 데이터셋을 가공한다. (관측되지 않은 item에도 정보를 부여해 간접적으로 학습시킬 수 있음) 
   - 가정
     - 사용자는 관측된 아이템을 관측되지 않은 아이템들보다 선호한다. (item i가 관측되었고 item j가 관측되지 않았다면, item i를 더 선호한다)
+    
     - 관측된 아이템들 간에는 선호도를 추론할 수 없다. (item i와 j가 모두 관측되었으면, 어떤 아이템을 더 선호하는지 알 수 없다)
+    
     - 관측되지 않은 아이템들 간에는 선호도를 추론할 수 없다. (item i와 j가 모두 관측되지 않았으면, 어떤 아이템을 더 비선호하는지 알 수 없다) 
+    
   - +는 사용자가 item i를 item j에 비해 선호하는 것을 뜻하고, -는 사용자가 item j를 item i에 비해 선호하는 것을 뜻한다. 
   - 학습 데이터를 다음과 같이 표시할 수 있다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670075-e028bb54-7bba-49ab-aef6-434ec8ef8a24.PNG" width="40%" height="40%"></p>
 
 - 이러한 방식은 장점은 다음과 같다.
   - 학습 데이터는 positive 뿐만 아닌, positive, negative, missing value로 구성되며, 아이템쌍(i,j)에서 관측되지 않은 missing value는 추후에 랭크가 매겨져야하는 테스트 데이터셋이 된다. 즉, 학습 데이터와 테스트 데이터가 서로 disjoint(상호 배타적)임
+  
   - 학습 데이터는 실제 랭킹 목적에 맞게 만들어지고, 관측된 데이터의 부분집합인 D<sub>s</sub> 는 학습 데이터로 사용된다. 
 
 <br/>
 
-
 ## 4. Bayesian Personalized Ranking (BPR)
-- 
+- 앞에서 정의한 학습 데이터 D<sub>s</sub>로 Bayesian Personalized Ranking을 구하는 방법을 소개한다.
+- <img src="https://latex.codecogs.com/svg.image?p(i>&space;_{u}&space;j|\Theta&space;)" title="p(i> _{u} j|\Theta )" />에 대한 likelihood function과 model parameter <img src="https://latex.codecogs.com/svg.image?p(\Theta)" title="p(\Theta)" />에 대한 prior probability를 사용하는 베이지안 문제
 
 <br/>
 
 ### 4.1 BPR Optimization Criterion
+- 베이지안 optimization의 목적은 아래의 사후확률을 최대화 하는 파라미터 <img src="https://latex.codecogs.com/svg.image?\Theta" title="\Theta" />를 찾는 것이다. (최대 사후 확률  추정, MAP) <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670077-ce9320dd-846f-4c59-b9bb-74e8470aa641.PNG" width="30%" height="30%"></p>
+
+#### Likelihood
+- 모든 사용자는 독립적이고, 특정 사용자의 아이템에 대한 랭킹은 독립적이라고 가정한다. 따라서, user-specific likelihood function은 다음과 같이 D<sub>s</sub>에 포함되는(특정 사용자 u의 item i의 랭크가 item j의 랭크보다 높은 경우)와 포함되지 않은 경우의 곱으로 표현할 수 있다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670078-5c1b5903-c4bd-4d9a-85dd-158ab09c1471.PNG" width="50%" height="50%"></p> <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670079-be108125-82df-4ad9-869c-6167a05d4cc8.PNG" width="30%" height="30%"></p>  
+
+- 위 수식은, Totality와 antisymmetry에 따라서 다음과 같이 D<sub>s</sub>의 모든 경우를 곱하는 것으로 simplified할 수 있다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670081-fc3e590d-b8a9-4e78-9814-39da7d17f7d1.PNG" width="40%" height="40%"></p> 
+
+- 아직까지는 사용자 각각의 아이템에 대한 랭킹이 보장되지 않으므로, 다음과 같이 각 사용자의 아이템 (i,j)에 대한 선호 확률을 정의한다. 여기서 x<sub>uij</sub>는 MF나 knn으로 구한다. <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670082-8db1cbf5-7e0a-4848-ae2c-6222ff95e784.PNG" width="30%" height="30%"></p> <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670083-250d7aea-d88e-4d86-9afe-f383f26e630e.PNG" width="20%" height="20%"></p> 
+- 
+
+#### Prior probability
 - 
 
 <br/>
