@@ -160,15 +160,20 @@ Item recommendation is the task of predicting a personalized ranking on a set of
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670109-a7790ddc-e5ce-43e3-bec6-d352b362b6f8.PNG" width="25%" height="25%"></p>
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670111-9916d6cd-da3b-42c9-8bb2-95d00b79e02b.PNG" width="45%" height="45%"></p>
 
+
 - C: I x I : 대칭적인 아이템 상관관계/아이템-유사도 행렬
+
 - 따라서, KNN의 모델 파라미터는 <img src="https://latex.codecogs.com/svg.image?\Theta" title="\Theta" /> = C
 
 <br/>
 
 ## 5. Evaluation
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/150728959-fd395169-26ca-4ca3-953b-abfc415202e7.PNG" width="80%" height="80%"></p>
+
 - MF와 KNN과 비교하였다. 
+
 - 데이터셋: Rossmann dataset (from online shop, buying history of 10,000 users on 4000 items), DVD rental dataset of Netflix
+
 - BPR을 적용한 모델이 personalized ranking from implicit feedback에 대해 다른 state-of-the-art model들을 능가하였다. 
 
 <br/>
