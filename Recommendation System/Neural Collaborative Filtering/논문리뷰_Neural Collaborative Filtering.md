@@ -10,3 +10,82 @@ By replacing the inner product with a neural architecture that can learn an arbi
 networks offers better recommendation performance. 
 
 <br/>
+
+## 1. Introduction
+
+<br/>
+
+
+## 2. Preliminaries
+
+<br/>
+
+
+### 2.1 Learning from Implicit Data
+
+<br/>
+
+### 2.2 Matrix Factorization
+
+<br/>
+
+## 3. Neural Collaborative Filtering
+
+<br/>
+
+### 3.1 General Framework
+
+<br/>
+
+#### 3.1.1 Learning NCF
+
+<br/>
+
+### 3.2 Generalized Matrix Factorization (GMF)
+
+<br/>
+
+### 3.3 Multi-Layer Perceptron (MLP)
+
+<br/>
+
+### 3.4 Fusion of GMF and MLP
+
+<br/>
+
+
+#### 3.4.1 Pre-training
+
+<br/>
+
+## 4. Experiments
+
+<br/>
+
+### 4.1 Experimental Settings
+
+<br/>
+
+### 4.2 Performance Comparison (RQ1)
+
+<br/>
+
+#### 4.2.1 Utility of Pre-training
+
+<br/>
+
+### 4.3 Log Loss with Negative Sampling (RQ2)
+
+<br/>
+
+### 4.4 Is Deep Learning Helpful? (RQ3)
+
+<br/>
+
+## 5. Related Work
+
+<br/>
+
+## 6. Conclusion and Future WOrk
+
+<br/>
