@@ -1,5 +1,5 @@
 # Neural Collaborative Filtering
-본 논문은 2017년에 발표된 논문으로,
+본 논문은 2017년에 '_the 26th international conference on world wide web_'에서 발표된 논문으로, 기존 Matrix Factorization 기반 모델에 Neural network를 결합한 추천시스템 모델을 제안한다. 
 
 <br/>
 
@@ -12,6 +12,13 @@ networks offers better recommendation performance.
 <br/>
 
 ## 1. Introduction
+- Collaborative filtering에서 MF가 효과적인 방법이긴 하지만 linear한 방식이므로 사용자와 아이템간의 복잡한 관계를 표현하는데 한계가 존재한다. 
+- 따라서 본 논문에서는 non-linear한 방식인 deep neural network(DNNs)의 활용을 제안하고, implicit feedback 데이터를 활용하여 모델의 검증을 진행한다. 
+
+### Contribution
+- Neural network에 기반한 Collaborative filtering 방식인 NCF를 제시한다.
+- MF가 NCF의 특별한 케이스임을 보여주고, 고차원의 비선형 모델을 만들기 위해 다중레이어 퍼셉트론을 이용한다.
+- 다양한 실험을 통해서 NCF의 효율성을 증명하고, CF 모델의 딥러닝적 접근이 가능함을 보여준다. 
 
 <br/>
 
