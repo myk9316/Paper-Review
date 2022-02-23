@@ -44,7 +44,18 @@ networks offers better recommendation performance.
 <br/>
 
 ### 2.2 Matrix Factorization
-- 
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/155169457-e269113c-37e7-4949-9e9e-07fede2cc9c4.PNG" width="50%" height="50%"></p>
+
+- 사용자와 아이템의 inner product를 통해 interaction을 표현한다. 
+
+### The Limiation of Matrix Factorization
+- 본 논문에서 저자는 inner product가 MF의 표현력을 제한한다고 지적한다. 
+
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/155169454-2632c4eb-391f-4f6d-b952-2c0064f1ab9f.PNG" width="40%" height="40%"></p>
+
+- 위 그림에서, u1, u2, u3의 유사도에 따라서 그래프를 그리면 (b)와 같이 표현된다. 이때, u4라는 새로운 데이터에 대해 유사도를 측정하면, u1>u3>u2 순으로 유사하다. 하지만, (b)에서 보다시피 이를 표현할 수 있는 벡터를 그리는 것은 불가능하다. 
+
+- 이러한 한계는 복잡한 사용자-아이템 간의 상호작용을 저차원의 latent space에서 단순하고 고정된 inner product로 표현하는데서 발생한다. 따라서, 본 논문에서는 DNN을 이용해 이러한 한계점을 해결하고자 한다. 
 
 <br/>
 
