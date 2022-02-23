@@ -83,28 +83,51 @@ networks offers better recommendation performance.
 <br/>
 
 #### 3.1.1 Learning NCF
-- 
+- 위와 같은 모델을 학습하기 위해서는 loss function을 정의해야하는데, 데이터들이 Gaussian distribution에서 왔다는 가정하에 squared loss를 다음과 같이 정의할 수도 있다. 
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/155169466-ed296791-4525-4e88-a089-7801319b9545.PNG" width="40%" height="40%"></p>
+
+- 하지만, NCF는 binary 형태의 implicit data를 사용하여 학습하는 구조이기 때문에, bernoulli distribution을 가정하였다. 이에 따라, likelihood function은 다음과 같다.
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/155169474-ee75a519-868b-4ece-8202-5feea492bcd5.PNG" width="50%" height="50%"></p>
+
+- 따라서, objective function로 사용하기 위한 negative logarithm of the likelihood는 다음과 같이 정의되며 (binary cross-entrophy loss와 동일), optimizaer로는 SGD를 사용한다. 모델은 L을 최소화하는 파라미터를 찾도록 학습한다. 
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/155169478-ff11ce92-3fa5-41c5-ad47-cb57e63d2057.PNG" width="50%" height="50%"></p>
 
 <br/>
 
 ### 3.2 Generalized Matrix Factorization (GMF)
+- 저자는 MF를 NCF의 특별한 케이스라고 말하며, GMF는 <img src="https://latex.codecogs.com/svg.image?a_{out}" title="a_{out}" />과 <img src="https://latex.codecogs.com/svg.image?h^{T}" title="h^{T}" />를 두어 MF를 일반화/확장화한 모델이다.
+
+- 단순히 dot-product로 output을 예측한 MF와 달리 GMF에서는 다음과 같이 element-wise product를 수행하며 가충치를 적용한 후에 활성화 함수를 통과한다. 
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/155169485-2b2c19ad-2f6d-496f-82eb-faad74dc2f84.PNG" width="30%" height="30%"></p>
+
+  - <img src="https://latex.codecogs.com/svg.image?a_{out}" title="a_{out}" />에는 non-linear한 sigmoid 함수를 사용하여 linear한 MF모델보다 더 많은 표현이 가능하며, <img src="https://latex.codecogs.com/svg.image?h^{T}" title="h^{T}" />에는 latent vector의 영향력을 조절하는 non-uniform 값을 주어 내적할때 각 텀에 다른 가중치를 준다. 
+ 
+  - 이때, <img src="https://latex.codecogs.com/svg.image?a_{out}" title="a_{out}" />에 identity function(항등함수)를 사용하고, <img src="https://latex.codecogs.com/svg.image?h^{T}" title="h^{T}" />를 uniform vector로 값을 주게 되면 MF 모델과 동일해진다. 
 
 <br/>
 
 ### 3.3 Multi-Layer Perceptron (MLP)
+- MLP는 사용자와 아이템 간의 concatenated vector를 여러 hidden layers를 통과시킨다.
+
+- GMP는 linear하고 fixed element-wise product를 하기 때문에 사용자와 아이템 간의 복잡한 관계를 학습하기는 힘들지만, MLP는 GMP에 비해 더 많은 층을 사용하기 때문에 flexible하고 non-linearity한 특성으로 인해 더 복잡한 관계를 학습할 수 있다.
+
+- 이에 따라 MLP는 다음과 같이 파라미터라이징한다. 
+
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/155169489-7d8be19e-73c0-40f3-b9e8-371fd3cc369d.PNG" width="40%" height="40%"></p>
 
 <br/>
 
 ### 3.4 Fusion of GMF and MLP
+- 
 
 <br/>
-
 
 #### 3.4.1 Pre-training
+- 
 
 <br/>
 
-
 ## 6. Conclusion and Future WOrk
+- 
 
 <br/>
