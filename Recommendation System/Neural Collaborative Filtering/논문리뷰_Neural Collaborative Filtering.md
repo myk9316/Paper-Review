@@ -131,17 +131,17 @@ networks offers better recommendation performance.
 <br/>
 
 #### 3.4.1 Pre-training
-- NeuMF에서 GMF와 MLP를 각각 pre-trained된 모델로 학습을 진행하였고, 이 후 두 모델을 concat한 NeuMF를 통해 예측값을 출력하였다. 
+- GMF와 MLP를 각각 pre-trained된 모델로 학습을 진행하였고, 이 후 두 모델을 concat한 NeuMF를 통해 예측값을 출력하였다. 
   - GMF와 MLP가 random initialization으로 convergence 할때까지 training한다. 
   - 훈련한 모델의 파라미터를 NeuMF에서 활용한다.
   - 알파 값을 이용해 가중치를 부여하며, 본 논문에서는 0.5를 사용하였다.
   - GMP와 MLP를 각각 Adam 옵티마이저를 적용하여 학습시켰고, NeuMF에는 SGD 옵티마이저를 적용하였다. 
 
-<p align="center"><img src="https://user-images.githubusercontent.com/79245484/155169502-5093d589-8281-4edf-8f0a-a9544aab567e.PNG" width="30%" height="30%"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/155169502-5093d589-8281-4edf-8f0a-a9544aab567e.PNG" width="20%" height="20%"></p>
 
 <br/>
 
-## 6. Conclusion and Future WOrk
+## 6. Conclusion and Future Work
 - 
 
 <br/>
