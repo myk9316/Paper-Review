@@ -60,11 +60,25 @@ networks offers better recommendation performance.
 <br/>
 
 ## 3. Neural Collaborative Filtering
-- 
-
-<br/>
-
 ### 3.1 General Framework
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/155169460-8a74c716-0d81-4d51-97d8-3c26582c1d53.PNG" width="50%" height="50%"></p>
+
+### Input Layer (Sparse)
+- Input layer는 사용자 u와 아이템 i를 나타내는 feature vector <img src="https://latex.codecogs.com/svg.image?v_{u}^{U}" title="v_{u}^{U}" /> 와 <img src="https://latex.codecogs.com/svg.image?v_{i}^{I}" title="v_{i}^{I}" />로 구성되어 있으며, 각각의 벡터는 one-hot encoding으로 변환되어 sparse한 상태이다. 
+
+### Embedding Layer
+- Embedding layer에서는 sparse 한 input layer를 dense vector로 변환시키며, 일반적인 임베딩 방법과 동일하게 fully-connecte layer를 사용한다. 
+- 이러한 임베딩 과정이 MF에서 잠재벡터의 역활을 한다고 볼 수 있다. 
+
+### Neural CF Layers
+- 이 단계에서는, 임베딩이 완료된 User latent vector와 Item latent vector를 concatenation한 벡터를 input으로 받아 여러 층의 신경망을 거치게 되는데, 이러한 다층 신경망 구조를 Neural CF Layers라고 한다. 
+- Neural CF Layers를 통과하며 복잡한 비선형의 데이터 관계를 학습해서 score를 예측하게 된다. 
+
+### Output Layer
+- 마지막으로, output layer에서는 예측값을 구하게 되며, 실제값과 예측값 간의 pointwise loss를 최소화하는 방식으로 학습한다. 
+- 여기서 예측값은, user u와 item i가 얼마나 관련있는지를 나타내며, 그 값은 0~1 사이가 된다. 
+
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/155169464-07931100-2482-4533-9cc5-3a5b1beda8f1.PNG" width="50%" height="50%"></p>
 
 <br/>
 
