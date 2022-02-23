@@ -118,12 +118,22 @@ networks offers better recommendation performance.
 <br/>
 
 ### 3.4 Fusion of GMF and MLP
-- 
+- 본 논문에서는 아래와 같이 GMF와 MLP를 합친 각자의 장점은 살리고 단점은 보완할 수 있는 모델을 제안하며, 이 모델을 Neural Matrix Factorization (NeuMF)로 명명하였다. 
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/155169493-d008460b-cd39-4ea8-9763-3485573f9aa6.PNG" width="50%" height="50%"></p>
+
+- 선형적인 특성을 가진 GMF와 비선형적인 특성을 가진 MLP를 합쳐 사용자와 아이템 간의 더 복잡한 관계를 표현할 수 있다.
+
+- 두 모델이 각각 다른 embedding을 학습하고 마지막 hidden layer에서 출력되는 값들을 concat하여 최종 점수를 계산한다. MLP 활성화 함수에는 ReLU를 사용하였다. 
+  - 같은 embeddig을 share하면 fused model의 성능을 제한할 수 있으나, 이러한 방식을 택함으로 인해 더욱 flexible한 모델이 된다.
+
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/155169500-ffd4803c-c54c-41f3-8e8c-6dcc7325a70f.PNG" width="40%" height="40%"></p>
 
 <br/>
 
 #### 3.4.1 Pre-training
 - 
+
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/155169502-5093d589-8281-4edf-8f0a-a9544aab567e.PNG" width="30%" height="30%"></p>
 
 <br/>
 
