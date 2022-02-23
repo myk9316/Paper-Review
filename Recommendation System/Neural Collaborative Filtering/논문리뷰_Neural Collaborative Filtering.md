@@ -76,13 +76,14 @@ networks offers better recommendation performance.
 
 ### Output Layer
 - 마지막으로, output layer에서는 예측값을 구하게 되며, 실제값과 예측값 간의 pointwise loss를 최소화하는 방식으로 학습한다. 
-- 여기서 예측값은, user u와 item i가 얼마나 관련있는지를 나타내며, 그 값은 0~1 사이가 된다. 
+- 여기서 예측값은, user u와 item i가 얼마나 관련있는지를 나타내며, <img src="https://latex.codecogs.com/svg.image?\phi_{out}&space;" title="\phi_{out} " />에 Logistic 또는 probit 함수를 활성화 함수로 사용하여 그 값은 0~1 사이가 된다. 
 
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/155169464-07931100-2482-4533-9cc5-3a5b1beda8f1.PNG" width="50%" height="50%"></p>
 
 <br/>
 
 #### 3.1.1 Learning NCF
+- 
 
 <br/>
 
