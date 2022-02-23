@@ -150,7 +150,5 @@ networks offers better recommendation performance.
 
 <br/>
 
-## 6. Conclusion and Future Work
-- 
-
-<br/>
+## 6. Conclusion
+- 저자는 기존의 MF 기반의 추천시스템을 딥러닝을 적용하여 선형과 비선형적인 특성을 결합한 모델을 제안하여 기존의 모델에 비해 우수한 성능을 달성하였다. 기존의 다른 모델(Wide and deep model)에도 이러한 시도들이 있었지만, CF의 아이디어를 실현하였다는 점에서 다른 모델과의 차별점을 갖는다. 
