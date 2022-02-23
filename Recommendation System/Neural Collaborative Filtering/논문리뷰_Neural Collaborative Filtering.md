@@ -141,6 +141,13 @@ networks offers better recommendation performance.
 
 <br/>
 
+## 4. Experiment
+- NCF모델이 implicit CF모델보다 더 좋은 성능을 보이는가? (RQ1)  --> NeuMF가 모든 경우에서 SOTA를 달성함
+
+- 제안된 최적화 프레임워크(Logloss with Negative sampling)의 효과? (RQ2) --> NeuMF>MLP>GMF 순으로 logloss가 줄어듬
+
+- Layer가 더 깊어지면 사용자와 아이템 간의 상호작용을 학습하는데 도움이 되는가? (RQ3) --> layer를 늘릴수록 성능이 높아짐
+
 ## 6. Conclusion and Future Work
 - 
 
