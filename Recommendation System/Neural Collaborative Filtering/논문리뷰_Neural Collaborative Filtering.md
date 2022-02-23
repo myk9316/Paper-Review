@@ -148,6 +148,8 @@ networks offers better recommendation performance.
 
 - Layer가 더 깊어지면 사용자와 아이템 간의 상호작용을 학습하는데 도움이 되는가? (RQ3) --> layer를 늘릴수록 성능이 높아짐
 
+<br/>
+
 ## 6. Conclusion and Future Work
 - 
 
