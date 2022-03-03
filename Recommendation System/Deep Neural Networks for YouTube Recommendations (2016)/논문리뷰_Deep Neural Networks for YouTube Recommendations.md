@@ -28,6 +28,9 @@ YouTube represents one of the largest scale and most sophisticated industrial re
   - 비디오와 사용자를 설명하는 다양한 피처들을 사용하여 objective function에 따라 각 비디오에 점수를 매긴다. 
   - Score가 높은 비디오가 사용자에게 제공된다. 
 
+- 이러한 두 단계를 거치며 매우 큰 비디오의 corpus로 부터 개인화된 적은 수의 비디오가 사용자에게 추천된다. 
+- 개발 과정에서는 offline metrics(prcision, recall, ranking loss, etc.)를 구축하여 시스템의 성능을 향상하지만, 최종적으로 실제 환경에서의 효율성을 검증하기 위해서는 라이브 실험을 통한 A/B 테스트를 사용한다. 
+
 <br/>
 
 ## 3. Candidate Generation
