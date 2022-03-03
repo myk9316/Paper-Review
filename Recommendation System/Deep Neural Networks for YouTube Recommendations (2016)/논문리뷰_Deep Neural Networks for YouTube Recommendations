@@ -1,0 +1,95 @@
+# Deep Neural Networks for YouTube Recommendations
+
+<br/>
+
+## 1. Introduction
+- 
+
+<br/>
+
+## 2. System OverView
+-
+
+<br/>
+
+## 3. Candidate Generation
+-
+
+<br/>
+
+### 3.1 Recommendation as Classification
+- 
+
+<br/>
+
+#### Efficient Extreme Multiclass
+-
+
+<br/>
+
+### 3.2 Model Architecture
+- 
+
+<br/>
+
+### 3.3 Heterogeneous Signals
+-
+
+<br/>
+
+#### "Example Age" Feature
+-
+
+<br/>
+
+### 3.4 Label and Context Seletion
+-
+
+<br/>
+
+### 3.5 Experiments with Features and Depth
+-
+
+<br/>
+
+## 4. Ranking
+-
+
+<br/>
+
+### 4.1 Feature Representation
+-
+
+<br/>
+
+#### Feature Engineering
+-
+
+<br/>
+
+#### Embedding Categorical Features
+-
+
+<br/>
+
+#### Normalizing Continuous Features
+-
+
+<br/>
+
+### 4.2 Modeling Expected Watch Time
+-
+
+<br/>
+
+### 4.3 Experiments with Hidden Layers
+-
+
+<br/>
+
+## 5. Conclusions
+-
+
+<br/>
+
+
