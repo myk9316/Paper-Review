@@ -3,8 +3,6 @@
 
 <br/>
 
-<p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670077-ce9320dd-846f-4c59-b9bb-74e8470aa641.PNG" width="30%" height="30%"></p>
-
 ## Abstract
 YouTube represents one of the largest scale and most sophisticated industrial recommendation systems in existence. In this paper, we describe the system at a high level and focus on the dramatic performance improvements brought by **deep learning**. The paper is split according to the classic two-stage information retrieval dichotomy: first, we detail a **deep candidate generation model** and then describe a separate **deep ranking model**. We also provide practical lessons and insights derived from designing, iterating and maintaining a massive recommendation system with enormous userfacing impact.
 
@@ -19,7 +17,16 @@ YouTube represents one of the largest scale and most sophisticated industrial re
 <br/>
 
 ## 2. System OverView
--
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/156601223-17e20a7b-cde7-42f6-9a47-42cbc403aac2.PNG" width="50%" height="50%"></p>
+
+- Candidate generation
+  - 사용자의 활동 기록을 input으로 해서 Collaborative filtering을 통해 사용자의 성향이 반영된 적합한 수백개의 후보 영상들을 output으로 내보낸다.
+  - 사용자 간의 유사도는 비디오 시청 id, 검색어, 그리고 인구통계학 정보와 같은 feature들을 통해 표현된다. 
+
+
+- Ranking
+  - 비디오와 사용자를 설명하는 다양한 피처들을 사용하여 objective function에 따라 각 비디오에 점수를 매긴다. 
+  - Score가 높은 비디오가 사용자에게 제공된다. 
 
 <br/>
 
