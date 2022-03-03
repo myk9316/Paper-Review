@@ -2,6 +2,8 @@
 
 <br/>
 
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/150670077-ce9320dd-846f-4c59-b9bb-74e8470aa641.PNG" width="30%" height="30%"></p>
+
 ## 1. Introduction
 - 
 
