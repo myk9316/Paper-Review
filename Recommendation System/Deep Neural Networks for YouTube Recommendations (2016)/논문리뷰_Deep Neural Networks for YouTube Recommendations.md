@@ -113,7 +113,7 @@ YouTube represents one of the largest scale and most sophisticated industrial re
 <br/>
 
 ### 3.5 Experiments with Features and Depth
-<p align="center"><img src="https://user-images.githubusercontent.com/79245484/156601238-1749e686-aa6a-4e72-bf92-f1dffd7cc144.PNG" width="50%" height="50%"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/156601238-1749e686-aa6a-4e72-bf92-f1dffd7cc144.PNG" width="40%" height="40%"></p>
 
 -
 
