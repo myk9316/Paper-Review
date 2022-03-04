@@ -106,13 +106,15 @@ YouTube represents one of the largest scale and most sophisticated industrial re
 <br/>
 
 ### 3.4 Label and Context Seletion
-<p align="center"><img src="https://user-images.githubusercontent.com/79245484/156601235-c1f6914f-f2b1-4d5a-bdb6-fc86292995a4.PNG" width="40%" height="40%"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/156601235-c1f6914f-f2b1-4d5a-bdb6-fc86292995a4.PNG" width="80%" height="80%"></p>
 
 -
 
 <br/>
 
 ### 3.5 Experiments with Features and Depth
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/156601238-1749e686-aa6a-4e72-bf92-f1dffd7cc144.PNG" width="50%" height="50%"></p>
+
 -
 
 <br/>
@@ -150,6 +152,8 @@ YouTube represents one of the largest scale and most sophisticated industrial re
 <br/>
 
 ### 4.3 Experiments with Hidden Layers
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/156601245-1d7bf46a-30e7-4c8c-82d6-09b7ef7a335c.PNG" width="50%" height="50%"></p>
+
 -
 
 <br/>
