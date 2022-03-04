@@ -178,24 +178,41 @@ YouTube represents one of the largest scale and most sophisticated industrial re
 <br/>
 
 #### Normalizing Continuous Features
--
+- Continuous feature들은 [0, 1) 사이에 들어오도록 scaling을 해주고, super- / sub-linear한 특징을 배우기 위해 <img src="https://latex.codecogs.com/svg.image?x^{2},\sqrt{x}" title="x^{2},\sqrt{x}" /> 의 데이터 또한 input으로 넣어준다. 
 
 <br/>
 
 ### 4.2 Modeling Expected Watch Time
--
+- 목표는 주어진 학습 데이터에서 사용자가 클릭한 아이템(positive)과 클릭하지 않은 아이템(negative)의 예상 시청 시간을 예측하는 것이다. 
+
+- Postive 아이템의 경우 사용자가 시청한 시간에 대한 기록이 남겨져 있으며, weighted logistic regression을 사용해 예상 시청 시간을 예측한다. 
+
+- 예상 시청 시간은 봤으면 본 시간을 값으로, 안봤으면 0으로 넣는다. 
 
 <br/>
 
 ### 4.3 Experiments with Hidden Layers
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/156601245-1d7bf46a-30e7-4c8c-82d6-09b7ef7a335c.PNG" width="50%" height="50%"></p>
 
--
+- 더 넓고 깊을 수록 성능이 좋아졌다. 
+
+- 실제 상황에서는 서비스의 반응 시간이 느려질 수 있다.
+
 
 <br/>
 
 ## 5. Conclusions
--
+- 이 모델이 기존의 Matrix Factorization보다 성능이 뛰어나다. 
+
+- '영상의 나이'가 성능을 크게 향상시켰다. 
+
+- 랭킹은 여전히 classical machine learning problem 이지만, 딥러닝이 선형 및 트리 기반 모델보다 시청 시간 예측에 더 좋은 성능을 보여주었다.
+
+- 사용자의 아이템에 대한 과거 행동을 설명하는 feature로부터 좋은 효과를 얻었다. 
+
+- Deep neural network는 임베딩되어 있거나 정규화되어 있는 categorical, continuous 한 데이터가 필요하다. 
+
+- CTR(click-through rate)를 직접적으로 예측하는 metrics 보다 시청 시간별로 가중치를 준 weighted logistic regression을 쓴 것이 더 효과적이였다. 
 
 <br/>
 
