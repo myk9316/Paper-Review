@@ -134,7 +134,7 @@ YouTube represents one of the largest scale and most sophisticated industrial re
 <br/>
 
 ## 4. Ranking
-<p align="center"><img src="https://user-images.githubusercontent.com/79245484/156601241-53cd64c7-b11c-4eaa-86fc-651ebb7d6456.PNG" width="50%" height="50%"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/156601241-53cd64c7-b11c-4eaa-86fc-651ebb7d6456.PNG" width="60%" height="60%"></p>
 
 - 랭킹 모델의 주 역할은 impression data를 사용해서 후보 아이템을 특성화하고 조정해서 특정 사용자 인터페이스에 대한 후보 예측을 수행한다. 
 - 이 때, 비디오와 사용자의 관계를 설명해주는 더 많은 features를 이용할 수 있다. (위에선 몇백개만 봤기 때문에 추가적으로 놓친 것을 파악하기 위해)
