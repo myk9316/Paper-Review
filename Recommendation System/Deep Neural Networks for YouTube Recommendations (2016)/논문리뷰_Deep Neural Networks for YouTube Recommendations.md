@@ -36,6 +36,7 @@ YouTube represents one of the largest scale and most sophisticated industrial re
 ## 3. Candidate Generation
 - 이 단계에서는 엄청난 규모의 유튜브 corpus에서 사용자와 관련된 몇 백개의 영상으로 후보군을 추출한다.
 - 네트워크를 구성하는 아이디어는 이전의 Matrix Factorization의 많은 영향을 받았으며, 본 논문에서 제안하는 이러한 방법은 factorization의 non-linear generalization으로 볼 수 있다. 
+- Fully connected ReLu
 
 <br/>
 
@@ -60,6 +61,7 @@ YouTube represents one of the largest scale and most sophisticated industrial re
 #### Efficient Extreme Multiclass
 - 학습 단계 (training)
   - 엄청나게 많은 클래스를 분류하는 모델을 효율적으로 학습시키기 위해 sample negative classes (negative sampling) 기법을 적용한다. 
+    - 수천개의 샘플만 뽑아서 샘플링 된 것을 학습
   - 이러한 방식을 적용한 이유로는 클래스가 너무 많을때 가능한 모든 클래스에 대해서 내적을 수행하기 때문에 Softmax 연산 cost가 기하급수적으로 늘어나기 때문이다. 
 
 - 실시간 추천단계 (serving time)
@@ -71,21 +73,41 @@ YouTube represents one of the largest scale and most sophisticated industrial re
 ### 3.2 Model Architecture
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/156601232-6354d9d8-8034-435b-ba2d-fe0ca89dc207.PNG" width="50%" height="50%"></p>
 
-- 
+- Embedding : Video Embedding + Search Token Embedding + Demographic feature
+
+- Embedded video wathces --> watch vector
+  - 고정된 vocabulary 안에서 각 비디오에 대한 고차원의 임베딩을 학습하고, 이러한 임베딩을 feedforward neural network에 feed 한다. 
+  
+  - 사용자의 시청 기록은 희소한 비디오 ID의 가변 길이 sequence에 의해 표현되며, Dense vector로 임베딩된다. 이때, embedding vectors를 평균내서 사용하는 것이 성능이 가장 좋다. 
 
 <br/>
 
 ### 3.3 Heterogeneous Signals
--
+- Matrix factorization의 deep neural network 사용의 이점은 연속형 변수와 범주형 변수를 모델에 쉽게 추가할 수 있다는 점이다. 
+
+- Embedded search tokens --> search vector
+  - 검색 내역도 시청 내역과 비슷하게 처리되는데, unigram/bigram 단위로 임베딩하여 평균 낸 것이 요약된 dense search history로 표현된다. 
+
+- Geographic embedding
+  - 그 외에 사용자의 지리적 정보 및 사용 기기 등의 인구통계학적 정보들도 임베딩하고 이를 concatenate 한다. 
+  - 이때 사용자의 성별, 나이 등의 값은 [0, 1]로 normalized 되어 실수 값으로 입력된다. 
 
 <br/>
 
 #### "Example Age" Feature
--
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/156601230-eae83324-21f0-4037-a28f-c0a70256e2ae.PNG" width="40%" height="40%"></p>
+
+- 매초마다 대량의 새로운 영상들이 업로드 되는데, 이러한 새로운 비디오를 잘 추천하는 것이 중요하다. 왜냐하면, 사용자들이 새로운 컨텐츠를 선호하는 것을 지속적으로 관찰해왔기 때문이다. 
+
+- 머신러닝 시스템은 미래를 예측하도록 훈련이 되어있기 때문에 과거 아이템에 대한 경향을 보여준다. 즉, 단순하게 오래된 아이템들이 더 많은 추천을 받게 된다. 
+
+- 이를 해결하게 위해 아이템의 '나이'를 피처로 추가해주었으며, 위의 그래프를 보면 나이를 추가함으로 성능이 향상되었다. 즉, 나이를 추가함으로써 업로드 직후에 많은 사람들이 시청하는 경향을 보여준다. 
 
 <br/>
 
 ### 3.4 Label and Context Seletion
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/156601235-c1f6914f-f2b1-4d5a-bdb6-fc86292995a4.PNG" width="40%" height="40%"></p>
+
 -
 
 <br/>
@@ -96,6 +118,8 @@ YouTube represents one of the largest scale and most sophisticated industrial re
 <br/>
 
 ## 4. Ranking
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/156601241-53cd64c7-b11c-4eaa-86fc-651ebb7d6456.PNG" width="50%" height="50%"></p>
+
 -
 
 <br/>
