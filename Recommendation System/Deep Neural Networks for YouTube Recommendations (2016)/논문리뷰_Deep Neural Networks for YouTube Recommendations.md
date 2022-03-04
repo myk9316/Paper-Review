@@ -129,7 +129,7 @@ YouTube represents one of the largest scale and most sophisticated industrial re
 
 - 비디오/검색어 각각 100만개를 256차원의 임베딩으로 변환
 - 인당 최대 최근 시청 50개, 검색 50개
-- depth가 깊어질수록 성능이 좋아졌다. 
+- feature를 추가하고 depth가 깊어질수록 성능이 좋아졌다. 
 
 <br/>
 
