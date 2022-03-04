@@ -134,22 +134,39 @@ YouTube represents one of the largest scale and most sophisticated industrial re
 <br/>
 
 ## 4. Ranking
-<p align="center"><img src="https://user-images.githubusercontent.com/79245484/156601241-53cd64c7-b11c-4eaa-86fc-651ebb7d6456.PNG" width="60%" height="60%"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/156601241-53cd64c7-b11c-4eaa-86fc-651ebb7d6456.PNG" width="80%" height="80%"></p>
 
 - 랭킹 모델의 주 역할은 impression data를 사용해서 후보 아이템을 특성화하고 조정해서 특정 사용자 인터페이스에 대한 후보 예측을 수행한다. 
 - 이 때, 비디오와 사용자의 관계를 설명해주는 더 많은 features를 이용할 수 있다. (위에선 몇백개만 봤기 때문에 추가적으로 놓친 것을 파악하기 위해)
 - 또한, 랭킹은 직접 비교하기가 어려운 여러 candidate 들을 앙상블하는데도 중요하다. 
-- Candidate generation 모델과 구조는 유사하며(deep neural network), 각 아이템에 점수를 할당하여 정렬함으로써 사용자에게 반영한다. 
+- Candidate generation 모델과 구조는 유사하며(deep neural network), 각 아이템마다 점수를 할당하여 정렬 후 사용자에게 return 한다. 
 
 <br/>
 
 ### 4.1 Feature Representation
--
+- Feature는 데이터의 형태에 따라서 categorical과 continuous/ordinal 로 구분할 수 있다. 
+
+  - Categorical feature
+    - univalent : 값을 한가지만 가지는 feature / ex. scoring하는 비디오의 ID 
+    - multivalent : 값을 여러개 가지는 feature / ex. 사용자가 지금까지 봤던 비디오의 ID 목록
+
+- 또한, Feature는 데이터 의미에 따라서 Query와 impression으로 구분할 수 있다. 
+  - Query : 사용자/context의 특성을 설명  , 한번만 computed됨
+  - Impression : 아이템의 특성을 설명  , 아이템이 점수를 부여 받을 때마다 computed됨
 
 <br/>
 
 #### Feature Engineering
--
+- 수백개의 feature를 사용한다. 
+
+- 딥러닝이 피처엔지니어링에 대한 수고스러움을 줄어주긴하지만, feedfoward neural network에 넣기 위해서는 raw data에 대한 전처리가 여전히 필요하다. 
+
+- Main challenge는 사용자 행동에 대한 sequence를 표현하는 것과 이러한 행동들이 점수화된 비디오 impression과 어떻게 관련 있는지를 표현하는 것이다. 
+
+- 이때 가장 중요한 signal은 아이템 자체 및 랭킹 광고 경험과 일치하는 유사한 아이템에 대한 사용자의 이전 상호작용이다. 
+  - 예를 들어, 해당 채널에서 시청한 비디오의 개수, 해당 토픽과 관련된 비디오를 마지막으로 시청한 시점 등과 같은 아이템과 관련된 사용자의 과거 행동의 continuous feature는 매우 효과적이다. 
+
+- 또한 왜 이 비디오가 추천되었는지 정보를 활용하고, 추천되었는데 보지 않은 비디오는 순위를 깎는다. 
 
 <br/>
 
