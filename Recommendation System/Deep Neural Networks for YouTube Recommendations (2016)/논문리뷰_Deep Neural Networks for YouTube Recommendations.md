@@ -106,16 +106,30 @@ YouTube represents one of the largest scale and most sophisticated industrial re
 <br/>
 
 ### 3.4 Label and Context Seletion
-<p align="center"><img src="https://user-images.githubusercontent.com/79245484/156601235-c1f6914f-f2b1-4d5a-bdb6-fc86292995a4.PNG" width="80%" height="80%"></p>
+- 추천시스템은 surrogate problem(평점을 예측하는 모델이 좋은 추천을 할 수 있는지)을 자주 마주한다. 
+  - surrogate problem: 개발한 추천 엔진에 대한 평가는 직접 서빙하여 사용자로부터 피드백을 받는 것이지만 항상 이러한 형태의 평가가 불가능함으로, RMSE 혹은 MAP와 같은 성능 지표를 활용하여 모델을 평가하는 과정
 
--
+- 학습데이터는 유튜브 추천시스템의 결과로부터만 생성되는 것보다 다른 사이트의 유입까지 모두 포함하는 것이 좋다. 
+  - 그렇지 않으면, 데이터가 유튜브 추천시스템의 의한 결과이기 때문에 bias가 생기게 되어, 새로운 아이템을 탐색하기가 어렵다. (biased toward exploitation, rather than exploration) 
+
+- 또한, loss function에서 모든 사용자의 가중치를 동일하게 유지하기 위해 사용자마다 학습 데이터의 양을 고정하는 것이 좋다. 
+  - 매우 활동적인 사용자의 영향이 dominate 하는 것을 방지한다. 
+
+- 추천 결과나 검색 결과를 즉시 사용하지 않는다. 왜냐하면, 방금 검색한 내용이 계속 표시된다. 
+
+- 유튜브 영상 감상 패턴은 매우 비대칭적이다. 즉, 영상을 규칙적으로 보지 않는다 (ex. 에피소드 순서대로, 유명한 것부터 감상, 게임 영상을 볼때는 게임 영상만 감상). 따라서, 추천 결과를 예측함에 있어 무작위로 선택된 아이템을 예측하는 것보다, 사용자의 다음 시청 영상을 예측하는 것이 성능이 더 좋았다. 
+  - 아래 그림의 (b)에서는 특정 시점의 아이템을 예측하기 위해 특정 시점 이전의 데이터(watch history)로만 학습데이터를 구축한다. 
+
+<p align="center"><img src="https://user-images.githubusercontent.com/79245484/156601235-c1f6914f-f2b1-4d5a-bdb6-fc86292995a4.PNG" width="80%" height="80%"></p>
 
 <br/>
 
 ### 3.5 Experiments with Features and Depth
 <p align="center"><img src="https://user-images.githubusercontent.com/79245484/156601238-1749e686-aa6a-4e72-bf92-f1dffd7cc144.PNG" width="40%" height="40%"></p>
 
--
+- 비디오/검색어 각각 100만개를 256차원의 임베딩으로 변환
+- 인당 최대 최근 시청 50개, 검색 50개
+- depth가 깊어질수록 성능이 좋아졌다. 
 
 <br/>
 
