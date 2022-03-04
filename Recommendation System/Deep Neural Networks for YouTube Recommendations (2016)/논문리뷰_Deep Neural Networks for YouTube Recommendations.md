@@ -171,7 +171,9 @@ YouTube represents one of the largest scale and most sophisticated industrial re
 <br/>
 
 #### Embedding Categorical Features
--
+- Categorical feature들은 dense embedding으로 맵핑되서 neural network에 input으로 입력된다.
+- 가질 수 있는 값이 굉장히 많은 categorical feature에 경우에는 click 빈도수를 기반으로 정렬 후 Top N 개만 사용되고, 나머지는 Out-of-vocabulary로 취급되어 zero embedding으로 변환된다.
+- 값을 여러개 가질 수 있는 multivalent categorical feature들은 평균을 낸 다음에 입력이 된다. 
 
 <br/>
 
